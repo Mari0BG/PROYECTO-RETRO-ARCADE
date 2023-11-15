@@ -1,0 +1,7 @@
+express
+mongoose 
+dotenv
+nodemon
+
+
+package.json -> type : module para importar en js
