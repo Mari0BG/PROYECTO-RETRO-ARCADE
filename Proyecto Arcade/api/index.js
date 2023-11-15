@@ -16,11 +16,12 @@ app.use("/api/role", roleRoute)
 
 // DB CONNECTION
 const connectMongoDB = async ()=>{
+    
     try{
         await mongoose.connect(process.env.MONGO_URL)  // .env
         console.log("Connected to Database")
     }catch(err){
-
+        console.log("Error "+err.mongoose) 
     }
 }
 
