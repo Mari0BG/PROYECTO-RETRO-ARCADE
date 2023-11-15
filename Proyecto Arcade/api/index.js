@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 
 import roleRoute from './routes/role.js'
 
-const app = express()
+const app = express() 
 dotenv.config()  //config dotenv paral as variables de entorno
 
 //MIDDLEWARE
@@ -20,7 +20,7 @@ const connectMongoDB = async ()=>{
         await mongoose.connect(process.env.MONGO_URL)  // .env
         console.log("Connected to Database")
     }catch(err){
-
+        console.log(err)
     }
 }
 
