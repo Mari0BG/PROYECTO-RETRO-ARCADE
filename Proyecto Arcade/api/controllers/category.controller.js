@@ -1,5 +1,4 @@
 import Category from '../models/Category.ts'
-import Product from '../models/Product.js'
 
 export const createCategory = async (req, res, next) => {
     try {
@@ -8,7 +7,7 @@ export const createCategory = async (req, res, next) => {
             await newCategory.save()
             return res.send("Category created")
         }
-        else{
+        else {
             return res.status(400).send("Bad Request")
         }
     } catch (error) {

@@ -1,4 +1,4 @@
-import Product from "./routes/Product.ts"
+import Product from '../Product/Role.js'
 
 export const createProduct = async (req, res, next) => {
     try {

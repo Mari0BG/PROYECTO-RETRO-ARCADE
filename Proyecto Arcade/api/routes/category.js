@@ -1,4 +1,4 @@
-import Express from 'express';
+import express from 'express';
 import { createCategory, deleteCategory, getAllCategories, updateCategory } from '../controllers/category.controller.js';
 const router = express.Router() //con esto puedo usar operaciones CRUD
 
