@@ -2,7 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose' 
 import dotenv from 'dotenv'
 import roleRoute from './routes/role.js'
-//import productRoute from './routes/product.js'
+import productRoute from './routes/product.js'
 
 const app = express()
 dotenv.config()  //config dotenv paral as variables de entorno
@@ -11,7 +11,7 @@ dotenv.config()  //config dotenv paral as variables de entorno
 app.use(express.json())  //esto sirve para que en las peticiones json se acepte el body de las request
 
 app.use("/api/role", roleRoute)
-app.use(require('./routes/product.js'))
+app.use("/api/product", productRoute)
 
 // DB CONNECTION
 const connectMongoDB = async ()=>{
