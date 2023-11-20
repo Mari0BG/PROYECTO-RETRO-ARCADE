@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "655ab8f19d3034150355179f"
+  },
+  "name": "Maquina pacman",
+  "description": "Un tanto amarilla",
+  "stock": 10,
+  "category_id": [
+    {
+      "$oid": "655abbe0a628f0ea1f33cd8b"
+    }
+  ],
+  "image": "https://i.blogs.es/069317/pacman/450_1000.jpg",
+  "contpurchase": 5,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2023-11-20T01:40:01.266Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-20T01:40:01.266Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655ab9399d303415035517a1"
+  },
+  "name": "Maquina REX",
+  "description": "Tu mejor aliada",
+  "stock": 10,
+  "category_id": [
+    {
+      "$oid": "655abbe0a628f0ea1f33cd8b"
+    }
+  ],
+  "image": "https://www.rex-arcade.com/wp-content/uploads/2022/04/retro-space_invaders.png",
+  "contpurchase": 500,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2023-11-20T01:41:13.942Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-20T01:41:13.942Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "655abbdba628f0ea1f33cd89"
+  },
+  "name": "Repuestos",
+  "createdAt": {
+    "$date": "2023-11-20T01:52:27.393Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-20T01:52:27.393Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655abbe0a628f0ea1f33cd8b"
+  },
+  "name": "Maquinas",
+  "createdAt": {
+    "$date": "2023-11-20T01:52:32.547Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-20T01:52:32.547Z"
+  },
+  "__v": 0
+}]
