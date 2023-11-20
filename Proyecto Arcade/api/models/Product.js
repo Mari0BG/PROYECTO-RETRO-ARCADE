@@ -2,6 +2,7 @@ import mongoose, {Schema} from 'mongoose'
 
 const productsSchema = mongoose.Schema ({
     name:{type: String, required: true},
+    price:{type: Number, required: true},
     description:{type: String, required: true},
     stock:{type: Number, required: true},
     category_id:{type: [Schema.Types.ObjectId], required: true, ref: "Category"},

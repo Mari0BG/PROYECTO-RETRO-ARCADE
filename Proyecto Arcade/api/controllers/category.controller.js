@@ -2,8 +2,7 @@ import Category from '../models/Category.js'
 
 export const createCategory =  async (req, res, next) => {
     try{
-        if (req.body && Object.keys(req.body).length > 0) {
-        //if(req.body.category && req.body.category != ''){
+        if(req.body.name && req.body.name != ''){
             const newCategory = new Category(req.body)
             await newCategory.save()
             return res.send("Category created")
