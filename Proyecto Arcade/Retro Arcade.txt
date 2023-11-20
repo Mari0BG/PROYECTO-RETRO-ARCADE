@@ -33,6 +33,10 @@ USUARIOS TABLA
 
 _id - nombre - direccion - email - contraseña - customizacionCliente? (foto, descripcion del cliente, estado)???
 
+ROLES TABLA
+
+_id - roleNombre
+
 
 CARRITO TABLA
 

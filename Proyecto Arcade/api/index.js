@@ -5,7 +5,7 @@ import roleRoute from './routes/role.js'
 import productRoute from './routes/product.js'
 import categoryRoute from './routes/category.js'
 
-const app = express()
+const app = express() 
 dotenv.config()  //config dotenv paral as variables de entorno
 
 //MIDDLEWARE
