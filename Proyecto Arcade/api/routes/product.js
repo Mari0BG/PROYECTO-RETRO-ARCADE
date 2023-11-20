@@ -1,18 +1,18 @@
 import express from 'express'
-import { createProduct, deleteProduct, getAllProducts, updateProduct } from '../controllers/product.controller.ts'; 
+import { createProduct, updateProduct, getAllProducts, deleteProduct } from '../controllers/product.controller.js'
 
 const router = express.Router() //con esto puedo usar operaciones CRUD
 
 //Crear un nuevo product en la DB
-router.post('/createProduct', createProduct)
+router.post('/create', createProduct)
 
 //Actualizar product
-router.put('/updateProduct/:id', updateProduct)
+router.put('/update/:id', updateProduct)
 
 //obtener todos los products
-router.get('/getAllProduct', getAllProducts)
+router.get('/getAll', getAllProducts)
 
 //borrar product
-router.delete('/deleteProduct/:id', deleteProduct)
+router.delete('/delete/:id', deleteProduct)
 
 export default router

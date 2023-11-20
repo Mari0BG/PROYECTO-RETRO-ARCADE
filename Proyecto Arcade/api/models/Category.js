@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 
 const categorySchema = mongoose.Schema (
     {
@@ -7,5 +7,5 @@ const categorySchema = mongoose.Schema (
     {
         timestamps: true
     }
-)
-export default mongoose.model("Role", categorySchema) 
+);
+export default mongoose.model("Category", categorySchema) 

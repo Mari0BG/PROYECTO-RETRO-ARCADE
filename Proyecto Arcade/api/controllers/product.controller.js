@@ -2,6 +2,7 @@ import Product from '../models/Product.js'
 
 export const createProduct = async (req, res, next) => {
     try {
+        //if (req.body && Object.keys(req.body).length > 0) {
         if(req.body.product && req.body.product != ''){
             const newProduct = new Product(req.body)
             await newProduct.save()
