@@ -1,17 +1,19 @@
 import Product from '../models/Product.js'
+import { CreateError } from "../utils/error.js"
+import { CreateSuccess } from "../utils/success.js"
 
 export const createProduct = async (req, res, next) => {
     try {
         if(req.body.name && req.body.name != ''){
             const newProduct = new Product(req.body)
             await newProduct.save()
-            return res.send("Product created")
+            return next(CreateSuccess(200, "Product Created"))
         }
         else {
-            return res.status(400).send("Bad Request")
+            return next(CreateError(400,"Bad Request"))
         }
     } catch (error) {
-        return res.status(500).send("Internal server error")
+        return next(CreateError(500,"Internal server error"))
     }
 }
 
@@ -24,13 +26,13 @@ export const updateProduct = async (req, res, next) => {
                 {$set: req.body},
                 {new: true}
             )
-            return res.status(200).send("Product updated")
+            return next(CreateSuccess(200, "Product Updated"))
         }
         else {
-            return res.status(400).send("Bad Request")
+            return next(CreateError(400,"Bad Request"))
         }
     } catch (error) {
-        return res.status(500).send("Internal server error")
+        return next(CreateError(500,"Internal server error"))
     }
 }
 
@@ -39,7 +41,7 @@ export const getAllProducts = async (req, res, next) => {
         const products = await Product.find({})
         return res.status(200).send(products)
     } catch (error) {
-        return res.status(500).send("Internal server error")
+        return next(CreateError(500,"Internal server error"))
     }
 }
 
@@ -49,12 +51,12 @@ export const deleteProduct = async (req, res, next) => {
         const product = await Product.findById({_id: productId})
         if(product){
             await Product.findByIdAndDelete(productId)
-            return res.status(200).send("Product deleted")
+            return next(CreateSuccess(200, "Product Deleted"))
         }
         else {
-            return res.status(404).send("Product not found")
+            return next(CreateError(404,"Product not found"))
         }
     } catch (error) {
-        return res.status(500).sen("Internal server error")
+        return next(CreateError(500,"Internal server error"))
     }
 }

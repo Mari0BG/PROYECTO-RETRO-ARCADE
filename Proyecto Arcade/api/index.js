@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import roleRoute from './routes/role.js'
 import productRoute from './routes/product.js'
 import categoryRoute from './routes/category.js'
+import authRoute from './routes/auth.js'
 
 const app = express() 
 dotenv.config()  //config dotenv paral as variables de entorno
@@ -11,9 +12,23 @@ dotenv.config()  //config dotenv paral as variables de entorno
 //MIDDLEWARE
 app.use(express.json())  //esto sirve para que en las peticiones json se acepte el body de las request
 
+
 app.use("/api/role", roleRoute)
 app.use("/api/category", categoryRoute)
 app.use("/api/product", productRoute)
+app.use("/api/auth", authRoute)
+
+// RESPONSE HANDLER MIDDLEWARE
+app.use((obj, req, res, next)=>{
+    const statusCode = obj.status || 500
+    const message = obj.message || "Something went wrong"
+    return res.status(statusCode).json({
+        success: [200,201,204].some(a=> a === obj.status) ? true: false, // si el obj manda un status del array es true
+        status: statusCode,
+        message: message, 
+        data: obj.data
+    })
+}) 
 
 // DB CONNECTION
 const connectMongoDB = async ()=>{

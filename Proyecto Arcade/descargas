@@ -2,6 +2,7 @@ express
 mongoose 
 dotenv
 nodemon
+bcryptjs --> encriptar password
 
 
 package.json -> type : module para importar en js

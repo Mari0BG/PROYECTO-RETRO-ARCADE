@@ -1,16 +1,18 @@
 import Category from '../models/Category.js'
+import { CreateError } from "../utils/error.js"
+import { CreateSuccess } from "../utils/success.js"
 
 export const createCategory =  async (req, res, next) => {
     try{
         if(req.body.name && req.body.name != ''){
             const newCategory = new Category(req.body)
             await newCategory.save()
-            return res.send("Category created")
+            return next(CreateSuccess(200, "Category Created"))
         }else{
-            return res.status(400).send("Bad Request")
+            return next(CreateError(404,"Bad Request"))
         }
     }catch(err){
-        return res.status(500).send("Internal server error")
+        return next(CreateError(500,"Internal server error"))
     }
 }
 
@@ -20,15 +22,15 @@ export const updateCategory = async (req, res, next)=>{
         if(category){
             const newData = await Category.findByIdAndUpdate(
                 req.params.id,
-                {$set: req.body},
+                {$set: req.body}, 
                 {new: true}
             )
-            return res.status(200).send("Category updated")
+            return next(CreateSuccess(200, "Category updated"))
         }else{
-            return res.status(404).send("Category not found")
+            return next(CreateError(404,"Bad Request"))
         }
     } catch (error) {
-        return res.status(500).send("Internal server error")
+        return next(CreateError(500,"Internal server error"))
     }
 }
 
@@ -37,7 +39,7 @@ export const getAllCategories = async (req, res, next) =>{
         const categories = await Category.find({})
         return res.status(200).send(categories)
     } catch (error) {
-        return res.status(500).send("Internal server error")
+        return next(CreateError(500,"Internal server error"))
     }
 }
 
@@ -47,11 +49,11 @@ export const deleteCategory = async (req,res, next) =>{
         const category = await Category.findById({_id: categoryId})
         if(category){
             await Category.findByIdAndDelete(categoryId)
-            return res.status(200).send("Category deleted")
+            return next(CreateSuccess(200, "Category deleted"))
         }else{
-            return res.status(404).send("Category not found")
+            return next(CreateError(404,"Category not found"))
         }
     } catch (error) {
-        return res.status(500).send("Internal server error")
+        return next(CreateError(500,"Internal server error"))
     }
 }
