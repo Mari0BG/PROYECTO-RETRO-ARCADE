@@ -9,7 +9,7 @@ export const createCategory =  async (req, res, next) => {
             await newCategory.save()
             return next(CreateSuccess(200, "Category Created"))
         }else{
-            return next(CreateError(404,"Bad Request"))
+            return next(CreateError(400,"Bad Request"))
         }
     }catch(err){
         return next(CreateError(500,"Internal server error"))
@@ -27,7 +27,7 @@ export const updateCategory = async (req, res, next)=>{
             )
             return next(CreateSuccess(200, "Category updated"))
         }else{
-            return next(CreateError(404,"Bad Request"))
+            return next(CreateError(400,"Bad Request"))
         }
     } catch (error) {
         return next(CreateError(500,"Internal server error"))
@@ -51,7 +51,7 @@ export const deleteCategory = async (req,res, next) =>{
             await Category.findByIdAndDelete(categoryId)
             return next(CreateSuccess(200, "Category deleted"))
         }else{
-            return next(CreateError(404,"Category not found"))
+            return next(CreateError(400,"Category not found"))
         }
     } catch (error) {
         return next(CreateError(500,"Internal server error"))
