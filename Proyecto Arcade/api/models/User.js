@@ -15,5 +15,4 @@ const UserSchema = mongoose.Schema(
     }
 )
 
-export default mongoose.model("User", UserSchema)    // SE EXPORTA PORQUE SI NO, NO SE PUEDE USAR EL MODELO
-                                                    //  en mongo se va a llamar user y se exporta como UserSchema
+export default mongoose.model("User", UserSchema)   

@@ -9,5 +9,4 @@ const RoleSchema = mongoose.Schema(
     }
 )
 
-export default mongoose.model("Role", RoleSchema) // SE EXPORTA PORQUE SI NO, NO SE PUEDE USAR EL MODELO
-                                                 //  en mongo se va a llamar role y se exporta como RoleSchema
+export default mongoose.model("Role", RoleSchema) 

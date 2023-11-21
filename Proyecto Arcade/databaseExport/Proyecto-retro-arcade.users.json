@@ -1,1 +1,95 @@
-[]
+[{
+  "_id": {
+    "$oid": "655cf2951a450cb94a1bde98"
+  },
+  "name": "Juan",
+  "email": "Juan@gmail.com",
+  "password": "$2a$10$C6DNtX8uGPzxCopdYHKNr.BXgf7YQeMZOcSZhGtZh1jTQf5YBMNHi",
+  "address": "calle del juan 321",
+  "profileImage": "https://static.wikia.nocookie.net/mamarre-estudios-espanol/images/a/a3/FB_IMG_1596591789564.jpg/revision/latest/thumbnail/width/360/height/360?cb=20200806023457&path-prefix=es",
+  "isAdmin": false,
+  "roles": [
+    {
+      "$oid": "655cee654ff76b38baa84bd5"
+    }
+  ],
+  "createdAt": {
+    "$date": "2023-11-21T18:10:29.585Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-21T18:10:29.585Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655cf2a71a450cb94a1bde9b"
+  },
+  "name": "Elpepe",
+  "email": "Elpepe@gmail.com",
+  "password": "$2a$10$zJaICYVGA7cnSdRpJNUACOZw3/J9MHPWXd6aQ2ZhhKf3cECa4xaWC",
+  "address": "calle del pepe 123",
+  "profileImage": "https://i.etsystatic.com/27103892/r/il/91c4ee/3009210963/il_570xN.3009210963_dyhn.jpg",
+  "isAdmin": false,
+  "roles": [
+    {
+      "$oid": "655cee654ff76b38baa84bd5"
+    }
+  ],
+  "createdAt": {
+    "$date": "2023-11-21T18:10:47.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-21T18:10:47.601Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655cffe44aed248b90112505"
+  },
+  "name": "webo",
+  "email": "webo@gmail.com",
+  "password": "$2a$10$hNI4B71DLUSajI4HRYudtuNyp2iKhGOf1ma7iXT3vDx3K1k4X4mYK",
+  "address": "calle del webo 123",
+  "profileImage": "https://cadenaser.com/resizer/yQ1QhJCRSsMU3UQuKXtr05sDQEg=/1200x900/filters:format(jpg):quality(70)/cloudfront-eu-central-1.images.arcpublishing.com/prisaradio/NSWGBJF52ROZTGRMAHHQ6B2OD4.jpg",
+  "isAdmin": false,
+  "roles": [
+    {
+      "$oid": "655cee654ff76b38baa84bd5"
+    }
+  ],
+  "createdAt": {
+    "$date": "2023-11-21T19:07:16.910Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-21T19:07:16.910Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655d1108b6427b016bd15fd9"
+  },
+  "name": "eladmin",
+  "email": "eladmin@gmail.com",
+  "password": "$2a$10$KhT04d9GCFex2C/z.1gu7OMHVHyQRC8rLgeG2A/ZWJNNYXKg8kQUy",
+  "address": "calle del eladmin 123",
+  "profileImage": "https://stickerly.pstatic.net/sticker_pack/1OzmnaU2rNLhyhkZpvaJQg/PWUR11/14/920613fd-b554-455e-80af-a5464eb133ab.png",
+  "isAdmin": true,
+  "roles": [
+    {
+      "$oid": "6554af83a758ff6bf0bec41d"
+    },
+    {
+      "$oid": "655cee654ff76b38baa84bd5"
+    }
+  ],
+  "createdAt": {
+    "$date": "2023-11-21T20:20:24.765Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-21T20:20:24.765Z"
+  },
+  "__v": 0
+}]

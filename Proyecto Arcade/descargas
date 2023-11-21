@@ -3,6 +3,7 @@ mongoose
 dotenv
 nodemon
 bcryptjs --> encriptar password
-
+jsonwebtoken --> token web
+cookie-parser
 
 package.json -> type : module para importar en js
