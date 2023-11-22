@@ -7,7 +7,7 @@ export const createProduct = async (req, res, next) => {
         if(req.body.name && req.body.name != ''){
             const newProduct = new Product(req.body)
             await newProduct.save()
-            return next(CreateSuccess(200, "Product Created"))
+            return next(CreateSuccess(200, "Product Created", newProduct))
         }
         else {
             return next(CreateError(400,"Bad Request"))
