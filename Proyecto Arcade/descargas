@@ -7,3 +7,7 @@ jsonwebtoken --> token web
 cookie-parser
 
 package.json -> type : module para importar en js
+
+
+// Fallo angular
+npm install --save-dev @angular/cli
