@@ -4,6 +4,8 @@ import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import { CreateError } from "../utils/error.js"
 import { CreateSuccess } from "../utils/success.js"
+import nodemailer from "nodemailer"
+import UserToken from "../models/UserToken.js"
 
 export const register = async (req,res, next)=>{
     
@@ -71,4 +73,84 @@ export const login = async (req,res, next)=>{
     } catch (error) {
         return next(CreateError(500,"Something went wrong"))
     }
+}
+
+export const sendEmail = async (req,res, next)=>{
+    const email = req.body.email
+    const user = await User.findOne({email: {$regex: '^'+email+'$', $options: 'i'}})
+    if(!user){
+        return next(CreateError(404,"User not found"))
+    }
+    const payload = {
+        email: user.email
+    }
+    const expiryTime = 300
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: expiryTime})
+
+    const newToken = new UserToken({
+        userId: user._id,
+        token: token
+    })
+
+    const mailTransporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "webo123@gmail.com",
+            pass: "webo123"
+        }
+    })
+    let mailDetails = {
+        from: "webo123@gmail.com",
+        to: email,
+        subject: "Reset password",
+        html: `
+        <html>
+        <head>
+            <title>Password reset Request</title>
+        </head>
+        <body>
+            <h1>Password reset Request</h1>
+            <p>Hola ${user.name},</p>
+            <p>Hemos recibido una petición para cambiar la contraseña de tu cuenta</p>
+            <a href=${proccess.env.LIVE_URL}/reset/${token}><button style="background-color: darkorchid; color: white; padding: 14px 20px; border: none; cursor: pointer; border-radius: 4px;">Cambiar contraseña</button></a>
+        </body>
+        </html>
+        `
+    }
+    mailTransporter.sendMail(mailDetails, async(err, data)=>{
+        if(err){
+            console.log(err)
+            return next(CreateError(500, "Something went wrong"))
+        }else{
+            await newToken.save()
+            return next(CreateSuccess(200,"Mail sent successfully"))
+        }
+    })
+}
+
+export const resetPassword = (res,req,next)=>{
+    const token = req.body.token
+    const newPassword = req.body.password
+
+    jwt.verify(token,process.env.JWT_SECRET, async(err,data)=>{
+        if(err){
+            return next(CreateError(500, "Reset link expired"))
+        }else{
+            const response = data
+            const user = await User.findOne({email: {$regex: '^'+response.email+'$', $options: 'i'}})
+            const salt = await bycrypt.genSalt(10)
+            const encryptedPassword = await bycrypt.hash(newPassword, salt)
+            user.password = encryptedPassword
+            try {
+                const updateUser = await User.findOneAndUpdate(
+                    {_id: user._id},
+                    {$set: user},
+                    {new: true},
+                )
+                return next(CreateSuccess(200,"Password Reset success"))
+            } catch (error) {
+                return next(CreateError(500, "Something went wrong"))
+            }
+        }
+    })
 }

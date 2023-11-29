@@ -1,0 +1,22 @@
+<div class="lg:w-3/12 mt-5 p-10 shadow-xl mx-auto">
+    <h3 class="text-3xl text-center font-semibold py-5">Login</h3>
+    <form [formGroup]="resetForm" class="flex flex-col">
+
+        <div class="flex flex-col mt-4 mb-1">
+            <input formControlName="password" class="p-2 border border-gray-300 rounded" type="password" placeholder="Contraseña">
+            <span *ngIf="resetForm.hasError('required', 'password') && resetForm.controls['password'].dirty" class="text-red-500">*contraseña obligatorio</span>
+        </div>
+
+        <div class="flex flex-col mt-4 mb-1">
+            <input formControlName="confirmPassword" class="p-2 border border-gray-300 rounded" type="confirmPassword" placeholder="Repetir contraseña">
+            <span *ngIf="resetForm.hasError('required', 'confirmPassword') && resetForm.controls['confirmPassword'].dirty" class="text-red-500">*contraseña obligatorio</span>
+        </div>
+
+        <button [disabled]="resetForm.invalid" [class.disabled]="resetForm.invalid" (click)="reset()" class="bg-indigo-500 p-2 rounded mt-3 text-white">Enviar</button>
+
+    </form>
+    <div class="flex justify-between mt-5">
+        <a routerLink="/forget-password" class="text-indigo-600 ml-2 cursor-pointer">Cambiar contraseña</a>
+        <a routerLink="/register" class="text-indigo-600 ml-2 cursor-pointer">Crear cuenta</a>
+    </div>
+</div>

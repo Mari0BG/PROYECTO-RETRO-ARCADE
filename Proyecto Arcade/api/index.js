@@ -15,7 +15,8 @@ dotenv.config()  //config dotenv paral as variables de entorno
 //MIDDLEWARE
 app.use(express.json())  //esto sirve para que en las peticiones json se acepte el body de las request
 app.use(cookieParser())
-app.use(cors({origin: 'http://localhost:4200'}))
+app.use(cors({ origin: 'http://localhost:4200', credentials: true }))
+
 
 app.use("/api/role", roleRoute)
 app.use("/api/category", categoryRoute)
