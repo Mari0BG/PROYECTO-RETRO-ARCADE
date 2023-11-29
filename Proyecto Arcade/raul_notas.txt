@@ -1,0 +1,18 @@
+Components
+- Aqui meto el 
+ç
+
+
+Componente HOME
+- Aqui tengo que importar cada parte de la pagina que esta en components
+
+Poner un provider en el app.config.ts
+
+Las rutas en app.routes.ts
+
+**NOTA** En todos los componentes .ts poner export default delante de la clase
+Dentro del componente .ts para usar otro componente en el html <app-cmponente>, tendremos que importar el otro componente y meterlo dentro de imports
+
+validator: es de la parte del registro, es para cuando las contraseñas no coinciden.
+
+forget-password: Sirve para el cambio de contraseña cuando se ha olvidado, lo que hace es que redirige a otra pagina que es la de reset y lo ancla con || Esta enlazado con la api el archivo auth.controller que contiene lo del correo para restablecer la contraseña que envia al correo electronico
