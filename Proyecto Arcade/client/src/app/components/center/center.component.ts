@@ -11,6 +11,7 @@ import { ProductService } from'src/app/services/product.service';
   templateUrl: './center.component.html',
   styleUrls: ['./center.component.css']
 })
+
 export default class CenterComponent {
 
   constructor(public productService: ProductService) {
