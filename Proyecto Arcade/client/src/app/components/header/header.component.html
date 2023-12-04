@@ -15,6 +15,9 @@
         <ng-container *ngIf="isLoggedIn">
             <span (click)="logout()" routerLink="/login" class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200">Logout</span>
         </ng-container>
+        <ng-container *ngIf="isAdmin">
+            <span (click)="adminControl()" routerLink="/adminControl" class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200">Admin Control</span>
+        </ng-container>
         
     </div>
 </nav>
