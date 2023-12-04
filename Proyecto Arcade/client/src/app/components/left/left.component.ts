@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Category } from 'src/app/models/category';
@@ -14,9 +14,14 @@ import { CategoryService } from 'src/app/services/category.service';
 
 export class LeftComponent {
 
+  @Output() categoriaEnviada = new EventEmitter<string>();
 
   constructor(public categoryService: CategoryService){
+    
+  }
 
+  PasarCategoria(_id: any){
+    this.categoriaEnviada.emit(_id);
   }
 
   obtaingCategories() {

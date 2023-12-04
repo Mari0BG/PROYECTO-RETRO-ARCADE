@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import CenterComponent from 'src/app/components/center/center.component';
 import { LeftComponent } from 'src/app/components/left/left.component';
@@ -12,5 +12,15 @@ import { RightComponent } from 'src/app/components/right/right.component';
   styleUrls: ['./home.component.css']
 })
 export default class HomeComponent {
+  @Input() idCategory: String;
+  public idCate: String;
 
+  constructor(){
+    this.idCategory = '';
+    this.idCate = '';
+  }
+
+  RecibirCategoria(id: any){
+    this.idCategory = id;
+  }
 }

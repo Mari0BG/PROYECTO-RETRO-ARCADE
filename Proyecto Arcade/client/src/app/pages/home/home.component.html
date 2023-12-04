@@ -1,6 +1,6 @@
 <div class="flex">
-    <app-left class="w-1/4"></app-left>
-    <app-center  class="w-3/4"></app-center>
+    <app-left (categoriaEnviada)="RecibirCategoria($event)" class="w-1/4"></app-left>
+    <app-center [idCategory]="idCategory" class="w-3/4"></app-center>
     <app-right class="w-1/4"></app-right>
 </div>
   

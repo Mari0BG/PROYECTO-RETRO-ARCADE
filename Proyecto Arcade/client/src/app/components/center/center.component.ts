@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from 'src/app/models/product';
@@ -14,10 +14,12 @@ import { ProductService } from'src/app/services/product.service';
 
 export default class CenterComponent {
 
+  @Input() idCategory: String;
+
   constructor(public productService: ProductService) {
-
+    this.idCategory = "655abbdba628f0ea1f33cd89";
   }
-
+  
   obtainProducts() {
     this.productService.showProducts()
     .subscribe(res => {

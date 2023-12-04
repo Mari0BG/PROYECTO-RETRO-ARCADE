@@ -2,7 +2,7 @@
   "_id": {
     "$oid": "655abbdba628f0ea1f33cd89"
   },
-  "name": "Repuestos",
+  "name": "Todos",
   "createdAt": {
     "$date": "2023-11-20T01:52:27.393Z"
   },
@@ -15,12 +15,26 @@
   "_id": {
     "$oid": "655abbe0a628f0ea1f33cd8b"
   },
-  "name": "Maquinas",
+  "name": "Máquinas",
   "createdAt": {
     "$date": "2023-11-20T01:52:32.547Z"
   },
   "updatedAt": {
     "$date": "2023-11-20T01:52:32.547Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "656e28f671e0c3bcf66b75ca"
+  },
+  "name": "Repuestos",
+  "icon": "https://nayemdevs.com/wp-content/uploads/2020/03/default-product-image.png",
+  "createdAt": {
+    "$date": "2023-12-04T19:31:02.938Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-04T19:31:02.938Z"
   },
   "__v": 0
 }]
