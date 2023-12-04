@@ -36,4 +36,6 @@ export class CategoryService {
   deleteCategory(_id: String) {
     return this.http.delete(`${apiUrls.categoryServiceApi}delete/${_id}`);
   }
+
+
 }

@@ -3,5 +3,5 @@ export const apiUrls = {
     userServiceApi: 'http://localhost:8800/api/user/',
     roleServiceApi: 'http://localhost:8800/api/role/',
     productServiceApi: 'http://localhost:8800/api/product/',
-    categoryServiceApi: 'http://localhost:8080/api/category/',
+    categoryServiceApi: 'http://localhost:8800/api/category/',
 }
