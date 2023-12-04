@@ -1,46 +1,144 @@
 [{
   "_id": {
-    "$oid": "655ab8f19d3034150355179f"
+    "$oid": "655ba587ce5c90942dd4c9a1"
   },
-  "name": "Maquina pacman",
-  "description": "Un tanto amarilla",
-  "stock": 10,
+  "name": "Come cocos ",
+  "price": 100,
+  "description": "dime algo",
+  "stock": 5,
   "category_id": [
     {
-      "$oid": "655abbe0a628f0ea1f33cd8b"
+      "$oid": "655abbdba628f0ea1f33cd89"
     }
   ],
-  "image": "https://i.blogs.es/069317/pacman/450_1000.jpg",
-  "contpurchase": 5,
+  "image": "https://i.blogs.es/069317/pacman/1024_2000.jpg",
+  "contpurchase": 9,
   "cancelproduct": false,
   "createdAt": {
-    "$date": "2023-11-20T01:40:01.266Z"
+    "$date": "2023-11-20T18:29:27.473Z"
   },
   "updatedAt": {
-    "$date": "2023-11-20T01:40:01.266Z"
+    "$date": "2023-11-20T18:30:05.431Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "655ab9399d303415035517a1"
+    "$oid": "655e3c4428725bb44062c00c"
   },
-  "name": "Maquina REX",
-  "description": "Tu mejor aliada",
-  "stock": 10,
+  "name": "Come coco 1 ",
+  "price": 100,
+  "description": "dime algo",
+  "stock": 5,
   "category_id": [
     {
-      "$oid": "655abbe0a628f0ea1f33cd8b"
+      "$oid": "655abbdba628f0ea1f33cd89"
     }
   ],
-  "image": "https://www.rex-arcade.com/wp-content/uploads/2022/04/retro-space_invaders.png",
-  "contpurchase": 500,
+  "image": "https://th.bing.com/th/id/OIP.j5vkNvqy0ESYoUjthOBBGwHaJ4?rs=1&pid=ImgDetMain",
+  "contpurchase": 9,
   "cancelproduct": false,
   "createdAt": {
-    "$date": "2023-11-20T01:41:13.942Z"
+    "$date": "2023-11-22T17:37:08.153Z"
   },
   "updatedAt": {
-    "$date": "2023-11-20T01:41:13.942Z"
+    "$date": "2023-11-22T17:37:08.153Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655e3c4828725bb44062c00e"
+  },
+  "name": "Come coco 2 ",
+  "price": 100,
+  "description": "dime algo",
+  "stock": 5,
+  "category_id": [
+    {
+      "$oid": "655abbdba628f0ea1f33cd89"
+    }
+  ],
+  "image": "",
+  "contpurchase": 9,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2023-11-22T17:37:12.341Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-22T17:37:12.341Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655e3c5028725bb44062c010"
+  },
+  "name": "Come coco 3 ",
+  "price": 100,
+  "description": "dime algo",
+  "stock": 5,
+  "category_id": [
+    {
+      "$oid": "655abbdba628f0ea1f33cd89"
+    }
+  ],
+  "image": "https://i.blogs.es/069317/pacman/1024_2000.jpg",
+  "contpurchase": 9,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2023-11-22T17:37:20.873Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-22T17:37:20.873Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655e3c8c770d2c17c5d4d4dd"
+  },
+  "name": "Come coco 4 ",
+  "price": 100,
+  "description": "dime algo",
+  "stock": 5,
+  "category_id": [
+    {
+      "$oid": "655abbdba628f0ea1f33cd89"
+    }
+  ],
+  "image": "https://th.bing.com/th/id/OIP.j5vkNvqy0ESYoUjthOBBGwHaJ4?rs=1&pid=ImgDetMain",
+  "contpurchase": 9,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2023-11-22T17:38:20.481Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-22T17:38:20.481Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655e3c93770d2c17c5d4d4df"
+  },
+  "name": "Come coco 5 ",
+  "price": 100,
+  "description": "dime algo",
+  "stock": 5,
+  "category_id": [
+    {
+      "$oid": "655abbdba628f0ea1f33cd89"
+    }
+  ],
+  "image": "https://i.blogs.es/069317/pacman/1024_2000.jpg",
+  "contpurchase": 9,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2023-11-22T17:38:27.084Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-22T17:38:27.084Z"
   },
   "__v": 0
 }]
