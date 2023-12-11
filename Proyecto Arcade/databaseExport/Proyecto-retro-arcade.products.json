@@ -3,12 +3,12 @@
     "$oid": "655ba587ce5c90942dd4c9a1"
   },
   "name": "Come cocos ",
-  "price": 100,
+  "price": 550,
   "description": "dime algo",
   "stock": 5,
   "category_id": [
     {
-      "$oid": "655abbdba628f0ea1f33cd89"
+      "$oid": "655abbe0a628f0ea1f33cd8b"
     }
   ],
   "image": "https://i.blogs.es/069317/pacman/1024_2000.jpg",
@@ -27,12 +27,12 @@
     "$oid": "655e3c4428725bb44062c00c"
   },
   "name": "Come coco 1 ",
-  "price": 100,
+  "price": 400,
   "description": "dime algo",
   "stock": 5,
   "category_id": [
     {
-      "$oid": "655abbdba628f0ea1f33cd89"
+      "$oid": "655abbe0a628f0ea1f33cd8b"
     }
   ],
   "image": "https://th.bing.com/th/id/OIP.j5vkNvqy0ESYoUjthOBBGwHaJ4?rs=1&pid=ImgDetMain",
@@ -51,12 +51,12 @@
     "$oid": "655e3c4828725bb44062c00e"
   },
   "name": "Come coco 2 ",
-  "price": 100,
+  "price": 200,
   "description": "dime algo",
   "stock": 5,
   "category_id": [
     {
-      "$oid": "655abbdba628f0ea1f33cd89"
+      "$oid": "655abbe0a628f0ea1f33cd8b"
     }
   ],
   "image": "",
@@ -75,7 +75,7 @@
     "$oid": "655e3c5028725bb44062c010"
   },
   "name": "Come coco 3 ",
-  "price": 100,
+  "price": 899,
   "description": "dime algo",
   "stock": 5,
   "category_id": [
@@ -99,12 +99,12 @@
     "$oid": "655e3c8c770d2c17c5d4d4dd"
   },
   "name": "Come coco 4 ",
-  "price": 100,
+  "price": 1200,
   "description": "dime algo",
   "stock": 5,
   "category_id": [
     {
-      "$oid": "655abbdba628f0ea1f33cd89"
+      "$oid": "656e28f671e0c3bcf66b75ca"
     }
   ],
   "image": "https://th.bing.com/th/id/OIP.j5vkNvqy0ESYoUjthOBBGwHaJ4?rs=1&pid=ImgDetMain",
@@ -123,12 +123,12 @@
     "$oid": "655e3c93770d2c17c5d4d4df"
   },
   "name": "Come coco 5 ",
-  "price": 100,
+  "price": 699,
   "description": "dime algo",
   "stock": 5,
   "category_id": [
     {
-      "$oid": "655abbdba628f0ea1f33cd89"
+      "$oid": "656e28f671e0c3bcf66b75ca"
     }
   ],
   "image": "https://i.blogs.es/069317/pacman/1024_2000.jpg",
