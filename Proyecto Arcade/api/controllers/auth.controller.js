@@ -95,12 +95,12 @@ export const sendEmail = async (req,res, next)=>{
     const mailTransporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "webo123@gmail.com",
-            pass: "webo123"
+            user: "retroarcade68@gmail.com",
+            pass: "timq boll wmkx bljs"
         }
     })
     let mailDetails = {
-        from: "webo123@gmail.com",
+        from: "retroarcade68@gmail.com",
         to: email,
         subject: "Reset password",
         html: `
@@ -112,7 +112,7 @@ export const sendEmail = async (req,res, next)=>{
             <h1>Password reset Request</h1>
             <p>Hola ${user.name},</p>
             <p>Hemos recibido una petición para cambiar la contraseña de tu cuenta</p>
-            <a href=${proccess.env.LIVE_URL}/reset/${token}><button style="background-color: darkorchid; color: white; padding: 14px 20px; border: none; cursor: pointer; border-radius: 4px;">Cambiar contraseña</button></a>
+            <a href=${process.env.LIVE_URL}/reset/${token}><button style="background-color: darkorchid; color: white; padding: 14px 20px; border: none; cursor: pointer; border-radius: 4px;">Cambiar contraseña</button></a>
         </body>
         </html>
         `
@@ -128,29 +128,35 @@ export const sendEmail = async (req,res, next)=>{
     })
 }
 
-export const resetPassword = (res,req,next)=>{
-    const token = req.body.token
-    const newPassword = req.body.password
-
-    jwt.verify(token,process.env.JWT_SECRET, async(err,data)=>{
-        if(err){
-            return next(CreateError(500, "Reset link expired"))
-        }else{
-            const response = data
-            const user = await User.findOne({email: {$regex: '^'+response.email+'$', $options: 'i'}})
-            const salt = await bycrypt.genSalt(10)
-            const encryptedPassword = await bycrypt.hash(newPassword, salt)
-            user.password = encryptedPassword
-            try {
-                const updateUser = await User.findOneAndUpdate(
-                    {_id: user._id},
-                    {$set: user},
-                    {new: true},
-                )
-                return next(CreateSuccess(200,"Password Reset success"))
-            } catch (error) {
-                return next(CreateError(500, "Something went wrong"))
-            }
-        }
-    })
-}
+export const resetPassword = async (req, res, next) => {
+    const token = req.body.token;
+    const newPassword = req.body.password;
+  
+    try {
+      const data = jwt.verify(token, process.env.JWT_SECRET);
+      const user = await User.findOne({
+        email: { $regex: '^' + data.email + '$', $options: 'i' },
+      });
+  
+      if (!user) {
+        return next(CreateError(404, 'User not found'));
+      }
+  
+      const salt = bcrypt.genSaltSync(10);
+      const encryptedPassword = bcrypt.hashSync(newPassword, salt);
+  
+      user.password = encryptedPassword;
+  
+      const updateUser = await User.findOneAndUpdate(
+        { _id: user._id },
+        { $set: user },
+        { new: true }
+      );
+  
+      return next(CreateSuccess(200, 'Password Reset success'));
+    } catch (error) {
+      console.error(error);
+      return next(CreateError(500, `Error resetting password: ${error.message}`));
+    }
+  };
+  

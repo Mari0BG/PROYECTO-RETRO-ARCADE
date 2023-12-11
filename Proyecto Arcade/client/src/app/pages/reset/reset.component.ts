@@ -33,23 +33,32 @@ export default class ResetComponent implements OnInit{
       console.log(this.token)
     })
   }
-  reset(){
-    console.log(this.resetForm.value)
-    let resetObj = {
+  reset() {
+    console.log(this.resetForm.value);
+  
+    const resetObj = {
       token: this.token,
       password: this.resetForm.value.password
-    }
-    this.authService.resetPasswordService(resetObj)
-    .subscribe({
-      next:(res)=>{
-        alert(res.message)
-        this.resetForm.reset()
-        this.router.navigate(['login'])
+    };
+    console.log(resetObj);
+    this.authService.resetPasswordService(resetObj).subscribe({
+      next: (res) => {
+        alert(res.message);
+        this.resetForm.reset();
+        this.router.navigate(['login']);
       },
-      error:(err)=> {
-        alert(err.error.message)
+      error: (err) => {
+        console.log(err);
+        if (err.status === 500) {
+          alert('Error interno del servidor. Por favor, inténtalo de nuevo más tarde.');
+        } else if (err.status === 400) {
+          alert('Token no válido o expirado. Solicita un nuevo enlace de restablecimiento de contraseña.');
+        } else {
+          alert('Error desconocido. Por favor, inténtalo de nuevo.');
+        }
       }
-    })
+    });
   }
+  
 
 }
