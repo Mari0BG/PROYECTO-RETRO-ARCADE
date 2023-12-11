@@ -29,12 +29,15 @@ export default class LoginComponent {
       next:(res)=>{
         alert("Login is success "+res.data._id)
         localStorage.setItem("user_id", res.data._id)
+        localStorage.setItem("user_role", res.data.isAdmin)
         this.authService.isLoggedIn$.next(true)
+        this.authService.isAdmin$.next(true)
         this.router.navigate(['home'])
         this.loginForm.reset()
       },
       error:(err)=>{
         console.log(err)
+        alert("Usuario invalido")
       }
     })
   }

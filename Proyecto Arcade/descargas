@@ -11,3 +11,5 @@ package.json -> type : module para importar en js
 
 // Fallo angular
 npm install --save-dev @angular/cli
+
+https://flowbite.com/docs/components/modal/#pop-up-modal  // admin

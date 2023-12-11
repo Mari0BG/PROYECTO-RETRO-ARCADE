@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
   <!-- Utiliza ngFor para iterar sobre la lista de productos -->
-  <div *ngFor="let producto of productService.products"  class="p-4"  [style.display]="shouldDisplayProduct(producto)">
+  <div *ngFor="let producto of productService.products"  class="p-4" [style.display]="shuldDisplayProduct(producto)">
     <!-- Estructura de tu tarjeta de producto con Tailwind CSS -->
     <div *ngIf="idCategory == producto.category_id || !idCategory || idCategory=='655abbdba628f0ea1f33cd89'" class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-indigo-400 ">
       <a href="#">

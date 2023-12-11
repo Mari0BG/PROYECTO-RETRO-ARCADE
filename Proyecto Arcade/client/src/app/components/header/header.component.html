@@ -1,6 +1,6 @@
 <nav class="w-full flex justify-between items-center p-5 bg-indigo-400 shadow-lg">
     <div class="logo">
-        <span class="text-gray-200 text-4xl flex justify-start items-center">PROYECTO ARCADE</span>
+        <span class="text-gray-200 text-4xl flex justify-start items-center" routerLink="/home">PROYECTO ARCADE</span>
     </div>
     <div *ngIf="isLoggedIn" class="search relative">
         <span class="absolute mt-1.5 mx-3"><i class="fa fa-search font-light" aria-hidden="true"></i></span>
@@ -14,6 +14,9 @@
         </ng-container>
         <ng-container *ngIf="isLoggedIn">
             <span (click)="logout()" routerLink="/login" class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200">Logout</span>
+        </ng-container>
+        <ng-container *ngIf="isAdmin">
+            <span (click)="adminControl()" routerLink="/adminControl" class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200">Admin Control</span>
         </ng-container>
         
     </div>

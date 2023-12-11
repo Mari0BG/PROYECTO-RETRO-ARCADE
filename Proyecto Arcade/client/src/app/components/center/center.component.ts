@@ -19,11 +19,9 @@ export default class CenterComponent {
   constructor(public productService: ProductService) {
     this.idCategory = "655abbdba628f0ea1f33cd89";
   }
-  
-  shouldDisplayProduct(producto: any): string {
-    return (this.idCategory == producto.category_id || !this.idCategory || this.idCategory == '655abbdba628f0ea1f33cd89') ? 'block' : 'none';
+  shuldDisplayProduct(producto: any): String{
+    return(this.idCategory== producto.category_id || !this.idCategory || this.idCategory == "655abbdba628f0ea1f33cd89")? 'block' : 'none'
   }
-  
   obtainProducts() {
     this.productService.showProducts()
     .subscribe(res => {
