@@ -37,6 +37,7 @@ export default class LoginComponent {
       },
       error:(err)=>{
         console.log(err)
+        alert("Usuario invalido")
       }
     })
   }

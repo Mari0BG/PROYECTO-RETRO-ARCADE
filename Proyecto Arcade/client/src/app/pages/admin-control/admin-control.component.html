@@ -1,0 +1,81 @@
+<!-- admin-control.component.html -->
+
+<div class="flex">
+    <!-- Clients Section -->
+    <div class="w-1/2 p-4">
+      <h2 class="text-3xl font-semibold mb-6"><i class="fa fa-drivers-license" style="font-size: 30px;" aria-hidden="true"> Clientes</i></h2>
+      <div class="flex items-center mb-4">
+        <input type="text" [(ngModel)]="clientSearch" placeholder="Buscar Cliente" class="p-2 border rounded mr-2">
+        <button (click)="addClient()" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Agregar Cliente</button>
+      </div>
+      <ul class="space-y-4">
+        <li *ngFor="let client of filteredClients" class="flex items-center justify-between border-b pb-2">
+          <span class="text-lg">{{ client.name }}</span>
+          <div class="space-x-2">
+            <button (click)="openEditClientModal(client)" class="text-blue-500 hover:underline"><i class="fa fa-edit" style="font-size: 30px;" aria-hidden="true"></i></button>
+            <button (click)="deleteClient(client)" class="text-red-500 hover:underline"><i class="fa fa-close" style="font-size: 36px;" aria-hidden="true"></i></button>
+            <!-- Agregar más botones CRUD según tus necesidades -->
+          </div>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Products Section -->
+    <div class="w-1/2 p-4">
+      <h2 class="text-3xl font-semibold mb-6">Productos</h2>
+      <div class="flex items-center mb-4">
+        <input type="text" [(ngModel)]="productSearch" (input)="filterProducts()" placeholder="Buscar Producto" class="p-2 border rounded mr-2">
+        <button (click)="addProduct()" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Agregar Producto</button>
+      </div>
+      <ul class="space-y-4">
+        <li *ngFor="let producto of filteredProducts" class="flex items-center justify-between border-b pb-2">
+          <span class="text-lg">{{ producto.name }}</span>
+          <div class="space-x-2">
+            <button (click)="openEditProductModal(producto)" class="text-blue-500 hover:underline"><i class="fa fa-edit" style="font-size: 30px;" aria-hidden="true"></i></button>
+            <button (click)="deleteProduct(producto)" class="text-red-500 hover:underline"><i class="fa fa-close" style="font-size: 36px;" aria-hidden="true"></i></button>
+            <!-- Agregar más botones CRUD según tus necesidades -->
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<!-- Edit Client Modal -->
+<!-- Your edit client form goes here -->
+<div *ngIf="isEditClientModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-md w-96">
+      <h2 class="text-2xl font-semibold mb-4">Editar Cliente</h2>
+  
+      <label for="editedClientName">Nombre</label>
+      <input id="editedClientName" [(ngModel)]="editedClientName" class="w-full border rounded px-3 py-2 mb-3" />
+  
+      <label for="editedClientEmail">Correo Electrónico</label>
+      <input id="editedClientEmail" [(ngModel)]="editedClientEmail" type="email" class="w-full border rounded px-3 py-2 mb-3" />
+  
+      <label for="editedClientAddress">Dirección</label>
+      <input id="editedClientAddress" [(ngModel)]="editedClientAddress" class="w-full border rounded px-3 py-2 mb-3" />
+  
+      <label for="editedClientProfileImage">Imagen de Perfil</label>
+      <input id="editedClientProfileImage" [(ngModel)]="editedClientProfileImage" class="w-full border rounded px-3 py-2 mb-3" />
+  
+      <!-- Add more form fields for other properties as needed -->
+  
+      <button (click)="saveEditedClient()" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar cambios</button>
+      <button (click)="closeEditClientModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
+    </div>
+  </div>
+  
+
+<!-- Edit Client Modal -->
+<div *ngIf="isEditProductModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-md w-96">
+      <!-- Your edit client form goes here -->
+      <label for="editedProductName">Name</label>
+      <input id="editedProductName" [(ngModel)]="editedProductName" class="w-full border rounded px-3 py-2 mb-3" />
+      
+      <!-- Add more form fields for other properties as needed -->
+  
+      <button (click)="saveEditedProduct()" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar cambios</button>
+      <button (click)="closeEditProductModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
+    </div>
+  </div>

@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   }
 
   adminControl() {
-    alert('mondongo')
+    this.router.navigate(['admin-control'])
   }
 
   ngOnInit(): void {
