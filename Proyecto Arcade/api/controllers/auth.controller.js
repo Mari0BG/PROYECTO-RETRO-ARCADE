@@ -95,12 +95,12 @@ export const sendEmail = async (req,res, next)=>{
     const mailTransporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "webo123@gmail.com",
-            pass: "webo123"
+            user: "retroarcade68@gmail.com",
+            pass: "timq boll wmkx bljs"
         }
     })
     let mailDetails = {
-        from: "webo123@gmail.com",
+        from: "retroarcade68@gmail.com",
         to: email,
         subject: "Reset password",
         html: `
@@ -112,7 +112,7 @@ export const sendEmail = async (req,res, next)=>{
             <h1>Password reset Request</h1>
             <p>Hola ${user.name},</p>
             <p>Hemos recibido una petición para cambiar la contraseña de tu cuenta</p>
-            <a href=${proccess.env.LIVE_URL}/reset/${token}><button style="background-color: darkorchid; color: white; padding: 14px 20px; border: none; cursor: pointer; border-radius: 4px;">Cambiar contraseña</button></a>
+            <a href=${process.env.LIVE_URL}/reset/${token}><button style="background-color: darkorchid; color: white; padding: 14px 20px; border: none; cursor: pointer; border-radius: 4px;">Cambiar contraseña</button></a>
         </body>
         </html>
         `

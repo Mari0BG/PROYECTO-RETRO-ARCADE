@@ -24,9 +24,9 @@ export default class AdminControlComponent {
   clientSearch: string = '';
   productSearch: string = '';
   filteredProducts: any[] = [];
-editedClientEmail: any;
-editedClientAddress: any;
-editedClientProfileImage: any;
+  editedClientEmail: any;
+  editedClientAddress: any;
+  editedClientProfileImage: any;
 
   constructor(public productService: ProductService, public adminControlService: AdminControlService) {
     this.filteredProducts = [...this.productService.products];
@@ -36,13 +36,7 @@ editedClientProfileImage: any;
     this.obtainProducts();
     this.obtainUsers()
   }
-  obtainProducts() {
-    this.productService.showProducts().subscribe((res) => {
-      this.productService.products = res as Product[];
-      this.filteredProducts = [...this.productService.products]; // Mover aquí
-      console.log(res);
-    });
-  }
+  
   obtainUsers() {
     this.adminControlService.showUsers().subscribe((res) => {
       const usersData = res.data;  // Accede al array de usuarios dentro del objeto 'res'
@@ -50,20 +44,7 @@ editedClientProfileImage: any;
       console.log(usersData);  // Muestra el array de usuarios en la consola
     });
   }
-  filterProducts() {
-    if (!this.productSearch) {
-      // Si el término de búsqueda está vacío, restaura la lista completa
-      this.filteredProducts = [...this.productService.products];
-    } else {
-      // Filtra los productos según el término de búsqueda
-      this.filteredProducts = this.productService.products.filter((product) =>
-        product.name.toLowerCase().includes(this.productSearch.toLowerCase())
-      );
-    }
 
-  
-
-  }
   // Funciones CRUD para clientes
   addClient() {
     // Lógica para agregar un nuevo cliente
@@ -77,19 +58,6 @@ editedClientProfileImage: any;
     // Lógica para eliminar el cliente
   }
 
-  // Funciones CRUD para productos
-  addProduct() {
-    // Lógica para agregar un nuevo producto
-  }
-
-  editProduct(product: any) {
-    // Lógica para editar el producto
-  }
-
-  deleteProduct(product: any) {
-    // Lógica para eliminar el producto
-  }
-
   get filteredClients() {
     // Verificar si adminControlService.users es undefined o null antes de filtrar
     return this.adminControlService.users
@@ -98,15 +66,10 @@ editedClientProfileImage: any;
         )
       : [];
   }
-
-
-
   
   isEditClientModalOpen = false;
   editedClientName: string = '';
 
-  isEditProductModalOpen = false;
-  editedProductName: string = '';
 
   openEditClientModal(client: any) {
     // Establecer los valores iniciales del formulario modal según el cliente seleccionado
@@ -133,10 +96,79 @@ editedClientProfileImage: any;
     // Restablecer otras propiedades editadas si es necesario
   }
 
+  // PRODUCT 
+
+  obtainProducts() {
+    this.productService.showProducts().subscribe((res) => {
+      this.productService.products = res as Product[];
+      this.filteredProducts = [...this.productService.products]; // Mover aquí
+      console.log(res);
+    });
+  }
+
+  filterProducts() {
+    if (!this.productSearch) {
+      // Si el término de búsqueda está vacío, restaura la lista completa
+      this.filteredProducts = [...this.productService.products];
+    } else {
+      // Filtra los productos según el término de búsqueda
+      this.filteredProducts = this.productService.products.filter((product) =>
+        product.name.toLowerCase().includes(this.productSearch.toLowerCase())
+      );
+    }
+  }
+
+  // Funciones CRUD para productos
+  addProduct() {
+    // Lógica para agregar un nuevo producto
+
+  }
+
+  editProduct(product: any) {
+    // Lógica para editar el producto
+
+  }
+
+  deleteProduct(product: any) {
+    // Lógica para eliminar el producto
+    this.isPopupDelete = true;
+    this.selectedProduct=product._id;
+  }
+
+  confirmDeleteProduct() {
+    if(this.selectedProduct!=null) {
+      this.productService.deleteProduct(this.selectedProduct)
+      .subscribe(res => {
+        this.obtainProducts();
+      });
+    }
+    this.selectedProduct = null;
+    this.isPopupDelete=false;
+  }
+
+  // Pop-up delete product
+  isPopupDelete = false;
+  selectedProduct: any;
+
+  isEditProductCreated = false;
+  isEditProductModalOpen = false;
+  editedProductName: string = '';
+  editedProductPrice: any;
+  editedProductDescription: string = '';
+  editedProductStock: any;
+  editedProductCategory: any;
+  editedProductImageUrl: any;
+  editedProductCancel: any;
+
   openEditProductModal(product: any) {
     // Establecer los valores iniciales del formulario modal según el producto seleccionado
     this.editedProductName = product.name;
-
+    this.editedProductPrice = product.price;
+    this.editedProductDescription = product.description;
+    this.editedProductStock = product.stock;
+    this.editedProductCategory = product.category_id;
+    this.editedProductImageUrl = product.image;
+    this.editedProductCancel = product.cancelproduct;
     // Abrir el modal
     this.isEditProductModalOpen = true;
   }
