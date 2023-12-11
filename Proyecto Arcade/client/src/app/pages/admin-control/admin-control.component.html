@@ -6,7 +6,6 @@
       <h2 class="text-3xl font-semibold mb-6"><i class="fa fa-drivers-license" style="font-size: 30px;" aria-hidden="true"> Clientes</i></h2>
       <div class="flex items-center mb-4">
         <input type="text" [(ngModel)]="clientSearch" placeholder="Buscar Cliente" class="p-2 border rounded mr-2">
-        <button (click)="addClient()" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Agregar Cliente</button>
       </div>
       <ul class="space-y-4">
         <li *ngFor="let client of filteredClients" class="flex items-center justify-between border-b pb-2">
@@ -66,16 +65,82 @@
   </div>
   
 
-<!-- Edit Client Modal -->
+<!-- Product Modal -->
 <div *ngIf="isEditProductModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
     <div class="bg-white p-6 rounded-lg shadow-md w-96">
-      <!-- Your edit client form goes here -->
+      <!-- Your edit Product form goes here -->
       <label for="editedProductName">Name</label>
       <input id="editedProductName" [(ngModel)]="editedProductName" class="w-full border rounded px-3 py-2 mb-3" />
       
+      <label for="editedProductPrice">Price</label>
+      <input id="editedProductPrice" [(ngModel)]="editedProductPrice" class="w-full border rounded px-3 py-2 mb-3" />
+
+      <label for="editedProductDescription">Description</label>
+      <input id="editedProductDescription" [(ngModel)]="editedProductDescription" class="w-full border rounded px-3 py-2 mb-3" />
+      
+      <label for="editedProductStock">Stock</label>
+      <input id="editedProductStock" [(ngModel)]="editedProductStock" class="w-full border rounded px-3 py-2 mb-3" />
+      
+      <label for="editedProductCategory">Category</label>
+      <select id="category" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+          <option id="editedProductCategory" [(ngModel)]="editedProductCategory" selected="">Select category</option>
+      </select >
+
+      <label for="editedProductImageUrl">Image</label>
+      <input id="editedProductImageUrl" [(ngModel)]="editedProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
+      
+      <label for="editedProductCancel">Cancel</label>
+      <input id="editedProductCancel" [(ngModel)]="editedProductCancel" class="w-full border rounded px-3 py-2 mb-3" />
       <!-- Add more form fields for other properties as needed -->
   
       <button (click)="saveEditedProduct()" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar cambios</button>
       <button (click)="closeEditProductModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
     </div>
+</div>
+
+<!-- Pop-up delete product confirmation -->
+<div *ngIf="isPopupDelete" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+  <div class="bg-white p-6 rounded-lg shadow-md w-96">
+    <div class="p-4 md:p-5 text-center">
+      <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+      </svg>
+      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Estás seguro de que deseas eliminar este producto?</h3>
+      <button data-modal-hide="popup-modal" (click)="confirmDeleteProduct()" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"> Si </button>
+      <button data-modal-hide="popup-modal" (click)="isPopupDelete = false" type="button" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
+    </div>
   </div>
+</div>  
+
+<!-- Product Modal Created -->
+<div *ngIf="isEditProductCreated" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+  <div class="bg-white p-6 rounded-lg shadow-md w-96">
+    <!-- Your edit Product form goes here -->
+    <label for="editedProductName">Name</label>
+    <input id="editedProductName" [(ngModel)]="editedProductName" class="w-full border rounded px-3 py-2 mb-3" />
+    
+    <label for="editedProductPrice">Price</label>
+    <input id="editedProductPrice" [(ngModel)]="editedProductPrice" class="w-full border rounded px-3 py-2 mb-3" />
+
+    <label for="editedProductDescription">Description</label>
+    <input id="editedProductDescription" [(ngModel)]="editedProductDescription" class="w-full border rounded px-3 py-2 mb-3" />
+    
+    <label for="editedProductStock">Stock</label>
+    <input id="editedProductStock" [(ngModel)]="editedProductStock" class="w-full border rounded px-3 py-2 mb-3" />
+    
+    <label for="editedProductCategory">Category</label>
+    <select id="category" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+        <option id="editedProductCategory" [(ngModel)]="editedProductCategory" selected="">Select category</option>
+    </select >
+
+    <label for="editedProductImageUrl">Image</label>
+    <input id="editedProductImageUrl" [(ngModel)]="editedProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
+    
+    <label for="editedProductCancel">Cancel</label>
+    <input id="editedProductCancel" [(ngModel)]="editedProductCancel" class="w-full border rounded px-3 py-2 mb-3" />
+    <!-- Add more form fields for other properties as needed -->
+
+    <button (click)="saveEditedProduct()" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar cambios</button>
+    <button (click)="closeEditProductModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
+  </div>
+</div>
