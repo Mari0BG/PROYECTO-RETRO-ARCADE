@@ -68,6 +68,7 @@
 <!-- Product Modal -->
 <div *ngIf="isEditProductModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
     <div class="bg-white p-6 rounded-lg shadow-md w-96">
+      <h2 class="text-2xl font-semibold mb-4">Editar Producto</h2>
       <!-- Your edit Product form goes here -->
       <label for="editedProductName">Name</label>
       <input id="editedProductName" [(ngModel)]="editedProductName" class="w-full border rounded px-3 py-2 mb-3" />
@@ -113,8 +114,9 @@
 </div>  
 
 <!-- Product Modal Created -->
-<div *ngIf="isEditProductCreated" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+<div *ngIf="isProductCreated" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
   <div class="bg-white p-6 rounded-lg shadow-md w-96">
+    <h2 class="text-2xl font-semibold mb-4">Crear Producto</h2>
     <!-- Your edit Product form goes here -->
     <label for="editedProductName">Name</label>
     <input id="editedProductName" [(ngModel)]="editedProductName" class="w-full border rounded px-3 py-2 mb-3" />

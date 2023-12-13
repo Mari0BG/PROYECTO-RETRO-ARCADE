@@ -121,7 +121,7 @@ export default class AdminControlComponent {
   // Funciones CRUD para productos
   addProduct() {
     // Lógica para agregar un nuevo producto
-
+    this.isProductCreated = true;
   }
 
   editProduct(product: any) {
@@ -150,7 +150,7 @@ export default class AdminControlComponent {
   isPopupDelete = false;
   selectedProduct: any;
 
-  isEditProductCreated = false;
+  isProductCreated = false;
   isEditProductModalOpen = false;
   editedProductName: string = '';
   editedProductPrice: any;
@@ -184,6 +184,7 @@ export default class AdminControlComponent {
     // Restablecer las propiedades relacionadas con el modal y cerrar el modal
     this.isEditProductModalOpen = false;
     this.editedProductName = '';
+    this.isProductCreated = false;
     // Restablecer otras propiedades editadas si es necesario
   }
   

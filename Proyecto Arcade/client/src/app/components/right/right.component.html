@@ -1,5 +1,27 @@
-<span class="absolute mt-1.5 mx-3">
-    <p style="color: #000000;font-size: 36px;">CARRITO VACIO <i class="fa fa-cart-plus" style="color: #000000;font-size: 36px;" aria-hidden="true"></i></p>
-    
-</span>
-
+<div class="w-96 max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-indigo-400 shadow-lg mt-4 ml-4">
+  <div class="flex items-center justify-between mb-4">
+        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white"> <i class="fa fa-cart-plus"></i> </h5>
+        <a class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+            Vaciar
+        </a>
+   </div>
+   <div class="flow-root">
+        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700" *ngFor="let cartProduct of productos">
+            <li class="py-3 sm:py-4">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="w-8 h-8 rounded-full" src="https://i.blogs.es/069317/pacman/1024_2000.jpg" alt="Neil image">
+                    </div>
+                    <div class="flex-1 min-w-0 ms-4">
+                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            {{ cartProduct.nameProduct }}
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        {{ cartProduct.price }}€
+                    </div>
+                </div>
+            </li>
+        </ul>
+   </div>
+</div>
