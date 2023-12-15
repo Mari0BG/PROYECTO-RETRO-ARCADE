@@ -6,7 +6,8 @@ import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { User } from 'src/app/models/user';
 import { AdminControlService } from 'src/app/services/admin-control.service';
-
+import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-admin-control',
@@ -28,7 +29,9 @@ export default class AdminControlComponent {
   editedClientAddress: any;
   editedClientProfileImage: any;
 
-  constructor(public productService: ProductService, public adminControlService: AdminControlService) {
+  categories: any[] = [];
+
+  constructor(public productService: ProductService, public adminControlService: AdminControlService, public categoryService: CategoryService) {
     this.filteredProducts = [...this.productService.products];
    }
 
@@ -95,8 +98,9 @@ export default class AdminControlComponent {
     this.editedClientName = '';
     // Restablecer otras propiedades editadas si es necesario
   }
-
-  // PRODUCT 
+// *****************************
+// ********   PRODUCT   ******** 
+// *****************************
 
   obtainProducts() {
     this.productService.showProducts().subscribe((res) => {
@@ -122,12 +126,19 @@ export default class AdminControlComponent {
   addProduct() {
     // Lógica para agregar un nuevo producto
     this.isProductCreated = true;
+    this.obtainCategories();
   }
 
   editProduct(product: any) {
     // Lógica para editar el producto
-
+    this.productService.productSelected = product;
   }
+
+  /*
+  editarEmpleado(empleado: Empleado) {
+    this.empleadoService.empleadoSeleccionado = empleado;
+  }
+  */
 
   deleteProduct(product: any) {
     // Lógica para eliminar el producto
@@ -167,10 +178,12 @@ export default class AdminControlComponent {
     this.editedProductDescription = product.description;
     this.editedProductStock = product.stock;
     this.editedProductCategory = product.category_id;
+    console.log(product.category_id)
     this.editedProductImageUrl = product.image;
     this.editedProductCancel = product.cancelproduct;
     // Abrir el modal
     this.isEditProductModalOpen = true;
+    this.obtainCategories();
   }
 
   saveEditedProduct() {
@@ -188,4 +201,15 @@ export default class AdminControlComponent {
     // Restablecer otras propiedades editadas si es necesario
   }
   
+// ******************************
+// ********   CATEGORY   ******** 
+// ******************************
+
+obtainCategories() {
+  this.categoryService.showCategories().subscribe((res) => {
+    this.categoryService.categories = res as Category[];
+    this.categories = [...this.categoryService.categories]; // Mover aquí
+    console.log(res);
+  });
+}
 }

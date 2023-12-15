@@ -65,10 +65,10 @@
   </div>
   
 
-<!-- Product Modal -->
+<!-- Product Modal EDIT -->
 <div *ngIf="isEditProductModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
     <div class="bg-white p-6 rounded-lg shadow-md w-96">
-      <h2 class="text-2xl font-semibold mb-4">Editar Producto</h2>
+      <h2 class="text-2xl font-semibold mb-4">Edit Product</h2>
       <!-- Your edit Product form goes here -->
       <label for="editedProductName">Name</label>
       <input id="editedProductName" [(ngModel)]="editedProductName" class="w-full border rounded px-3 py-2 mb-3" />
@@ -83,15 +83,22 @@
       <input id="editedProductStock" [(ngModel)]="editedProductStock" class="w-full border rounded px-3 py-2 mb-3" />
       
       <label for="editedProductCategory">Category</label>
-      <select id="category" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
-          <option id="editedProductCategory" [(ngModel)]="editedProductCategory" selected="">Select category</option>
+      <select id="category" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+        <option value="" selected disabled>Select category</option>
+        <ng-container *ngFor="let category of categories">
+          <option [value]="category.id" *ngIf="category.name !== 'Todos'" [selected]="category._id == editedProductCategory">{{ category.name }}</option>
+        </ng-container>
       </select >
 
       <label for="editedProductImageUrl">Image</label>
       <input id="editedProductImageUrl" [(ngModel)]="editedProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
       
       <label for="editedProductCancel">Cancel</label>
-      <input id="editedProductCancel" [(ngModel)]="editedProductCancel" class="w-full border rounded px-3 py-2 mb-3" />
+      <select id="category" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+        <option value="" selected disabled>Select cancel</option>
+        <option [selected]="true == editedProductCancel">true</option>
+        <option [selected]="false == editedProductCancel">false</option>
+      </select >
       <!-- Add more form fields for other properties as needed -->
   
       <button (click)="saveEditedProduct()" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar cambios</button>
@@ -113,7 +120,7 @@
   </div>
 </div>  
 
-<!-- Product Modal Created -->
+<!-- Product Modal CREATE -->
 <div *ngIf="isProductCreated" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
   <div class="bg-white p-6 rounded-lg shadow-md w-96">
     <h2 class="text-2xl font-semibold mb-4">Crear Producto</h2>
@@ -131,15 +138,22 @@
     <input id="editedProductStock" [(ngModel)]="editedProductStock" class="w-full border rounded px-3 py-2 mb-3" />
     
     <label for="editedProductCategory">Category</label>
-    <select id="category" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
-        <option id="editedProductCategory" [(ngModel)]="editedProductCategory" selected="">Select category</option>
+    <select id="category" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+      <option value="" selected disabled>Select category</option>
+      <ng-container *ngFor="let category of categories">
+        <option [value]="category.id" *ngIf="category.name !== 'Todos'" [(ngModel)]="editedProductCategory" [selected]="category._id == editedProductCategory">{{ category.name }}</option>
+      </ng-container>
     </select >
 
     <label for="editedProductImageUrl">Image</label>
     <input id="editedProductImageUrl" [(ngModel)]="editedProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
     
     <label for="editedProductCancel">Cancel</label>
-    <input id="editedProductCancel" [(ngModel)]="editedProductCancel" class="w-full border rounded px-3 py-2 mb-3" />
+    <select id="category" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+      <option value="" selected disabled>Select cancel</option>
+      <option [(ngModel)]="editedProductCancel" >true</option>
+      <option [(ngModel)]="editedProductCancel">false</option>
+    </select >
     <!-- Add more form fields for other properties as needed -->
 
     <button (click)="saveEditedProduct()" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar cambios</button>
