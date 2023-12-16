@@ -34,4 +34,9 @@ export default class CenterComponent {
     this.obtainProducts();
     
   }
+
+  // Metodo para aniadir un producto al carrito
+  AddProductToCart(product: Product){
+    
+  }
 }

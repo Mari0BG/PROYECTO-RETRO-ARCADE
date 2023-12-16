@@ -19,7 +19,7 @@
         </div>
         <div class="flex items-center justify-between">
           <span class="text-3xl font-bold text-gray-900 dark:text-white">{{producto.price}}€</span>
-          <a class="text-white   dark:bg-indigo-300 dark:hover:bg-indigo-500 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Añadir al carrito</a>
+          <a (click)="AddProductToCart(producto)" class="text-white dark:bg-indigo-300 dark:hover:bg-indigo-500 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center " style="user-select: none;">Añadir al carrito</a>
         </div>
       </div>
     </div>
