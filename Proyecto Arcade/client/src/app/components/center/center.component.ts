@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from 'src/app/models/product';
 import { ProductService } from'src/app/services/product.service';
-
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-center',
   standalone: true,
@@ -16,7 +16,7 @@ export default class CenterComponent {
 
   @Input() idCategory: String;
 
-  constructor(public productService: ProductService) {
+  constructor(public productService: ProductService, private cartService: CartService) {
     this.idCategory = "655abbdba628f0ea1f33cd89"; 
   }
   shuldDisplayProduct(producto: any): String{
@@ -37,6 +37,6 @@ export default class CenterComponent {
 
   // Metodo para aniadir un producto al carrito
   AddProductToCart(product: Product){
-    
+    this.cartService.AddProductToCart(product);
   }
 }

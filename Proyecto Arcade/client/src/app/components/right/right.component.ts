@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Cart } from 'src/app/models/cart';
 import { Product } from 'src/app/models/product';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-right',
@@ -13,40 +14,10 @@ import { Product } from 'src/app/models/product';
 export class RightComponent {
 
   products: Array<Cart> = [];
+  cart: Product[] = [];
 
-  constructor(){
-    this.products.push(new Cart());
-    this.products[0]._id = "";
-    this.products[0]._idProduct = "Producto 1";
-    this.products[0]._idClient = "";
-    this.products[0].description = "Muy guapo";
-    this.products[0].price = 550;
-    this.products[0].amount = 3;
-    this.products[0].nameProduct = "Producto 1";
-    this.products[0].imageProduct = "https://pm1.aminoapps.com/7706/0369015221a1b48e3e6b0440906e82d1abc9dd49r1-430-512v2_uhq.jpg";
-    this.products[0].category_id = "655ba587ce5c90942dd4c9a1";
-
-    this.products.push(new Cart());
-    this.products[1]._id = "";
-    this.products[1]._idProduct = "";
-    this.products[1]._idClient = "";
-    this.products[1].description = "Muy guapo";
-    this.products[1].price = 333;
-    this.products[1].amount = 3;
-    this.products[1].nameProduct = "Producto 2";
-    this.products[1].imageProduct = "https://pm1.aminoapps.com/7706/0369015221a1b48e3e6b0440906e82d1abc9dd49r1-430-512v2_uhq.jpg";
-    this.products[1].category_id = "655ba587ce5c90942dd4c9a1";
+  constructor(public cartService: CartService) {
     
-    this.products.push(new Cart());
-    this.products[2]._id = "";
-    this.products[2]._idProduct = "";
-    this.products[2]._idClient = "";
-    this.products[2].description = "Muy guapo";
-    this.products[2].price = 333;
-    this.products[2].amount = 3;
-    this.products[2].nameProduct = "Producto 2";
-    this.products[2].imageProduct = "https://pm1.aminoapps.com/7706/0369015221a1b48e3e6b0440906e82d1abc9dd49r1-430-512v2_uhq.jpg";
-    this.products[2].category_id = "655ba587ce5c90942dd4c9a1";
   }
 
 
@@ -63,6 +34,12 @@ export class RightComponent {
       }
     }
 
+  }
+
+  ngOnInit() {
+    this.cartService.cartChanged.subscribe((cart) => {
+      this.cart = cart;
+    });
   }
 
   // Metodo para eliminar un producto del carrito
