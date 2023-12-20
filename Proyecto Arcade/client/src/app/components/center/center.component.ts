@@ -32,11 +32,11 @@ export default class CenterComponent {
 
   ngOnInit(): void {
     this.obtainProducts();
-    
   }
 
-  // Metodo para aniadir un producto al carrito
+  // Metodo para aniadir un producto al carrito a traves de añadirlo en el observable
   AddProductToCart(product: Product){
-    this.cartService.AddProductToCart(product);
+    this.cartService.addNewProduct(product);
   }
+
 }

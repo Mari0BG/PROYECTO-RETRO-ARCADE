@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Cart } from 'src/app/models/cart';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
+import { BuyService } from 'src/app/services/buy.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-right',
@@ -13,43 +15,62 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class RightComponent {
 
-  products: Array<Cart> = [];
-  cart: Product[] = [];
+  products: { product: Product, quantity: number}[] = [];
+  total: number = 0;
+  cart: Cart = new Cart();
 
-  constructor(public cartService: CartService) {
+  constructor(public cartService: CartService, public buyService: BuyService, public authService: AuthService) {
     
   }
 
 
-  // Aumentar o disminutir cantidad de un producto
-  ModifyAmount(cartProduct: Cart, operator: String){
-    if(operator == "+"){
-      cartProduct.amount = cartProduct.amount + 1;
-    }
-    else {
-      cartProduct.amount = cartProduct.amount - 1;
-      // Compruebo si cantidad es menor que 1 y si es asi elimino el producto del carrito
-      if(cartProduct.amount < 1){
-        this.products.splice(this.products.indexOf(cartProduct), 1);
-      }
-    }
+  // Metodo para realizar la compra
+  BuyCart() {
+    let token = this.authService.getUserId();;
 
+    if (token != null) {
+      const idUsuario: string = token;
+      const buyData = {
+        _idClient: idUsuario,
+        products: this.cart.products
+      };
+
+      this.buyService.createBuy(buyData).subscribe(
+        (response) => {
+          console.log('Compra realizada con éxito:', response);
+          this.ClearCart();
+        },
+        (error) => {
+          console.error('Error al realizar la compra:', error);
+        }
+      );
+    }
+    else if (token == null) {
+      alert("Usuario no logeado. Ingrese antes de realizar compra" );
+    }
   }
 
-  ngOnInit() {
-    this.cartService.cartChanged.subscribe((cart) => {
-      this.cart = cart;
+  // Me suscribo al observable para recibir los productos del carrito | cualquier cambio se refleja automaticamente
+  ngOnInit(): void {
+    this.cartService.products.subscribe(products => {
+      this.products=products;
+      this.total = this.cartService.total;
     });
   }
 
+  // Aumentar o disminutir cantidad de un producto
+  ModifyAmount(indice: number, operator: String){
+    this.cartService.ModifyQuantity(indice, operator);
+  }
+
   // Metodo para eliminar un producto del carrito
-  DeleteProduct(cartProduct: Cart){
-    this.products.splice(this.products.indexOf(cartProduct), 1);
+  DeleteProduct(indice: number){
+    this.cartService.deleteProduct(indice);
   }
 
   // Metodo para vaciar carrito 
   ClearCart(){
-    this.products = [];
+    this.cartService.clearCart();
   }
 
   // Metodo para mostrar u ocultar carrito
