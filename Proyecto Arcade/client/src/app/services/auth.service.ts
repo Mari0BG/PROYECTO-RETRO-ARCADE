@@ -37,4 +37,8 @@ export class AuthService {
   isAdmin$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = new BehaviorSubject<boolean>(false)
 
+  // Para poder coger el ID del usuario logeado
+  getUserId(): string | null {
+    return localStorage.getItem('user_id');
+  }
 }
