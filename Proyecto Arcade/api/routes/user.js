@@ -1,5 +1,5 @@
 import express from'express'
-import { getAllUsers, getById } from '../controllers/user.controller.js'
+import { deleteUserById, getAllUsers, getById, updateUserById } from '../controllers/user.controller.js'
 import { verifyAdmin, verifyUser } from '../utils/verifyToken.js'
 
 const router = express.Router()
@@ -9,5 +9,9 @@ router.get('/', getAllUsers )   // se verifica el token y solo puede entrar usua
 
 //get by id
 router.get('/:id',verifyUser, getById )  // se verifica que el usuario logado es el unico que puede acceder a su perfil
+
+router.put('/:id', updateUserById)
+
+router.delete('/:id', deleteUserById)
 
 export default router 

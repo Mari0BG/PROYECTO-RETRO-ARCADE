@@ -7,6 +7,7 @@ export const routes: Routes = [
     {path: 'forget-password', loadComponent: () => import ('./pages/forget-password/forget-password.component')},
     {path: 'home', loadComponent: () => import ('./pages/home/home.component')},
     {path: 'admin-control', loadComponent: () => import ('./pages/admin-control/admin-control.component')},
+    {path: 'my-purchases', loadComponent: () => import ('./pages/my-purchases/my-purchases.component')},
     {path: 'reset/:token', loadComponent: () => import ('./pages/reset/reset.component')},
-
+    
 ];

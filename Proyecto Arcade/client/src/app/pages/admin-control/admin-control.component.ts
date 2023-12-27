@@ -6,6 +6,7 @@ import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { User } from 'src/app/models/user';
 import { AdminControlService } from 'src/app/services/admin-control.service';
+import { UserService } from 'src/app/services/user.service';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -28,10 +29,11 @@ export default class AdminControlComponent {
   editedClientEmail: any;
   editedClientAddress: any;
   editedClientProfileImage: any;
+  editedClientisAdmin: any;
 
   categories: any[] = [];
 
-  constructor(public productService: ProductService, public adminControlService: AdminControlService, public categoryService: CategoryService) {
+  constructor(public productService: ProductService, public adminControlService: AdminControlService, public categoryService: CategoryService, public userService: UserService) {
     this.filteredProducts = [...this.productService.products];
    }
 
@@ -49,17 +51,36 @@ export default class AdminControlComponent {
   }
 
   // Funciones CRUD para clientes
-  addClient() {
-    // Lógica para agregar un nuevo cliente
-  }
+
 
   editClient(client: any) {
     // Lógica para editar el cliente
   }
 
   deleteClient(client: any) {
-    // Lógica para eliminar el cliente
+    // Lógica para eliminar el producto
+    this.isPopupDeleteClient = true;
+    this.selectedClient=client._id;
   }
+
+  confirmDeleteClient() {
+    if (this.selectedClient) {
+      this.userService.deleteUser(this.selectedClient)
+      .subscribe(
+        (result: any) => {
+          console.log('Cliente eliminado correctamente', result);
+          this.obtainUsers(); // Actualizar la lista de clientes después de la eliminación
+        },
+        (error: any) => {
+          console.error('Error al eliminar el cliente', error);
+        }
+      );
+    }
+    
+    this.selectedClient = null;
+    this.isPopupDeleteClient = false;
+  }
+  
 
   get filteredClients() {
     // Verificar si adminControlService.users es undefined o null antes de filtrar
@@ -76,20 +97,53 @@ export default class AdminControlComponent {
 
   openEditClientModal(client: any) {
     // Establecer los valores iniciales del formulario modal según el cliente seleccionado
+    this.selectedClient = client._id
     this.editedClientName = client.name;
     this.editedClientEmail = client.email;
     this.editedClientAddress = client.address;
     this.editedClientProfileImage = client.profileImage;
-  
+    this.editedClientisAdmin = client.isAdmin
+    this.selectedPass = client.password
+    this.selectedRol = client.roles
+    console.log(client)
     // Abrir el modal
     this.isEditClientModalOpen = true;
   }
 
   saveEditedClient() {
-    // Agregar la lógica para guardar los detalles del cliente editado
-    // Puedes acceder a los valores editados desde this.editedClientName
-    // Cerrar el modal después de guardar
-    this.closeEditClientModal();
+     // Verificar si el nombre del cliente editado no está vacío
+  if (this.editedClientName.trim() === '') {
+    // Puedes mostrar un mensaje de error o manejarlo según tus necesidades
+    console.error('El nombre del cliente no puede estar vacío.');
+    return;
+  }
+
+  // Crear un objeto con los detalles editados del cliente
+  const editedClient = {
+    _id: this.selectedClient, // Asegúrate de tener el ID del cliente seleccionado
+    name: this.editedClientName,
+    email: this.editedClientEmail,
+    address: this.editedClientAddress,
+    profileImage: this.editedClientProfileImage,
+    isAdmin: this.editedClientisAdmin === 'true', // Convertir el string a boolean
+    password: this.selectedPass,
+    roles: this.selectedRol
+    // Agregar otros campos según sea necesario
+  };
+
+  // Llamar al servicio para editar el cliente
+  this.userService.updateUser(editedClient)
+    .subscribe(
+      (result: any) => {
+        console.log('Cliente editado correctamente', result);
+        this.obtainUsers(); // Actualizar la lista de clientes después de la edición
+        this.closeEditClientModal(); // Cerrar el modal después de guardar
+      },
+      (error: any) => {
+        console.error('Error al editar el cliente', error);
+        // Puedes manejar el error según tus necesidades
+      }
+    );
   }
 
   closeEditClientModal() {
@@ -98,6 +152,13 @@ export default class AdminControlComponent {
     this.editedClientName = '';
     // Restablecer otras propiedades editadas si es necesario
   }
+
+  selectedClient: any;
+  selectedPass: any;
+  selectedRol: any;
+  isPopupDeleteClient = false;
+
+
 // *****************************
 // ********   PRODUCT   ******** 
 // *****************************
@@ -181,6 +242,8 @@ export default class AdminControlComponent {
     console.log(product.category_id)
     this.editedProductImageUrl = product.image;
     this.editedProductCancel = product.cancelproduct;
+
+
     // Abrir el modal
     this.isEditProductModalOpen = true;
     this.obtainCategories();
