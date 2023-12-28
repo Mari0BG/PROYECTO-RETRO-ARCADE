@@ -30,9 +30,13 @@ export class AuthService {
   isLoggedIn(){
     return !!localStorage.getItem("user_id")
   }
-  isAdmin(){
-    return !!localStorage.getItem("user_role")
+// AuthService
+
+  isAdmin() {
+    return !!localStorage.getItem("user_role");
   }
+
+
 
   isAdmin$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = new BehaviorSubject<boolean>(false)

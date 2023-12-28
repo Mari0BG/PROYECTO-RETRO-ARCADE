@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.removeItem("user_id")
     localStorage.removeItem("user_role")
+    localStorage.clear()  // BORRA TODO EL LOCAL STORAGE
     this.authService.isLoggedIn$.next(false)
     this.authService.isAdmin$.next(false)
   }
@@ -28,15 +29,20 @@ export class HeaderComponent implements OnInit {
   adminControl() {
     this.router.navigate(['admin-control'])
   }
-
+  miscompras(){
+    this.router.navigate(['my-purchases'])
+  }
   ngOnInit(): void {
     this.authService.isLoggedIn$.subscribe(res => {
-      this.isLoggedIn = this.authService.isLoggedIn()
-    })
+      this.isLoggedIn = this.authService.isLoggedIn();
+    });
+  
     this.authService.isAdmin$.subscribe(res => {
-      this.isAdmin = this.authService.isAdmin()
-    })
+      this.isAdmin = res;
+      console.log(this.isAdmin); // Agregar esta línea para depurar
+    });
   }
+  
 
 
 }

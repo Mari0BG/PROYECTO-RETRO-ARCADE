@@ -29,7 +29,9 @@ export default class LoginComponent {
       next:(res)=>{
         alert("Login is success "+res.data._id)
         localStorage.setItem("user_id", res.data._id)
+        localStorage.setItem("user_name", res.data.name)
         localStorage.setItem("user_role", res.data.isAdmin)
+        localStorage.setItem("user_img", res.data.profileImage)
         this.authService.isLoggedIn$.next(true)
         this.authService.isAdmin$.next(true)
         this.router.navigate(['home'])

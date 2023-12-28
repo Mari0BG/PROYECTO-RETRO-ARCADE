@@ -1,0 +1,35 @@
+<div class="flex flex-col items-center justify-center">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+      <span class="flex items-center">
+        <span class="inline-block">Bienvenido</span>
+        <img *ngIf="userImg" [src]="userImg" alt="User Image" class="w-10 h-10 rounded-full mx-2">
+        <span class="inline-block">{{ username }}, estas son tus compras.</span>
+      </span>
+    </h1>
+    <ng-container *ngIf="purchases.length > 0; else noPurchases">
+      <div *ngFor="let purchase of purchases; let i = index" class="my-4">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <div class="p-4">
+            <div class="flex items-center mb-4">
+              <p class="text-sm text-gray-500">Compra #{{ i + 1 }}</p>
+              <h5 class="text-lg font-bold ml-2">{{ purchase.date }}</h5>
+            </div>
+            <div *ngFor="let product of purchase.products" class="mt-2">
+              <div class="flex items-center">
+                <div class="w-12 h-12 overflow-hidden rounded-full mr-4">
+                  <img [src]="product.imageProduct" alt="Product Image" class="object-cover w-full h-full">
+                </div>
+                <p class="text-sm">{{ product.nameProduct }} - {{ product.amount }} unidades - {{ product.price }}€ cada una</p>
+              </div>
+            </div>
+            <p class="mt-2">Total: {{ calculateTotal(purchase.products) }}€</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  
+    <ng-template #noPurchases>
+      <p class="text-lg text-gray-500">Aún no has realizado ninguna compra.</p>
+    </ng-template>
+  </div>
+  

@@ -17,7 +17,16 @@ export class BuyService {
 
   // Metodo para insertar la compra en mongoDB
   createBuy(buyData: any): Observable<any> {
-    return this.http.post<any>(`${apiUrls.buyServiceApi}create`, buyData);
+    return this.http.post<any>(`${apiUrls.buyServiceApi}buyCart`, buyData);
+  }
+  // Método para obtener todas las compras del usuario por su _idClient
+  getUserCarts(_idClient: string): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrls.buyServiceApi}/getUserCarts/${_idClient}`);
+  }
+
+  // Método para obtener el carrito de todos los usuarios
+  getAllCarts() {
+    return this.http.get<any>(`${apiUrls.buyServiceApi}/getAllCarts`);
   }
 
   // Faltan los metodos para eliminar carrito, coger carrito del cliente a traves de ID y mostrarlo
