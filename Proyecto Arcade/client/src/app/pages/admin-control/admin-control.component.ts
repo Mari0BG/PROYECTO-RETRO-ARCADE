@@ -253,6 +253,7 @@ export default class AdminControlComponent {
     // Agregar la lógica para guardar los detalles del producto editado
     // Puedes acceder a los valores editados desde this.editedProductName
     // Cerrar el modal después de guardar
+  
     this.closeEditProductModal();
   }
 
