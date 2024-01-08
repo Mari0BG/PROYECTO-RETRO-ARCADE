@@ -29,8 +29,8 @@ export class RightComponent {
 BuyCart() {
   let token = this.authService.getUserId();
   console.log(this.products);
-
-  if (token != null) {
+  
+  if (token != null && this.total >0) {
     const idUsuario: string = token;
 
     // Transformar la estructura de products
@@ -49,6 +49,7 @@ BuyCart() {
     };
 
     console.log(buyData);
+    console.log(this.total)
 
     this.buyService.createBuy(buyData).subscribe(
       (response) => {
@@ -62,6 +63,8 @@ BuyCart() {
     alert("Compra realizada")
   } else if (token == null) {
     alert("Usuario no logeado. Ingrese antes de realizar compra");
+  } else {
+    alert("Error. El carrito está vacío")
   }
 }
 
