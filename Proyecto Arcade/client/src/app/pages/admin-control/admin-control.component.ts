@@ -106,44 +106,46 @@ export default class AdminControlComponent {
     this.selectedPass = client.password
     this.selectedRol = client.roles
     console.log(client)
+
     // Abrir el modal
     this.isEditClientModalOpen = true;
   }
 
   saveEditedClient() {
      // Verificar si el nombre del cliente editado no está vacío
-  if (this.editedClientName.trim() === '') {
-    // Puedes mostrar un mensaje de error o manejarlo según tus necesidades
-    console.error('El nombre del cliente no puede estar vacío.');
-    return;
-  }
-
-  // Crear un objeto con los detalles editados del cliente
-  const editedClient = {
-    _id: this.selectedClient, // Asegúrate de tener el ID del cliente seleccionado
-    name: this.editedClientName,
-    email: this.editedClientEmail,
-    address: this.editedClientAddress,
-    profileImage: this.editedClientProfileImage,
-    isAdmin: this.editedClientisAdmin === 'true', // Convertir el string a boolean
-    password: this.selectedPass,
-    roles: this.selectedRol
-    // Agregar otros campos según sea necesario
-  };
-
-  // Llamar al servicio para editar el cliente
-  this.userService.updateUser(editedClient)
-    .subscribe(
-      (result: any) => {
-        console.log('Cliente editado correctamente', result);
-        this.obtainUsers(); // Actualizar la lista de clientes después de la edición
-        this.closeEditClientModal(); // Cerrar el modal después de guardar
-      },
-      (error: any) => {
-        console.error('Error al editar el cliente', error);
-        // Puedes manejar el error según tus necesidades
-      }
-    );
+    if (this.editedClientName.trim() === '') {
+      // Puedes mostrar un mensaje de error o manejarlo según tus necesidades
+      console.error('El nombre del cliente no puede estar vacío.');
+      return;
+    }
+  
+    // Crear un objeto con los detalles editados del cliente
+    const editedClient = {
+      _id: this.selectedClient, // Asegúrate de tener el ID del cliente seleccionado
+      name: this.editedClientName,
+      email: this.editedClientEmail,
+      address: this.editedClientAddress,
+      profileImage: this.editedClientProfileImage,
+      isAdmin: this.editedClientisAdmin === 'true', // Convertir el string a boolean
+      password: this.selectedPass,
+      roles: this.selectedRol
+      // Agregar otros campos según sea necesario
+    };
+  
+    // Llamar al servicio para editar el cliente
+    
+    this.userService.updateUser(editedClient)
+      .subscribe(
+        (result: any) => {
+          console.log('Cliente editado correctamente', result);
+          this.obtainUsers(); // Actualizar la lista de clientes después de la edición
+          this.closeEditClientModal(); // Cerrar el modal después de guardar
+        },
+        (error: any) => {
+          console.error('Error al editar el cliente', error);
+          // Puedes manejar el error según tus necesidades
+        }
+      );
   }
 
   closeEditClientModal() {
@@ -195,12 +197,6 @@ export default class AdminControlComponent {
     this.productService.productSelected = product;
   }
 
-  /*
-  editarEmpleado(empleado: Empleado) {
-    this.empleadoService.empleadoSeleccionado = empleado;
-  }
-  */
-
   deleteProduct(product: any) {
     // Lógica para eliminar el producto
     this.isPopupDelete = true;
@@ -220,20 +216,23 @@ export default class AdminControlComponent {
 
   // Pop-up delete product
   isPopupDelete = false;
-  selectedProduct: any;
-
   isProductCreated = false;
   isEditProductModalOpen = false;
+
+  selectedProduct: any;
   editedProductName: string = '';
   editedProductPrice: any;
   editedProductDescription: string = '';
   editedProductStock: any;
   editedProductCategory: any;
   editedProductImageUrl: any;
+  editedProductcontpurchase: any;
   editedProductCancel: any;
 
   openEditProductModal(product: any) {
+    this.obtainCategories();
     // Establecer los valores iniciales del formulario modal según el producto seleccionado
+    this.selectedProduct = product._id
     this.editedProductName = product.name;
     this.editedProductPrice = product.price;
     this.editedProductDescription = product.description;
@@ -242,18 +241,61 @@ export default class AdminControlComponent {
     console.log(product.category_id)
     this.editedProductImageUrl = product.image;
     this.editedProductCancel = product.cancelproduct;
-
+    this.editedProductcontpurchase = product.contpurchase;
+    console.log(product)
 
     // Abrir el modal
     this.isEditProductModalOpen = true;
-    this.obtainCategories();
   }
 
   saveEditedProduct() {
     // Agregar la lógica para guardar los detalles del producto editado
     // Puedes acceder a los valores editados desde this.editedProductName
     // Cerrar el modal después de guardar
-    this.closeEditProductModal();
+    // Verifico si el nombre del producto editado no esta vacio
+    if (this.editedProductName.trim() === '') {
+      console.error('El nombre del producto no puede estar vacio');
+      return;
+    }
+
+    // Creo un objeto con los detalles editados del producto
+    const editedProduct = {
+      _id: this.selectedProduct,
+      name: this.editedProductName,
+      price: this.editedProductPrice,
+      description: this.editedProductDescription,
+      stock: this.editedProductStock,
+      category_id: this.editedProductCategory,
+      image: this.editedProductImageUrl,
+      contpurchase: this.editedProductcontpurchase,
+      cancelproduct: this.editedProductCancel === 'true' // Convertir el string a boolean
+    }
+
+    this.clearVariables();
+    // Llamo al servicio para editar el producto
+    this.productService.updateProduct(editedProduct)
+    .subscribe(
+      (result:any) => {
+        console.log('Producto editado correctamente', result);
+        this.obtainProducts();
+        this.closeEditProductModal();
+      },
+      (error: any) => {
+        console.error('Error al editar el producto', error);
+      }
+    );
+  }
+
+  clearVariables(){
+    this.selectedProduct = undefined;
+    this.editedProductName = "";
+    this.editedProductPrice = undefined;
+    this.editedProductDescription = "";
+    this.editedProductStock = undefined;
+    this.editedProductCategory = undefined;
+    this.editedProductImageUrl = undefined;
+    this.editedProductcontpurchase = undefined;
+    this.editedProductCancel = undefined;
   }
 
   closeEditProductModal() {
@@ -261,7 +303,16 @@ export default class AdminControlComponent {
     this.isEditProductModalOpen = false;
     this.editedProductName = '';
     this.isProductCreated = false;
+    this.clearVariables();
     // Restablecer otras propiedades editadas si es necesario
+  }
+
+  CreateProduct(){
+
+  }
+
+  saveProduct(){
+    
   }
   
 // ******************************
