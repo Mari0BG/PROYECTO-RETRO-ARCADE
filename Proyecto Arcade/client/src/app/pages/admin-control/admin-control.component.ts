@@ -333,7 +333,7 @@ export default class AdminControlComponent {
     let ok = false
 
     // Verifico si el nombre del producto editado no esta vacio
-   // ok = this.ComprobarCampos(); 
+    ok = this.ComprobarCampos(); 
 
     if ( !ok ) {
       // Creo un objeto con los detalles editados del producto
@@ -376,15 +376,6 @@ export default class AdminControlComponent {
   // Compruebo que los campos no estan vacios
   ComprobarCampos(): boolean{
     // Devolver true si al menos un campo está vacío
-    console.log(
-      this.createProductName + " " +
-      this.createProductPrice + " " +
-      this.createProductDescription + " " +
-      this.createProductStock + " " +
-      this.createProductCategory + " " +
-      this.createProductImageUrl + " " +
-      this.createProductCancel + " " 
-    )
     if (
       this.createProductName === undefined || this.createProductName.trim() === '' ||
       this.createProductPrice === undefined || this.createProductPrice.trim() === '' ||
@@ -409,7 +400,6 @@ export default class AdminControlComponent {
     }
   }
 
-  
   
 // ******************************
 // ********   CATEGORY   ******** 

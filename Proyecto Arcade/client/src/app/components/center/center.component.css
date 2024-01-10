@@ -1,0 +1,11 @@
+.w-96::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores WebKit */
+}
+
+* {
+    scrollbar-width: none;
+}
+
+.grid::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores WebKit */
+}

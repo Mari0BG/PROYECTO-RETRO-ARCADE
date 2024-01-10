@@ -32,7 +32,7 @@ export class RightComponent {
     let token = this.authService.getUserId();
     console.log(this.products);
   
-    if (token != null && this.total >0) {
+    if (token != null && this.total > 0) {
       const idUsuario: string = token;
   
       // Transformar la estructura de products

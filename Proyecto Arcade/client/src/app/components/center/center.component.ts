@@ -19,9 +19,11 @@ export default class CenterComponent {
   constructor(public productService: ProductService, private cartService: CartService) {
     this.idCategory = "655abbdba628f0ea1f33cd89"; 
   }
+
   shuldDisplayProduct(producto: any): String{
     return(this.idCategory== producto.category_id || !this.idCategory || this.idCategory == "655abbdba628f0ea1f33cd89")? 'block' : 'none'
   }
+
   obtainProducts() {
     this.productService.showProducts()
     .subscribe(res => {
@@ -29,6 +31,11 @@ export default class CenterComponent {
       console.log(res);
     })
   }
+
+  // Filtro por los que no esten conectados para mostrarlos
+  get activeProducts() {
+    return this.productService.products.filter(product => product.cancelproduct !== true);
+   }
 
   ngOnInit(): void {
     this.obtainProducts();
