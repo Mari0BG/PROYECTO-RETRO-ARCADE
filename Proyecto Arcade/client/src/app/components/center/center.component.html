@@ -2,26 +2,29 @@
   <!-- Utiliza ngFor para iterar sobre la lista de productos -->
   <div *ngFor="let producto of productService.products"  class="p-4" [style.display]="shuldDisplayProduct(producto)">
     <!-- Estructura de tu tarjeta de producto con Tailwind CSS -->
-    <div *ngIf="idCategory == producto.category_id || !idCategory || idCategory=='655abbdba628f0ea1f33cd89'" class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-indigo-400 ">
-      <a href="#">
-        <img class="w-full h-48 object-cover rounded-t-lg" src="{{producto.image}}" alt="product image" />
-      </a>
-      <div class="px-5 pb-5">
+    <i *ngIf="producto.cancelproduct!=true">
+      <div *ngIf="idCategory == producto.category_id || !idCategory || idCategory=='655abbdba628f0ea1f33cd89'" class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-indigo-400 ">
         <a href="#">
-          <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{producto.name}}</h5>
+          <img class="w-full h-48 object-cover rounded-t-lg" src="{{producto.image}}" alt="product image" />
         </a>
-        <div class="flex items-center mt-2.5 mb-5">
-          <div class="flex items-center space-x-1 rtl:space-x-reverse">
-            <!-- Tus íconos de clasificación aquí -->
+        <div class="px-5 pb-5">
+          <a href="#">
+            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{producto.name}}</h5>
+          </a>
+          <div class="flex items-center mt-2.5 mb-5">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+              <!-- Tus íconos de clasificación aquí -->
+            </div>
+            <span
+              class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
           </div>
-          <span
-            class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-3xl font-bold text-gray-900 dark:text-white">{{producto.price}}€</span>
-          <a (click)="AddProductToCart(producto)" class="text-white dark:bg-indigo-300 dark:hover:bg-indigo-500 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center " style="user-select: none;">Añadir al carrito</a>
+          <div class="flex items-center justify-between">
+            <span class="text-3xl font-bold text-gray-900 dark:text-white">{{producto.price}}€</span>
+            <a (click)="AddProductToCart(producto)" class="text-white dark:bg-indigo-300 dark:hover:bg-indigo-500 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center " style="user-select: none;">Añadir al carrito</a>
+          </div>
         </div>
       </div>
-    </div>
+
+    </i>
   </div>
 </div>

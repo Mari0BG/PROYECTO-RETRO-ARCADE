@@ -350,22 +350,8 @@ export default class AdminControlComponent {
 
       console.log(createProduct)
 
-      const productData = new Product();
-
-      // Rellenar los datos necesarios
-      productData.name = "Galaxian 1 ";
-      productData.price = 501.5;
-      productData.description = "La mas peque de las peques";
-      productData.stock = 12;
-      productData.category_id = "655abbe0a628f0ea1f33cd8b";
-      productData.image = "https://images-na.ssl-images-amazon.com/images/I/9131qJMMAvL._AC_SL1500_.jpg";
-      productData.contpurchase = 0;
-      productData.cancelproduct = false;
-
-      console.log('productData:', productData);
-
       // Llamo al servicio para editar el producto
-      this.productService.createProduct(productData)
+      this.productService.createProduct(createProduct)
       .subscribe(
         (result:any) => {
           this.clearVariables();
@@ -378,7 +364,7 @@ export default class AdminControlComponent {
 
           // Imprimir detalles del error si están disponibles
           if (error instanceof HttpErrorResponse) {
-            console.error('Detalles del error:', error.error);
+            console.error('Detalles del error:', error);
           }
         }
       );

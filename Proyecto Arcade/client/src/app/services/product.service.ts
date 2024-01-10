@@ -25,7 +25,7 @@ export class ProductService {
   }
 
   createProduct(product: Product){
-    return this.http.post(`${apiUrls.productServiceApi}create`, Product);
+    return this.http.post(`${apiUrls.productServiceApi}create`, product);
   }
 
   updateProduct(product: Product){

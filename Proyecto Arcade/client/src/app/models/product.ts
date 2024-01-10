@@ -10,7 +10,6 @@ export class Product {
     cancelproduct: boolean;
 
     constructor() {
-        this._id='';
         this.name='';
         this.price=0;
         this.description='';

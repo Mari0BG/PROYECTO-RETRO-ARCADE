@@ -35,10 +35,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isLoggedIn$.subscribe(res => {
       this.isLoggedIn = this.authService.isLoggedIn();
+      
     });
   
     this.authService.isAdmin$.subscribe(res => {
-      this.isAdmin = res;
+      this.isAdmin = this.authService.isAdmin();
       console.log(this.isAdmin); // Agregar esta línea para depurar
     });
   }

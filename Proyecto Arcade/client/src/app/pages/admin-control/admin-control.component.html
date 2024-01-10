@@ -70,7 +70,9 @@
   </div>
   
 
-<!-- Product Modal EDIT -->
+<!-- ************************** -->
+<!-- *** PRODUCT MODAL EDIT *** -->
+<!-- ************************** -->
 <div *ngIf="isEditProductModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
     <div class="bg-white p-6 rounded-lg shadow-md w-96">
       <h2 class="text-2xl font-semibold mb-4">Edit Product</h2>
@@ -112,35 +114,9 @@
     </div>
 </div>
 
-<!-- Pop-up delete client confirmation -->
-<div *ngIf="isPopupDeleteClient" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
-  <div class="bg-white p-6 rounded-lg shadow-md w-96">
-    <div class="p-4 md:p-5 text-center">
-      <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-      </svg>
-      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Estás seguro de que deseas eliminar este cliente?</h3>
-      <button data-modal-hide="popup-modal" (click)="confirmDeleteClient()" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"> Si </button>
-      <button data-modal-hide="popup-modal" (click)="isPopupDeleteClient = false" type="button" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
-    </div>
-  </div>
-</div>  
-
-<!-- Pop-up delete product confirmation -->
-<div *ngIf="isPopupDelete" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
-  <div class="bg-white p-6 rounded-lg shadow-md w-96">
-    <div class="p-4 md:p-5 text-center">
-      <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-      </svg>
-      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Estás seguro de que deseas eliminar este producto?</h3>
-      <button data-modal-hide="popup-modal" (click)="confirmDeleteProduct()" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"> Si </button>
-      <button data-modal-hide="popup-modal" (click)="isPopupDelete = false" type="button" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
-    </div>
-  </div>
-</div>  
-
-<!-- Product Modal CREATE -->
+<!-- **************************** -->
+<!-- *** PRODUCT MODAL CREATE *** -->
+<!-- **************************** -->
 <div *ngIf="isProductCreated" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
   <div class="bg-white p-6 rounded-lg shadow-md w-96">
     <h2 class="text-2xl font-semibold mb-4">Crear Producto</h2>
@@ -181,3 +157,34 @@
     <button (click)="closeEditProductModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
   </div>
 </div>
+
+<!-- ************** -->
+<!-- *** POP-UP *** -->
+<!-- ************** -->
+<!-- Pop-up delete client confirmation -->
+<div *ngIf="isPopupDeleteClient" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+  <div class="bg-white p-6 rounded-lg shadow-md w-96">
+    <div class="p-4 md:p-5 text-center">
+      <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+      </svg>
+      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Estás seguro de que deseas eliminar este cliente?</h3>
+      <button data-modal-hide="popup-modal" (click)="confirmDeleteClient()" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"> Si </button>
+      <button data-modal-hide="popup-modal" (click)="isPopupDeleteClient = false" type="button" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
+    </div>
+  </div>
+</div>  
+
+<!-- Pop-up delete product confirmation -->
+<div *ngIf="isPopupDelete" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+  <div class="bg-white p-6 rounded-lg shadow-md w-96">
+    <div class="p-4 md:p-5 text-center">
+      <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+      </svg>
+      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Estás seguro de que deseas eliminar este producto?</h3>
+      <button data-modal-hide="popup-modal" (click)="confirmDeleteProduct()" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"> Si </button>
+      <button data-modal-hide="popup-modal" (click)="isPopupDelete = false" type="button" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
+    </div>
+  </div>
+</div>  
