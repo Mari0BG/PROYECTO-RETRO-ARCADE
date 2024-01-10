@@ -144,32 +144,32 @@
 <div *ngIf="isProductCreated" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
   <div class="bg-white p-6 rounded-lg shadow-md w-96">
     <h2 class="text-2xl font-semibold mb-4">Crear Producto</h2>
-    <!-- Your edit Product form goes here -->
-    <label for="editedProductName">Name</label>
-    <input id="editedProductName" [(ngModel)]="editedProductName" class="w-full border rounded px-3 py-2 mb-3" />
+    <!-- Your create Product form goes here -->
+    <label for="createProductName">Name</label>
+    <input id="createProductName" [(ngModel)]="createProductName" class="w-full border rounded px-3 py-2 mb-3" />
     
-    <label for="editedProductPrice">Price</label>
-    <input id="editedProductPrice" [(ngModel)]="editedProductPrice" class="w-full border rounded px-3 py-2 mb-3" />
+    <label for="createProductPrice">Price</label>
+    <input id="createProductPrice" [(ngModel)]="createProductPrice" class="w-full border rounded px-3 py-2 mb-3" />
 
-    <label for="editedProductDescription">Description</label>
-    <input id="editedProductDescription" [(ngModel)]="editedProductDescription" class="w-full border rounded px-3 py-2 mb-3" />
+    <label for="createProductDescription">Description</label>
+    <input id="createProductDescription" [(ngModel)]="createProductDescription" class="w-full border rounded px-3 py-2 mb-3" />
     
-    <label for="editedProductStock">Stock</label>
-    <input id="editedProductStock" [(ngModel)]="editedProductStock" class="w-full border rounded px-3 py-2 mb-3" />
+    <label for="createProductStock">Stock</label>
+    <input id="createProductStock" [(ngModel)]="createProductStock" class="w-full border rounded px-3 py-2 mb-3" />
     
-    <label for="editedProductCategory">Category</label>
-    <select id="category" [(ngModel)]="editedProductCategory" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+    <label for="createProductCategory">Category</label>
+    <select id="category" [(ngModel)]="createProductCategory" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
       <option value="" selected disabled>Select category</option>
       <ng-container *ngFor="let category of categories">
         <option [value]="category._id" *ngIf="category.name !== 'Todos'" >{{ category.name }}</option>
       </ng-container>
     </select >
 
-    <label for="editedProductImageUrl">Image</label>
-    <input id="editedProductImageUrl" [(ngModel)]="editedProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
+    <label for="createProductImageUrl">Image</label>
+    <input id="createProductImageUrl" [(ngModel)]="createProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
     
-    <label for="editedProductCancel">Cancel</label>
-    <select id="category" [(ngModel)]="editedProductCancel" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+    <label for="createProductCancel">Cancel</label>
+    <select id="category" [(ngModel)]="createProductCancel" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
       <option value="" selected disabled>Select cancel</option>
       <option value="true">Sí</option>
       <option value="false">No</option>
@@ -177,7 +177,7 @@
 
     <!-- Add more form fields for other properties as needed -->
 
-    <button (click)="saveProduct()" class="bg-blue-500 text-white px-4 py-2 rounded">Crea producto</button>
+    <button (click)="saveProduct()" class="bg-blue-500 text-white px-4 py-2 rounded">Crear producto</button>
     <button (click)="closeEditProductModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
   </div>
 </div>
