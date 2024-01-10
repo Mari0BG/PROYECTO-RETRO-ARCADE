@@ -4,16 +4,16 @@ import { CreateSuccess } from "../utils/success.js"
 
 export const createProduct = async (req, res, next) => {
     try {
-        if(req.body.name && req.body.name != ''){
-            const newProduct = new Product(req.body)
+        if (req.body.name && req.body.name != '') {
+            const newProduct = new Product(req.body);
             await newProduct.save()
             return next(CreateSuccess(200, "Product Created", newProduct))
         }
         else {
-            return next(CreateError(400,"Bad Request"))
+            return next(CreateError(400, "Bad Request"))
         }
     } catch (error) {
-        return next(CreateError(500,"Internal server error"))
+        return next(CreateError(500, "Internal server error"))
     }
 }
 

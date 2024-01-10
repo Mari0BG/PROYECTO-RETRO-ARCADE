@@ -9,6 +9,7 @@ import { AdminControlService } from 'src/app/services/admin-control.service';
 import { UserService } from 'src/app/services/user.service';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-control',
@@ -216,7 +217,6 @@ export default class AdminControlComponent {
 
   // Pop-up delete product
   isPopupDelete = false;
-  isProductCreated = false;
   isEditProductModalOpen = false;
 
   selectedProduct: any;
@@ -307,13 +307,109 @@ export default class AdminControlComponent {
     // Restablecer otras propiedades editadas si es necesario
   }
 
-  CreateProduct(){
+  // ****************************
+  // *** Create a new product ***
+  // ****************************
 
+  isProductCreated = false;
+  createProductName: string = '';
+  createProductPrice: any;
+  createProductDescription: string = '';
+  createProductStock: any;
+  createProductCategory: any;
+  createProductImageUrl: any;
+  createProductcontpurchase: any;
+  createProductCancel: any;
+  
+  openCreateProductModal(product: any) {
+    this.obtainCategories();
+    // Abrir el modal
+    this.isProductCreated = true;
   }
 
+  // Logica para crear un producto
   saveProduct(){
-    
+
+    let ok = false
+
+    // Verifico si el nombre del producto editado no esta vacio
+   // ok = this.ComprobarCampos(); 
+
+    if ( !ok ) {
+      // Creo un objeto con los detalles editados del producto
+      const createProduct: Product = {
+        name: this.createProductName,
+        price: parseFloat(this.createProductPrice),
+        description: this.createProductDescription,
+        stock: parseInt(this.createProductStock),
+        category_id: this.createProductCategory,
+        image: this.createProductImageUrl,
+        contpurchase: 0,
+        cancelproduct: this.createProductCancel === 'true' // Convertir el string a boolean
+      }
+
+      console.log(createProduct)
+
+      // Llamo al servicio para editar el producto
+      this.productService.createProduct(createProduct)
+      .subscribe(
+        (result:any) => {
+          this.clearVariables();
+          console.log('Producto creado correctamente', result);
+          this.obtainProducts();
+          this.closeEditProductModal();
+        },
+        (error: any) => {
+          console.error('Error al crear el producto', error);
+
+          // Imprimir detalles del error si están disponibles
+          if (error instanceof HttpErrorResponse) {
+            console.error('Detalles del error:', error);
+          }
+        }
+      );
+      
+      this.isProductCreated = false;
+    }
   }
+
+  // Compruebo que los campos no estan vacios
+  ComprobarCampos(): boolean{
+    // Devolver true si al menos un campo está vacío
+    console.log(
+      this.createProductName + " " +
+      this.createProductPrice + " " +
+      this.createProductDescription + " " +
+      this.createProductStock + " " +
+      this.createProductCategory + " " +
+      this.createProductImageUrl + " " +
+      this.createProductCancel + " " 
+    )
+    if (
+      this.createProductName === undefined || this.createProductName.trim() === '' ||
+      this.createProductPrice === undefined || this.createProductPrice.trim() === '' ||
+      this.createProductDescription === undefined || this.createProductDescription.trim() === '' ||
+      this.createProductStock === undefined || this.createProductStock.trim() === '' ||
+      this.createProductCategory === undefined ||
+      this.createProductImageUrl === undefined || this.createProductImageUrl.trim() === '' ||
+      this.createProductCancel === undefined
+    )
+    {
+      alert("Por favor, rellene todos los campos.")
+      return true;
+    } 
+    else {
+      if (this.createProductPrice > 0 && this.createProductStock > 0) {
+        return false; 
+      } 
+      else {
+        alert('El valor debe ser numérico y mayor a cero.')
+        return true;
+      }
+    }
+  }
+
+  
   
 // ******************************
 // ********   CATEGORY   ******** 

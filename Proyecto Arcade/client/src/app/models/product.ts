@@ -1,5 +1,5 @@
 export class Product {
-    _id: String;
+    _id?: String;
     name: String;
     price: number;
     description: String;
@@ -10,7 +10,6 @@ export class Product {
     cancelproduct: boolean;
 
     constructor() {
-        this._id='';
         this.name='';
         this.price=0;
         this.description='';
