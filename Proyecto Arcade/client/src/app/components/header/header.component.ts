@@ -3,17 +3,18 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { SearchService } from 'src/app/services/search.service';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private searchService: SearchService ) { }
 
   isLoggedIn: boolean = false
   isAdmin: boolean = false
@@ -29,9 +30,11 @@ export class HeaderComponent implements OnInit {
   adminControl() {
     this.router.navigate(['admin-control'])
   }
+
   miscompras(){
     this.router.navigate(['my-purchases'])
   }
+
   ngOnInit(): void {
     this.authService.isLoggedIn$.subscribe(res => {
       this.isLoggedIn = this.authService.isLoggedIn();
@@ -44,6 +47,15 @@ export class HeaderComponent implements OnInit {
     });
   }
   
+  searchQuery: string = '';
+  // Logica que recoge el nombre que quiero buscar de los productos
+  updateSearchQuery1(): void {
+    this.searchService.updateSearchQuery(this.searchQuery);
+  }
 
-
+  updateSearchQuery(event: any): void {
+    this.searchQuery = event.target.value;
+    this.searchService.updateSearchQuery(this.searchQuery);
+  }
+  
 }
