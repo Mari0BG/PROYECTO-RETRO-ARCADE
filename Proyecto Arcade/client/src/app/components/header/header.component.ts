@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { SearchService } from 'src/app/services/search.service';
 import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -48,14 +49,15 @@ export class HeaderComponent implements OnInit {
   }
   
   searchQuery: string = '';
-  // Logica que recoge el nombre que quiero buscar de los productos
-  updateSearchQuery1(): void {
+  // Metodo que al pulsar el boton buscar llama al metodo del observable pasandole la cadena que tendra 
+  // que contener el producto para mostrarse en el center
+  updateSearchQuery(): void {
     this.searchService.updateSearchQuery(this.searchQuery);
   }
 
-  updateSearchQuery(event: any): void {
-    this.searchQuery = event.target.value;
-    this.searchService.updateSearchQuery(this.searchQuery);
+  // Metodo que solo funciona cuando el buscador esta vacio, hace que carguen todos los productos en el center
+  updateSearchQueryEmpty(): void {
+    if (this.searchQuery == "")
+      this.searchService.updateSearchQuery(this.searchQuery);
   }
-  
 }

@@ -5,12 +5,14 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SearchService {
+  // Observable para buscar productos en C.Center desde Header a traves del nombre
+
   private searchQuerySubject = new BehaviorSubject<string>('');
   searchQuery$ = this.searchQuerySubject.asObservable();
 
+
   updateSearchQuery(query: string): void {
-    console.log('a '+query)
     this.searchQuerySubject.next(query);
   }
-  constructor() { }
+
 }

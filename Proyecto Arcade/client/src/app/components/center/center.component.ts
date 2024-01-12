@@ -22,7 +22,13 @@ export default class CenterComponent {
     
   }
 
-  
+  ngOnInit(): void {
+    this.obtainProducts();
+    // Aqui lo del observable, me suscribo para obtener el nombre del producto que quiero buscar
+    this.searchService.searchQuery$.subscribe(query => {
+      this.searchQuery = query;
+    });
+  }
 
   shuldDisplayProduct(producto: any): String{
     return(this.idCategory== producto.category_id || !this.idCategory || this.idCategory == "655abbdba628f0ea1f33cd89")? 'block' : 'none'
@@ -36,7 +42,6 @@ export default class CenterComponent {
     })
   }
 
-
   selectedSort: string = 'default'; 
 
   // Metodo para cambiar por lo que voy a filtrar
@@ -44,27 +49,16 @@ export default class CenterComponent {
     this.selectedSort = sortOption;
   }
 
-  ngOnInit(): void {
-    
-    this.obtainProducts();
-    // Aqui lo del observable
-    this.cartService.products.subscribe(products => {
-      this.products=products;
-      this.total = this.cartService.total;
-    });
-    this.searchQuerySubscription = this.searchService.searchQuery$.subscribe(query => {
-      this.searchQuery = query;
-      this.searchProducts();
-    });
-  }
-
   searchQuery = ""
+
   // Filtro los productos dependiendo el filtro que haya indicado
   get sortedProducts() {
+    // Hago un array con los productos filtrando los que no esten candelados y los que el nombre coincida con lo que le paso desde el header
     let filteredProducts = this.activeProducts.filter(product => product.cancelproduct !== true
       && product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
-
+    
+    // Aplico los filtros de ordenacion, filtrando dependiendo lo que le indique
     if (this.selectedSort === 'name') {
       return filteredProducts.sort((a, b) => a.name.toString().localeCompare(b.name.toString()));
     } 
@@ -75,10 +69,10 @@ export default class CenterComponent {
       return filteredProducts.sort((a, b) => a.price - b.price);
     } 
     else if (this.selectedSort === 'stock') {
-      return filteredProducts.sort((a, b) => a.stock - b.stock);
+      return filteredProducts.sort((a, b) => b.stock - a.stock);
     } 
     else {
-      // Orden por defecto o cualquier otra lógica de ordenación
+      // Aqui devuelvo el orden por defecto de los productos
       return filteredProducts;
     }
   }

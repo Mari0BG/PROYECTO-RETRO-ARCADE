@@ -166,6 +166,7 @@ export default class AdminControlComponent {
 // ********   PRODUCT   ******** 
 // *****************************
 
+// Obtengo los productos
   obtainProducts() {
     this.productService.showProducts().subscribe((res) => {
       this.productService.products = res as Product[];
@@ -174,6 +175,7 @@ export default class AdminControlComponent {
     });
   }
 
+  // Para obtener los productos filtrados
   filterProducts() {
     if (!this.productSearch) {
       // Si el término de búsqueda está vacío, restaura la lista completa
@@ -298,13 +300,12 @@ export default class AdminControlComponent {
     this.editedProductCancel = undefined;
   }
 
+  // Restablecer las propiedades relacionadas con el modal y cerrar el modal PRODUCT
   closeEditProductModal() {
-    // Restablecer las propiedades relacionadas con el modal y cerrar el modal
     this.isEditProductModalOpen = false;
     this.editedProductName = '';
     this.isProductCreated = false;
     this.clearVariables();
-    // Restablecer otras propiedades editadas si es necesario
   }
 
   // ****************************
@@ -321,22 +322,32 @@ export default class AdminControlComponent {
   createProductcontpurchase: any;
   createProductCancel: any;
   
+  clearVariablesCreate(){
+    this.createProductName = "";
+    this.createProductPrice = undefined;
+    this.createProductDescription = "";
+    this.createProductStock = undefined;
+    this.createProductCategory = undefined;
+    this.createProductImageUrl = undefined;
+    this.createProductcontpurchase = undefined;
+    this.createProductCancel = undefined;
+  }
+
   openCreateProductModal(product: any) {
     this.obtainCategories();
     // Abrir el modal
     this.isProductCreated = true;
   }
 
-  // Logica para crear un producto
+  // Funcion para crear un producto
   saveProduct(){
 
     let ok = false
-
-    // Verifico si el nombre del producto editado no esta vacio
+    // Verifico si tengo campos vacios o no
     ok = this.ComprobarCampos(); 
 
     if ( !ok ) {
-      // Creo un objeto con los detalles editados del producto
+      // Creo un objeto con los detalles del producto
       const createProduct: Product = {
         name: this.createProductName,
         price: parseFloat(this.createProductPrice),
@@ -348,16 +359,14 @@ export default class AdminControlComponent {
         cancelproduct: this.createProductCancel === 'true' // Convertir el string a boolean
       }
 
-      console.log(createProduct)
-
-      // Llamo al servicio para editar el producto
+      // Llamo al servicio para crear el producto
       this.productService.createProduct(createProduct)
       .subscribe(
         (result:any) => {
-          this.clearVariables();
+          this.clearVariablesCreate(); // Vacio las variables
           console.log('Producto creado correctamente', result);
-          this.obtainProducts();
-          this.closeEditProductModal();
+          this.obtainProducts(); // Recargo la lista de productos
+          this.closeEditProductModal(); // Cierro el modal de crear producto
         },
         (error: any) => {
           console.error('Error al crear el producto', error);
@@ -368,14 +377,12 @@ export default class AdminControlComponent {
           }
         }
       );
-      
       this.isProductCreated = false;
     }
   }
 
-  // Compruebo que los campos no estan vacios
+  // Funcion que devuelve true y muestra alert con error en caso de haber un campo vacio y false si todo esta relleno
   ComprobarCampos(): boolean{
-    // Devolver true si al menos un campo está vacío
     if (
       this.createProductName === undefined || this.createProductName.trim() === '' ||
       this.createProductPrice === undefined || this.createProductPrice.trim() === '' ||
@@ -401,15 +408,14 @@ export default class AdminControlComponent {
   }
 
   
-// ******************************
-// ********   CATEGORY   ******** 
-// ******************************
-
-obtainCategories() {
-  this.categoryService.showCategories().subscribe((res) => {
-    this.categoryService.categories = res as Category[];
-    this.categories = [...this.categoryService.categories]; // Mover aquí
-    console.log(res);
-  });
-}
+  // ******************************
+  // ********   CATEGORY   ******** 
+  // ******************************
+  // Lo uso para el model de crear y editar un producto
+  obtainCategories() {
+    this.categoryService.showCategories().subscribe((res) => {
+      this.categoryService.categories = res as Category[];
+      this.categories = [...this.categoryService.categories]; 
+    });
+  }
 }
