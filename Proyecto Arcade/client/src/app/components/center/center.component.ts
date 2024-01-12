@@ -30,7 +30,7 @@ export default class CenterComponent {
     });
   }
 
-  shuldDisplayProduct(producto: any): String{
+  shouldDisplayProduct(producto: any): String{
     return(this.idCategory== producto.category_id || !this.idCategory || this.idCategory == "655abbdba628f0ea1f33cd89")? 'block' : 'none'
   }
 
@@ -68,8 +68,11 @@ export default class CenterComponent {
     else if (this.selectedSort === 'priceBajo') {
       return filteredProducts.sort((a, b) => a.price - b.price);
     } 
-    else if (this.selectedSort === 'stock') {
+    else if (this.selectedSort === 'stockmayor') {
       return filteredProducts.sort((a, b) => b.stock - a.stock);
+    } 
+    else if (this.selectedSort === 'stockmenos') {
+      return filteredProducts.sort((a, b) => a.stock - b.stock);
     } 
     else {
       // Aqui devuelvo el orden por defecto de los productos
@@ -77,7 +80,6 @@ export default class CenterComponent {
     }
   }
 
-  
   // Filtro por los que no esten conectados para mostrarlos
   get activeProducts() {
     return this.productService.products.filter(product => product.cancelproduct !== true);

@@ -5,12 +5,13 @@
   <button type="button" (click)="changeSort('name')" class="text-white font-mediumtext-sm focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none dark:focus:ring-indigo-500">Nombre</button>
   <button type="button" (click)="changeSort('priceAlto')" class="text-white focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none dark:focus:ring-indigo-500">Precio más alto</button>
   <button type="button" (click)="changeSort('priceBajo')" class="text-white focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none dark:focus:ring-indigo-500">Precio más bajo</button>
-  <button type="button" (click)="changeSort('stock')" class="text-white focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none dark:focus:ring-indigo-500">Stock</button>
+  <button type="button" (click)="changeSort('stockmayor')" class="text-white focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none dark:focus:ring-indigo-500">Stock mayor</button>
+  <button type="button" (click)="changeSort('stockmenor')" class="text-white focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none dark:focus:ring-indigo-500">Stock menor</button>
 </div>
 <!-- CENTRO -->
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-0" style="max-height: 82vh; overflow: auto; scrollbar-width: thin;">
   <!-- Utiliza ngFor para iterar sobre la lista de productos -->
-  <div *ngFor="let producto of sortedProducts"  class="p-4" [style.display]="shuldDisplayProduct(producto)">
+  <div *ngFor="let producto of sortedProducts"  class="p-4" [style.display]="shouldDisplayProduct(producto)">
     <!-- Estructura de tu tarjeta de producto con Tailwind CSS -->
       <div *ngIf="idCategory == producto.category_id || !idCategory || idCategory=='655abbdba628f0ea1f33cd89'" class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-indigo-400 ">
         <a >
