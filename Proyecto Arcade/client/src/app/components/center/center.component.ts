@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/product';
 import { ProductService } from'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { SearchService } from 'src/app/services/search.service';
+import { ElementSchemaRegistry } from '@angular/compiler';
 @Component({
   selector: 'app-center',
   standalone: true,

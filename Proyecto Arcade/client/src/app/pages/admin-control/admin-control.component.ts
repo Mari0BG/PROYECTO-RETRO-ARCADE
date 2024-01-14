@@ -358,27 +358,36 @@ export default class AdminControlComponent {
         contpurchase: 0,
         cancelproduct: this.createProductCancel === 'true' // Convertir el string a boolean
       }
-
-      // Llamo al servicio para crear el producto
-      this.productService.createProduct(createProduct)
-      .subscribe(
-        (result:any) => {
-          this.clearVariablesCreate(); // Vacio las variables
-          console.log('Producto creado correctamente', result);
-          this.obtainProducts(); // Recargo la lista de productos
-          this.closeEditProductModal(); // Cierro el modal de crear producto
-        },
-        (error: any) => {
-          console.error('Error al crear el producto', error);
-
-          // Imprimir detalles del error si están disponibles
-          if (error instanceof HttpErrorResponse) {
-            console.error('Detalles del error:', error);
+      if (this.existeProductoConNombre(this.createProductName)) {
+        alert("El producto ya existe.")
+      }
+      else {
+        // Llamo al servicio para crear el producto
+        this.productService.createProduct(createProduct)
+        .subscribe(
+          (result:any) => {
+            this.clearVariablesCreate(); // Vacio las variables
+            console.log('Producto creado correctamente', result);
+            this.obtainProducts(); // Recargo la lista de productos
+            this.closeEditProductModal(); // Cierro el modal de crear producto
+          },
+          (error: any) => {
+            console.error('Error al crear el producto', error);
+        
+            // Imprimir detalles del error si están disponibles
+            if (error instanceof HttpErrorResponse) {
+              console.error('Detalles del error:', error);
+            }
           }
-        }
-      );
-      this.isProductCreated = false;
+        );
+        this.isProductCreated = false;
+      }
     }
+  }
+
+  // Metodo para comprobar si existe un producto con ese nombre
+  existeProductoConNombre(nombreBuscado: string): boolean {
+    return this.filteredProducts.some(producto => producto.nombre.toLowerCase === nombreBuscado.toLowerCase);
   }
 
   // Funcion que devuelve true y muestra alert con error en caso de haber un campo vacio y false si todo esta relleno

@@ -35,4 +35,10 @@ export class ProductService {
   deleteProduct(_id: String){
     return this.http.delete(`${apiUrls.productServiceApi}delete/${_id}`);
   }
+
+  // Metodo para descontar stock de producto
+  updateProductStock(product: Product, quantity: number) {
+    product.stock = product.stock-quantity
+    return this.http.put(`${apiUrls.productServiceApi}updateStock/${product._id}`, product);
+  }
 }

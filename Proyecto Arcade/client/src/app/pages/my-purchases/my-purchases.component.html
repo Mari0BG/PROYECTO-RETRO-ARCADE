@@ -1,18 +1,18 @@
 
-<div class="flex flex-col items-center justify-center">
+<div class="flex flex-col items-center justify-center mt-2">
   <!-- Encabezado -->
   <div class="mb-4">
     <h1 class="text-3xl font-bold text-center">
       <span class="flex items-center">
         <span class="inline-block">Bienvenido</span>
         <img *ngIf="userImg" [src]="userImg" alt="User Image" class="w-10 h-10 rounded-full mx-2">
-        <span class="inline-block">{{ username }}, estas son tus compras.</span>
+        <span class="inline-block">{{ username }}, estas son tus compras. Total gastado: {{ total }}€</span>
       </span>
     </h1>
   </div>
 </div>
   <!-- Compras -->
-  <div style="max-height: 82vh; overflow: auto; scrollbar-width: thin;">
+  <div style="max-height: 78vh; overflow: auto; scrollbar-width: thin;">
     <div class="flex flex-col items-center justify-center">
     <ng-container *ngIf="purchases.length > 0; else noPurchases" >
       <div *ngFor="let purchase of purchases; let i = index" class="my-4">
