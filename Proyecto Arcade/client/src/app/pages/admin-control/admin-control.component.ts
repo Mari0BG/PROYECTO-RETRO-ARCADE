@@ -387,7 +387,12 @@ export default class AdminControlComponent {
 
   // Metodo para comprobar si existe un producto con ese nombre
   existeProductoConNombre(nombreBuscado: string): boolean {
-    return this.filteredProducts.some(producto => producto.nombre.toLowerCase === nombreBuscado.toLowerCase);
+    return this.filteredProducts.some(producto => {
+      if (producto.name === undefined || nombreBuscado === undefined) {
+          return false;
+      }
+      return producto.name.toLowerCase().trim() === nombreBuscado.toLowerCase().trim();
+    });
   }
 
   // Funcion que devuelve true y muestra alert con error en caso de haber un campo vacio y false si todo esta relleno

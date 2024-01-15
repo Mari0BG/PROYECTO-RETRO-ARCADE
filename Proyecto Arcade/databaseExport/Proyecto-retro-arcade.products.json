@@ -1,1 +1,504 @@
-[]
+[{
+  "_id": {
+    "$oid": "65a57b72995554b4e630c470"
+  },
+  "name": "Arcade Stick USB",
+  "price": 39.99,
+  "description": "El joystick de dirección de ocho direcciones y los 8 grandes botones de acción te brindan el placer de luchar.",
+  "stock": 1,
+  "category_id": [
+    {
+      "$oid": "659ed25f52b57986c87ca39d"
+    }
+  ],
+  "image": "https://th.bing.com/th/id/OIP.nbsNwEsmlNnK4hglsCNZnQHaFj?rs=1&pid=ImgDetMain",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T18:37:38.379Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T18:42:23.547Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a582c0995554b4e630c5a7"
+  },
+  "name": "Real Arcade Pro 4 Kai",
+  "price": 100,
+  "description": "Distribuido con una licencia oficial de Sony, este joystick está constituido de pulsadores únicos de Hayabusa. Se trata de un modelo Pro que integra un panel táctil adicional y su centro de gravedad le permite evitar deslizamientos en mitad de una partida.",
+  "stock": 14,
+  "category_id": [
+    {
+      "$oid": "659ed25f52b57986c87ca39d"
+    }
+  ],
+  "image": "https://www.guiahardware.es/wp-content/webp-express/webp-images/uploads/2020/06/A043719_4_1-1.jpg.webp",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:08:48.375Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:14:05.947Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a5833b995554b4e630c5b6"
+  },
+  "name": "Mad Catz – Street Fighter V",
+  "price": 69.9,
+  "description": "Así que el Street Fighter V Arcade FightStick Alpha cuenta con las características esenciales de un stick tipo arcade de tamaño standard en un diseño compacto con controles tipo arcade convenientemente espaciados.",
+  "stock": 22,
+  "category_id": [
+    {
+      "$oid": "659ed25f52b57986c87ca39d"
+    }
+  ],
+  "image": "https://www.mandosarcades.com/wp-content/uploads/2020/09/61Ngtkr44L._AC_SL1500_.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:10:51.704Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:10:51.704Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a583d5995554b4e630c5c2"
+  },
+  "name": "Mayflash Joystick F300",
+  "price": 79.95,
+  "description": "joystick principal con ocho botones de acción. En la parte superior se encuentran 6 botones multifunción.",
+  "stock": 8,
+  "category_id": [
+    {
+      "$oid": "659ed25f52b57986c87ca39d"
+    }
+  ],
+  "image": "https://www.guiahardware.es/wp-content/webp-express/webp-images/uploads/2020/06/611dDskejHL._AC_SL1500-1.jpg.webp",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:13:25.875Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:13:25.875Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a58440995554b4e630c5ce"
+  },
+  "name": "MAYFLASH Arcade Stick F101",
+  "price": 165.69,
+  "description": "Palanca lateral de metal acompañada de 8 pulsadores (dos de estos especiales para turbo).",
+  "stock": 14,
+  "category_id": [
+    {
+      "$oid": "659ed25f52b57986c87ca39d"
+    }
+  ],
+  "image": "https://www.guiahardware.es/wp-content/webp-express/webp-images/uploads/2023/02/MAYFLASH-Arcade-Stick-F101.jpg.webp",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:15:12.018Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:15:53.796Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a58532995554b4e630c5da"
+  },
+  "name": "Pac-Man",
+  "price": 2.3,
+  "description": "First appearing in arcades in 1980, the masterpiece PAC-MAN finally comes to PS4™! Move PAC-MAN up, down, left, and right to eat all the Pac-Dots, while avoiding the ghosts, to advance to the next stage.",
+  "stock": 44,
+  "category_id": [
+    {
+      "$oid": "659ed26552b57986c87ca39f"
+    }
+  ],
+  "image": "https://image.api.playstation.com/cdn/EP0700/CUSA03862_00/7YeqsfpCnlYOEWmOePFx8wv6bqiUdR92.png",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:19:14.368Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:19:28.423Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a585be995554b4e630c5e4"
+  },
+  "name": "Kung Fu Remix",
+  "price": 5.55,
+  "description": "The specials are done by pressing key 1-3, and I DON'T mean the numberpad keys.",
+  "stock": 3,
+  "category_id": [
+    {
+      "$oid": "659ed26552b57986c87ca39f"
+    }
+  ],
+  "image": "https://th.bing.com/th/id/R.f9bef322edf329180f3b3863648b61a1?rik=9cRsAKnHElSG5w&riu=http%3a%2f%2fcache.hackedonlinegames.com%2fuploads%2fgames%2fpictures%2f660%2fpZLX8JMUY06JN.jpg&ehk=3Ng9M93Lq5BdfLQXzCFrLdWMGUdzMlJDOgvu8h68E5w%3d&risl=&pid=ImgRaw&r=0",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:21:34.195Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:21:34.195Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a585fe995554b4e630c5e8"
+  },
+  "name": "Mega Man Project X",
+  "price": 7.8,
+  "description": "Un juego clasico.",
+  "stock": 80,
+  "category_id": [
+    {
+      "$oid": "659ed26552b57986c87ca39f"
+    }
+  ],
+  "image": "https://f4.bcbits.com/img/a3218524516_5.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:22:38.785Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:22:38.785Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a58714995554b4e630c5ec"
+  },
+  "name": "Metal Slug",
+  "price": 8,
+  "description": "Descubre cuánto tiempo puedes sobrevivir luchando contra la horda.",
+  "stock": 7,
+  "category_id": [
+    {
+      "$oid": "659ed26552b57986c87ca39f"
+    }
+  ],
+  "image": "https://th.bing.com/th/id/R.0835886643c88996841a549f5122a058?rik=hx1hLWPxwmgBhQ&pid=ImgRaw&r=0",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:27:16.859Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:27:16.859Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a5876c995554b4e630c5f2"
+  },
+  "name": "Snow Bros",
+  "price": 4.99,
+  "description": "Seras capaz de matar todo.",
+  "stock": 8,
+  "category_id": [
+    {
+      "$oid": "659ed26552b57986c87ca39f"
+    }
+  ],
+  "image": "https://th.bing.com/th/id/OIP.NQH01u4LGJ_DwDFqIE4aGgHaFT?rs=1&pid=ImgDetMain",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:28:44.101Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:28:44.101Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a5880f995554b4e630c5f8"
+  },
+  "name": "Pareja Player 1 Y 2 led",
+  "price": 4.1,
+  "description": "Preciosos botones iluminados de 1 y 2 player en 5 colores diferentes con embellecedor de tipo transparente. Para agujeros de 28-30mm de diámetro.",
+  "stock": 7,
+  "category_id": [
+    {
+      "$oid": "656e28f671e0c3bcf66b75ca"
+    }
+  ],
+  "image": "https://www.arcadexpress.com/897-large_default/boton-player-1y-2-led-transparente.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:31:27.702Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:31:47.940Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a58c3a67f434341f935a54"
+  },
+  "name": "Cajón recaudador de dinero",
+  "price": 10.5,
+  "description": "Un cajon que recauda hasta 10.000 monedas",
+  "stock": 4,
+  "category_id": [
+    {
+      "$oid": "656e28f671e0c3bcf66b75ca"
+    }
+  ],
+  "image": "https://www.arcadexpress.com/4793-large_default/caja-recaudacion-monedas-plastico-negra-modelo-c-maquina-recreativa.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:49:14.667Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:49:14.667Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a58cdf67f434341f935a5a"
+  },
+  "name": "Amma 6 Botones 56 Pines",
+  "price": 14.5,
+  "description": "Renueva el cableado interior de tu máquina recreativa al completo con el cableado Jamma de 28 pines modelo Zjamma 56P-3.96S. A elegir el ancho de los fastons de 2.8mm, 4.8mm o 6.3mm. ",
+  "stock": 9,
+  "category_id": [
+    {
+      "$oid": "656e28f671e0c3bcf66b75ca"
+    }
+  ],
+  "image": "https://www.arcadexpress.com/6002-large_default/cableado-arcade-jamma-6-botones-150cm-56-pines-28-pines-por-lado.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:51:59.385Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:52:52.196Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a58db167f434341f935a6b"
+  },
+  "name": "Brook Fusion Universal Fighting",
+  "price": 124.99,
+  "description": "Interfaz Arcade USB Brook Fusion Universal Fighting Board compatible con PS5 (juegos de pelea) PS4, PS3, XBOX ONE, XBOX SERIES X|S, Xbox360, PC, Nintendo Switch, NeoGeo Mini, PS Classic, WII U, Neo Geo Mini, Nintendo Switch, Raspberry Pi, Astro City Mini, MAC, Mega Drive (Genesis) mini.",
+  "stock": 16,
+  "category_id": [
+    {
+      "$oid": "656e28f671e0c3bcf66b75ca"
+    }
+  ],
+  "image": "https://www.arcadexpress.com/6730-large_default/brook-fusion-universal-fighting-board-ps5-ps4-ps3-xbox-one-xbox360-pc-nintendo-switch-neogeo-mini-ps-classic.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:55:29.963Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:55:29.963Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a58de267f434341f935a71"
+  },
+  "name": "Pulsador Doble 2 en 1 PSL",
+  "price": 10.5,
+  "description": "Botón Pulsador Doble, 2 en 1 con micros Cherry D44X, modelo PSL-D de la marca española Industrias Lorenzo.",
+  "stock": 11,
+  "category_id": [
+    {
+      "$oid": "656e28f671e0c3bcf66b75ca"
+    }
+  ],
+  "image": "https://www.arcadexpress.com/6985-large_default/boton-pulsador-doble-2-en-1-psl-d-industrias-lorenzo.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T19:56:18.974Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T19:56:18.974Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a58f4967f434341f935a77"
+  },
+  "name": "Arcade1Up PAC-MAN Deluxe",
+  "price": 660.27,
+  "description": "La nueva Edición Deluxe reproduce fielmente el original de 1982. Toda la diversión del juego clásico en un diseño nuevo y auténtico.",
+  "stock": 4,
+  "category_id": [
+    {
+      "$oid": "655abbe0a628f0ea1f33cd8b"
+    }
+  ],
+  "image": "https://img.pccomponentes.com/articles/1078/10789636/1142-arcade1up-maquina-arcade-pac-man-deluxe-foto.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T20:02:17.876Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T20:02:17.876Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a58fe467f434341f935a7d"
+  },
+  "name": "Marvel vs Capcom",
+  "price": 778.49,
+  "description": " ¡prepárense para el heavy metal! arcade1up ha comprimido algunos de los mejores videojuegos de marvel en un gabinete doméstico. con juegos en línea en vivo - una marquesina",
+  "stock": 6,
+  "category_id": [
+    {
+      "$oid": "655abbe0a628f0ea1f33cd8b"
+    }
+  ],
+  "image": "https://ofertasdelasemana.com/225620-tm_large_default/maquina-recreativa-arcade-1-up-marvel-vs-capcom.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T20:04:52.036Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T20:04:52.036Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a5901967f434341f935a81"
+  },
+  "name": "NBA Jam Shaq",
+  "price": 932.78,
+  "description": "¡BOOMSHAKALAKA! ¡Sumérgete en la competencia con la nueva máquina recreativa casera NBA JAM: SHAQ EDITION, de Arcade1Up! Este enorme gabinete de juegos de una sola pieza de 170 cm de alto de Shaq luce una pantalla de 19\" por primera vez en un título de Arcade1Up.",
+  "stock": 5,
+  "category_id": [
+    {
+      "$oid": "655abbe0a628f0ea1f33cd8b"
+    }
+  ],
+  "image": "https://img.pccomponentes.com/articles/1066/10668706/1333-arcade1up-maquina-recreativa-arcade-nba-jam-shaq.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T20:05:45.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T20:05:45.953Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a5904a67f434341f935a87"
+  },
+  "name": "Arcade Time Crisis Deluxe",
+  "price": 991.88,
+  "description": "Lucha contra Wild Dog y otros jefes infames en este clásico juego de armas arcade.",
+  "stock": 16,
+  "category_id": [
+    {
+      "$oid": "655abbe0a628f0ea1f33cd8b"
+    }
+  ],
+  "image": "https://img.pccomponentes.com/articles/1078/10789639/1448-arcade1up-maquina-arcade-time-crisis-deluxe.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T20:06:34.129Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T20:06:34.129Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a5909467f434341f935a8d"
+  },
+  "name": "Fast & the Furious Deluxe",
+  "price": 931.84,
+  "description": "¡Fast & The Furious llega a tu puerta y te trae la emoción de las carreras callejeras! El volante, los pedales y el cambio de marchas realistas te permiten acelerar por las calles de la ciudad experimentando la adrenalina de correr en tu propio coche. ¡Diviértete incluso con colegas en la oficina durante las pausas para el café y descubre quién de ustedes es el más rápido!",
+  "stock": 8,
+  "category_id": [
+    {
+      "$oid": "655abbe0a628f0ea1f33cd8b"
+    }
+  ],
+  "image": "https://img.pccomponentes.com/articles/1072/10728682/1989-arcade1up-maquina-arcade-fast-the-furious-deluxe-racing-review.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T20:07:48.100Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T20:07:48.100Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a590bd67f434341f935a93"
+  },
+  "name": "Midway Legacy 30° Aniversario",
+  "price": 701.88,
+  "description": "Juega y gana el torneo de Mortal Kombat con el nuevo Midway Legacy 30th Anniversary junto a tus compañeros o familiares.",
+  "stock": 2,
+  "category_id": [
+    {
+      "$oid": "655abbe0a628f0ea1f33cd8b"
+    }
+  ],
+  "image": "https://img.pccomponentes.com/articles/1070/10707296/145-arcade1up-maquina-arcade-midway-legacy-30-aniversario-opiniones.jpg",
+  "contpurchase": 0,
+  "cancelproduct": false,
+  "createdAt": {
+    "$date": "2024-01-15T20:08:29.942Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T20:08:29.942Z"
+  },
+  "__v": 0
+}]

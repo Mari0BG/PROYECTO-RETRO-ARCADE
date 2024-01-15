@@ -44,7 +44,7 @@ export const updateProductStock = async (req, res, next) => {
             const newData = await Product.findByIdAndUpdate(
                 req.params.id,
                 {$set: req.body},
-                {new: true}
+                {new: true} // Hace que la fecha de modificacion se actualice
             )
             return next(CreateSuccess(200, "Product Stock Updated"))
         }
