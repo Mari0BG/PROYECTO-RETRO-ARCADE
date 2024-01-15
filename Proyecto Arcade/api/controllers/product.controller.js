@@ -36,6 +36,26 @@ export const updateProduct = async (req, res, next) => {
     }
 }
 
+// Metodo para descontar el stock
+export const updateProductStock = async (req, res, next) => {
+    try {
+        const product = await Product.findById({_id: req.params.id})
+        if(product) {
+            const newData = await Product.findByIdAndUpdate(
+                req.params.id,
+                {$set: req.body},
+                {new: true}
+            )
+            return next(CreateSuccess(200, "Product Stock Updated"))
+        }
+        else {
+            return next(CreateError(404,"Product not found"))
+        }
+    } catch (error) {
+        return next(CreateError(500,"Internal server error"))
+    }
+}
+
 export const getAllProducts = async (req, res, next) => {
     try {
         const products = await Product.find({})
@@ -60,3 +80,4 @@ export const deleteProduct = async (req, res, next) => {
         return next(CreateError(500,"Internal server error"))
     }
 }
+

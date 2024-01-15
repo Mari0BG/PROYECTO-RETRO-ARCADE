@@ -15,7 +15,7 @@ import { CreateSuccess } from "../utils/success.js"
 
       // Guardar el carrito en la base de datos
       const savedCart = await newCart.save();
-      console.log(savedCart)
+      //console.log(savedCart)
       res.status(201).json(savedCart);
     } catch (error) {
       res.status(400).json({ error: "Bad Request" });

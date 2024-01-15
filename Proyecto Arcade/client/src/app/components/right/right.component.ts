@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { BuyService } from 'src/app/services/buy.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-right',
@@ -22,7 +23,7 @@ export class RightComponent {
   // Mostrar MSG Pop-Up
   isPopupPurchase = false;
 
-  constructor(public cartService: CartService, public buyService: BuyService, public authService: AuthService) {
+  constructor(public cartService: CartService, public buyService: BuyService, public authService: AuthService, public productService: ProductService) {
     
   }
 
@@ -32,7 +33,7 @@ export class RightComponent {
     let token = this.authService.getUserId();
     console.log(this.products);
   
-    if (token != null && this.total >0) {
+    if (token != null && this.total > 0) {
       const idUsuario: string = token;
   
       // Transformar la estructura de products
@@ -50,13 +51,11 @@ export class RightComponent {
         products: transformedProducts,
       };
   
-      console.log(buyData);
-      console.log(this.total)
-  
       this.buyService.createBuy(buyData).subscribe(
         (response) => {
           this.isPopupPurchase = true;
           console.log('Compra realizada con éxito:', response);
+          this.updateStockAfterPurchase(transformedProducts);
           this.ClearCart();
         },
         (error) => {
@@ -72,6 +71,34 @@ export class RightComponent {
     }
   }
 
+  // Metodo para descontar stock de los productos
+  private updateStockAfterPurchase(products: any[]): void {
+    for (const productData of products) {
+      const productId = productData._idProduct;
+      const amount = productData.amount;
+      console.log("voy "+productId+" can "+amount)
+      // Llamada a la API para actualizar el stock
+      const product: Product = this.getProductById(productId);
+      this.productService.updateProductStock(product, amount).subscribe(
+        () => {
+          console.log(`Stock actualizado para ${productData.nameProduct}`);
+        },
+        (error) => {
+          console.error(`Error al actualizar el stock para ${productData.nameProduct}:`, error);
+        }
+      );
+    }
+  }
+
+  private getProductById(productId: string) {
+    const foundProduct = this.products.find(productData => productData.product._id === productId);
+
+    if (foundProduct) {
+      return foundProduct.product;
+    } else {
+      throw new Error(`Producto con ID ${productId} no encontrado`);
+    }
+  }
 
   // Me suscribo al observable para recibir los productos del carrito | cualquier cambio se refleja automaticamente
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 import express from 'express'
-import { createProduct, updateProduct, getAllProducts, deleteProduct } from '../controllers/product.controller.js'
+import { createProduct, updateProduct, getAllProducts, deleteProduct, updateProductStock } from '../controllers/product.controller.js'
 
 const router = express.Router() //con esto puedo usar operaciones CRUD
 
@@ -8,6 +8,9 @@ router.post('/create', createProduct)
 
 //Actualizar product
 router.put('/update/:id', updateProduct)
+
+//Actualizar Stock product
+router.put('/updateStock/:id', updateProductStock)
 
 //obtener todos los products
 router.get('/getAll', getAllProducts)

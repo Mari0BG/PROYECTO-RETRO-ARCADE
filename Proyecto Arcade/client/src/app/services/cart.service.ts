@@ -19,23 +19,29 @@ export class CartService {
   }
 
   addNewProduct(product: Product) {
+    // Primero compruebo si hay stock para poder añadir otro producto al carrito, si hay paso a la siguiente validacion
     // Si el producto ya se encuentra en el carrito compruebo que cantidad sea menor al stock y si es asi lo incremento y sino muestro alert
     // Si producto no se encuentra en el carrito lo agrego y le pongo en cantidad 1
     // Actualizo el total del coste y actualizo el carrito
-    const existingProduct = this.cartProducts.find((productFind) => productFind.product._id === product._id);
-    if (existingProduct) { 
-      if (existingProduct.quantity < product.stock) {
-        existingProduct.quantity += 1;
+    if ( product.stock > 0 ) {
+      const existingProduct = this.cartProducts.find((productFind) => productFind.product._id === product._id);
+      if (existingProduct) { 
+        if (existingProduct.quantity < product.stock) {
+          existingProduct.quantity += 1;
+        } 
+        else {
+          alert("No hay suficiente stock");
+        }
       } 
-      else {
-        alert("No hay suficiente stock");
+      else { 
+        this.cartProducts.push({ product, quantity: 1 });
       }
-    } 
-    else { 
-      this.cartProducts.push({ product, quantity: 1 });
+      this.updateTotal();
+      this._products.next(this.cartProducts);
     }
-    this.updateTotal();
-    this._products.next(this.cartProducts);
+    else {
+      alert("No hay suficiente stock");
+    }
   }
 
   // Elimino el producto del array que este en el indice pasado y digo que se ha actualizado el carrito y le paso el nuevo array

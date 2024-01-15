@@ -27,6 +27,7 @@ export default class MyPurchasesComponent {
       this.buyService.getUserCarts(userId).subscribe(
         (userCarts) => {
           this.purchases = userCarts;
+          this.calculateMoneySpent();
           console.log(this.purchases);
         },
         (error) => {
@@ -36,7 +37,39 @@ export default class MyPurchasesComponent {
     }
   }
 
+  // MEtodo para calcular el total gastado por compra
   calculateTotal(products: any[]): number {
     return products.reduce((total, product) => total + product.amount * product.price, 0);
+  }
+
+  // Metodo que obtiene el total gastado entre todas las compras y lo retorna
+  calculateTotalSpend(purchases: any[]): number {
+    // Devuelvo el total
+    // Recorro todas las compras
+    return purchases.reduce((total, purchase) => {
+      // Por cada compra cojo el array de productos que tiene
+      const products: any[] = purchase.products; 
+
+      // Ahora recorro el array de products almacenando el total gastado en cada compra
+      const purchaseTotal = products.reduce((purchaseTotal, product) => {
+        // Si el producto tiene cantidad y precio devuelvo el total de ese producto
+        if (product.amount !== undefined && product.price !== undefined) {
+          return purchaseTotal + product.amount * product.price;
+        } 
+        else {
+          console.warn('Advertencia: amount o price no están definidos para un producto.');
+          return purchaseTotal;
+        }
+      }, 0);
+
+      return total + purchaseTotal;
+    }, 0);
+  }
+
+  total: number = 0
+
+  // Metodo para recoger el total gastado
+  calculateMoneySpent() {
+    this.total = this.calculateTotalSpend(this.purchases)
   }
 }
