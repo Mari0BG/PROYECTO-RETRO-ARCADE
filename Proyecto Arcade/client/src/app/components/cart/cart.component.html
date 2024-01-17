@@ -1,0 +1,66 @@
+<div class="flex items-center justify-between mb-4" >
+    <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white hover:no-underline" (click)="MostrarOcultar('carromato')" style="user-select: none;"> MY CART    <i style="margin-left: 10px;" class="fa fa-cart-plus"></i></h5>
+    <button (click)="ClearCart()" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"> Clear </button>
+</div>
+<div id="carromato" style="display: flex; display: none;">
+    <div class="text-lg font-medium text-gray-900 truncate dark:text-white" style="text-align: center;" *ngIf="products.length==0">
+        Your cart is empty
+    </div>
+    <div *ngIf="products.length!=0" class="flow-root" >
+        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700" >
+            <div *ngFor="let cartProduct of products; let indice = index;">
+                <li class="py-3 sm:py-4">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="w-8 h-8 rounded-full" src="{{cartProduct.product.image}}" alt="Neil image">
+                        </div>
+                        <div class="flex-1 min-w-0 ms-4">
+                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                {{ cartProduct.product.name }}
+                            </p>
+                        </div>
+                        <div class="flex-1 flex min-w-0 ms-4 items-center">
+                            <button type="button" (click)="ModifyAmount(indice, '-')" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-red-300 font-medium rounded-lg text-xs px-2 py-1 me-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700"><i class="fa fa-minus" style="font-size:10px"></i></button> 
+
+                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white ml-2 mr-3">
+                            {{ cartProduct.quantity }}
+                            </p>
+
+                            <button type="button" (click)="ModifyAmount(indice, '+')" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-xs px-2 py-1 me-1 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none">  <i class="fa fa-plus" style="font-size:10px"></i></button>
+                        </div>
+                        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                            {{ cartProduct.product.price }}€
+                        </div>
+                        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                            <button type="button" (click)="DeleteProduct(indice)" class="focus:outline-none text-white hover:text-black font-medium rounded-lg text-xs px-2 py-1 me-1 mb-1"><i class='fa fa-trash-o' style='font-size:24px'></i></button> 
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="text-lg font-medium text-gray-900 truncate dark:text-white" style="display: flex; margin-top: 10px; justify-content: space-between; padding-top: 10px; border-top: 2px solid #333;">
+        <h1> Total </h1>
+        <h2 id="totalCompra"> {{ total | currency: 'EUR'}} </h2>
+        <a class="flex items-center p-1 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-indigo-300 dark:hover:bg-indigo-500 dark:text-white">
+            <span class="flex-1 ms-0 whitespace-nowrap" style="user-select: none;" (click)="BuyCart()"><i>Comprar</i></span>
+        </a> 
+    </div>
+</div>
+
+
+<!-- ************** -->
+<!-- *** POP-UP *** -->
+<!-- ************** -->
+
+<div *ngIf="isPopupPurchase" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-md w-96">
+        <div class="p-4 md:p-5 text-center">
+        <i class="mx-auto mb-4  w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <i class='fa fa-thumbs-o-up' style='font-size:36px'></i>
+        </i>
+        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Compra realizada con exito.</h3>
+        <button data-modal-hide="popup-modal" (click)="isPopupPurchase = false" type="button" class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"> Ok </button>
+        </div>
+    </div>
+</div>
