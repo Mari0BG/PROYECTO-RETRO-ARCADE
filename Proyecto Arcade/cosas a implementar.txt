@@ -1,12 +1,12 @@
-NUMERO DE CLIENTES QUE HA COMPRADO UN PRODUCTO
+C - NUMERO DE CLIENTES QUE HA COMPRADO UN PRODUCTO 
 
-CLIENTES QUE HAN COMPRADO Y CLIENTES QUE NO TIENEN COMPRAS
+C - CLIENTES QUE HAN COMPRADO Y CLIENTES QUE NO TIENEN COMPRAS 
 
-CONTAR TOTAL DE PRODUCTOS COMPRADOS POR EL USUARIO
+CONTAR TOTAL DE PRODUCTOS COMPRADOS POR EL USUARIO 
 
-LISTADO DE CLIENTES CON COMPRAS EN CADA CATEGORIA ????
+LISTADO DE CLIENTES CON COMPRAS EN CADA CATEGORIA ???? 
 
-PRODUCTO MAS CARO Y MAS BARATO
+PRODUCTO MAS CARO Y MAS BARATO 
 
 PRODUCTO MAS VENDIDO y MENOS
 
@@ -18,19 +18,20 @@ CLIENTE QUE HA COMPRADO EL PRODUCTO MAS CARO
 
 PRODUCTOS VENDIDOS EN TOTAL
 
-CONTAR LOS PRODUCTOS QUE TIENE CADA CATEGORIA
-	- En cada categoria, en vez de poner lo de popular, poner la cantidad de productos
-	  que hay en esa categoria
-
 CONTAR LAS COMPRAS DE CADA PRODUCTO
 
 MOSTAR EL PRIMER PRODUCTO COMPRADO POR EL USUARIO Y EL ULTIMO
+
+CONTAR LOS PRODUCTOS QUE TIENE CADA CATEGORIA
+	- En cada categoria, en vez de poner lo de popular, poner la cantidad de productos
+	  que hay en esa categoria
 
 
 POP UP EN ADMIN CONTROL:
 	- Un delete de usuarios menos el ultimo que se ha logado
 	- Un delete de todos los clientes
+	- Un delete de las compras del que esta logeado
 	- Un delete de todas las compras en my-purchases
 	- Un delete de los productos de una categoria 
 	- Un delete de los clientes que no han hecho compras
-	-
+	
