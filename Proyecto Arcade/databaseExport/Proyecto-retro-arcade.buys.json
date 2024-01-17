@@ -1,0 +1,650 @@
+[{
+  "_id": {
+    "$oid": "65a597dbf84ecbb742bed299"
+  },
+  "_idClient": "65a57aafc121fbd062ef1435",
+  "products": [
+    {
+      "_idProduct": "65a582c0995554b4e630c5a7",
+      "price": 100,
+      "amount": 1,
+      "nameProduct": "Real Arcade Pro 4 Kai",
+      "imageProduct": "https://www.guiahardware.es/wp-content/webp-express/webp-images/uploads/2020/06/A043719_4_1-1.jpg.webp",
+      "category_id": "659ed25f52b57986c87ca39d",
+      "_id": {
+        "$oid": "65a597dbf84ecbb742bed29a"
+      }
+    },
+    {
+      "_idProduct": "65a58532995554b4e630c5da",
+      "price": 2.3,
+      "amount": 1,
+      "nameProduct": "Pac-Man",
+      "imageProduct": "https://image.api.playstation.com/cdn/EP0700/CUSA03862_00/7YeqsfpCnlYOEWmOePFx8wv6bqiUdR92.png",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a597dbf84ecbb742bed29b"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-15T20:38:51.240Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-15T20:38:51.240Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81d7e543606a9611e8f82"
+  },
+  "_idClient": "65a57aafc121fbd062ef1435",
+  "products": [
+    {
+      "_idProduct": "65a58532995554b4e630c5da",
+      "price": 2.3,
+      "amount": 1,
+      "nameProduct": "Pac-Man",
+      "imageProduct": "https://image.api.playstation.com/cdn/EP0700/CUSA03862_00/7YeqsfpCnlYOEWmOePFx8wv6bqiUdR92.png",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81d7e543606a9611e8f83"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:33:34.214Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:33:34.214Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81d87543606a9611e8f87"
+  },
+  "_idClient": "65a57aafc121fbd062ef1435",
+  "products": [
+    {
+      "_idProduct": "65a58532995554b4e630c5da",
+      "price": 2.3,
+      "amount": 5,
+      "nameProduct": "Pac-Man",
+      "imageProduct": "https://image.api.playstation.com/cdn/EP0700/CUSA03862_00/7YeqsfpCnlYOEWmOePFx8wv6bqiUdR92.png",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81d87543606a9611e8f88"
+      }
+    },
+    {
+      "_idProduct": "65a585fe995554b4e630c5e8",
+      "price": 7.8,
+      "amount": 5,
+      "nameProduct": "Mega Man Project X",
+      "imageProduct": "https://f4.bcbits.com/img/a3218524516_5.jpg",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81d87543606a9611e8f89"
+      }
+    },
+    {
+      "_idProduct": "65a5876c995554b4e630c5f2",
+      "price": 4.99,
+      "amount": 1,
+      "nameProduct": "Snow Bros",
+      "imageProduct": "https://th.bing.com/th/id/OIP.NQH01u4LGJ_DwDFqIE4aGgHaFT?rs=1&pid=ImgDetMain",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81d87543606a9611e8f8a"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:33:43.275Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:33:43.275Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81da9543606a9611e8fa4"
+  },
+  "_idClient": "65a57a9cc121fbd062ef1432",
+  "products": [
+    {
+      "_idProduct": "65a582c0995554b4e630c5a7",
+      "price": 100,
+      "amount": 1,
+      "nameProduct": "Real Arcade Pro 4 Kai",
+      "imageProduct": "https://www.guiahardware.es/wp-content/webp-express/webp-images/uploads/2020/06/A043719_4_1-1.jpg.webp",
+      "category_id": "659ed25f52b57986c87ca39d",
+      "_id": {
+        "$oid": "65a81da9543606a9611e8fa5"
+      }
+    },
+    {
+      "_idProduct": "65a5833b995554b4e630c5b6",
+      "price": 69.9,
+      "amount": 3,
+      "nameProduct": "Mad Catz – Street Fighter V",
+      "imageProduct": "https://www.mandosarcades.com/wp-content/uploads/2020/09/61Ngtkr44L._AC_SL1500_.jpg",
+      "category_id": "659ed25f52b57986c87ca39d",
+      "_id": {
+        "$oid": "65a81da9543606a9611e8fa6"
+      }
+    },
+    {
+      "_idProduct": "65a58db167f434341f935a6b",
+      "price": 124.99,
+      "amount": 2,
+      "nameProduct": "Brook Fusion Universal Fighting",
+      "imageProduct": "https://www.arcadexpress.com/6730-large_default/brook-fusion-universal-fighting-board-ps5-ps4-ps3-xbox-one-xbox360-pc-nintendo-switch-neogeo-mini-ps-classic.jpg",
+      "category_id": "656e28f671e0c3bcf66b75ca",
+      "_id": {
+        "$oid": "65a81da9543606a9611e8fa7"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:34:17.851Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:34:17.851Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81dba543606a9611e8faf"
+  },
+  "_idClient": "65a57a9cc121fbd062ef1432",
+  "products": [
+    {
+      "_idProduct": "65a5904a67f434341f935a87",
+      "price": 991.88,
+      "amount": 2,
+      "nameProduct": "Arcade Time Crisis Deluxe",
+      "imageProduct": "https://img.pccomponentes.com/articles/1078/10789639/1448-arcade1up-maquina-arcade-time-crisis-deluxe.jpg",
+      "category_id": "655abbe0a628f0ea1f33cd8b",
+      "_id": {
+        "$oid": "65a81dba543606a9611e8fb0"
+      }
+    },
+    {
+      "_idProduct": "65a5876c995554b4e630c5f2",
+      "price": 4.99,
+      "amount": 1,
+      "nameProduct": "Snow Bros",
+      "imageProduct": "https://th.bing.com/th/id/OIP.NQH01u4LGJ_DwDFqIE4aGgHaFT?rs=1&pid=ImgDetMain",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81dba543606a9611e8fb1"
+      }
+    },
+    {
+      "_idProduct": "65a58c3a67f434341f935a54",
+      "price": 10.5,
+      "amount": 1,
+      "nameProduct": "Cajón recaudador de dinero",
+      "imageProduct": "https://www.arcadexpress.com/4793-large_default/caja-recaudacion-monedas-plastico-negra-modelo-c-maquina-recreativa.jpg",
+      "category_id": "656e28f671e0c3bcf66b75ca",
+      "_id": {
+        "$oid": "65a81dba543606a9611e8fb2"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:34:34.352Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:34:34.352Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81dc2543606a9611e8fba"
+  },
+  "_idClient": "65a57a9cc121fbd062ef1432",
+  "products": [
+    {
+      "_idProduct": "65a585fe995554b4e630c5e8",
+      "price": 7.8,
+      "amount": 13,
+      "nameProduct": "Mega Man Project X",
+      "imageProduct": "https://f4.bcbits.com/img/a3218524516_5.jpg",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81dc2543606a9611e8fbb"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:34:42.538Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:34:42.538Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81dca543606a9611e8fbf"
+  },
+  "_idClient": "65a57a9cc121fbd062ef1432",
+  "products": [
+    {
+      "_idProduct": "65a585fe995554b4e630c5e8",
+      "price": 7.8,
+      "amount": 1,
+      "nameProduct": "Mega Man Project X",
+      "imageProduct": "https://f4.bcbits.com/img/a3218524516_5.jpg",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81dca543606a9611e8fc0"
+      }
+    },
+    {
+      "_idProduct": "65a58440995554b4e630c5ce",
+      "price": 165.69,
+      "amount": 2,
+      "nameProduct": "MAYFLASH Arcade Stick F101",
+      "imageProduct": "https://www.guiahardware.es/wp-content/webp-express/webp-images/uploads/2023/02/MAYFLASH-Arcade-Stick-F101.jpg.webp",
+      "category_id": "659ed25f52b57986c87ca39d",
+      "_id": {
+        "$oid": "65a81dca543606a9611e8fc1"
+      }
+    },
+    {
+      "_idProduct": "65a58532995554b4e630c5da",
+      "price": 2.3,
+      "amount": 1,
+      "nameProduct": "Pac-Man",
+      "imageProduct": "https://image.api.playstation.com/cdn/EP0700/CUSA03862_00/7YeqsfpCnlYOEWmOePFx8wv6bqiUdR92.png",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81dca543606a9611e8fc2"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:34:50.827Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:34:50.827Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81dd3543606a9611e8fca"
+  },
+  "_idClient": "65a57a9cc121fbd062ef1432",
+  "products": [
+    {
+      "_idProduct": "65a58532995554b4e630c5da",
+      "price": 2.3,
+      "amount": 8,
+      "nameProduct": "Pac-Man",
+      "imageProduct": "https://image.api.playstation.com/cdn/EP0700/CUSA03862_00/7YeqsfpCnlYOEWmOePFx8wv6bqiUdR92.png",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81dd3543606a9611e8fcb"
+      }
+    },
+    {
+      "_idProduct": "65a583d5995554b4e630c5c2",
+      "price": 79.95,
+      "amount": 1,
+      "nameProduct": "Mayflash Joystick F300",
+      "imageProduct": "https://www.guiahardware.es/wp-content/webp-express/webp-images/uploads/2020/06/611dDskejHL._AC_SL1500-1.jpg.webp",
+      "category_id": "659ed25f52b57986c87ca39d",
+      "_id": {
+        "$oid": "65a81dd3543606a9611e8fcc"
+      }
+    },
+    {
+      "_idProduct": "65a5833b995554b4e630c5b6",
+      "price": 69.9,
+      "amount": 2,
+      "nameProduct": "Mad Catz – Street Fighter V",
+      "imageProduct": "https://www.mandosarcades.com/wp-content/uploads/2020/09/61Ngtkr44L._AC_SL1500_.jpg",
+      "category_id": "659ed25f52b57986c87ca39d",
+      "_id": {
+        "$oid": "65a81dd3543606a9611e8fcd"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:34:59.097Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:34:59.097Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81df2543606a9611e8fd9"
+  },
+  "_idClient": "65a57a3fc121fbd062ef1425",
+  "products": [
+    {
+      "_idProduct": "65a58532995554b4e630c5da",
+      "price": 2.3,
+      "amount": 1,
+      "nameProduct": "Pac-Man",
+      "imageProduct": "https://image.api.playstation.com/cdn/EP0700/CUSA03862_00/7YeqsfpCnlYOEWmOePFx8wv6bqiUdR92.png",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fda"
+      }
+    },
+    {
+      "_idProduct": "65a585be995554b4e630c5e4",
+      "price": 5.55,
+      "amount": 1,
+      "nameProduct": "Kung Fu Remix",
+      "imageProduct": "https://th.bing.com/th/id/R.f9bef322edf329180f3b3863648b61a1?rik=9cRsAKnHElSG5w&riu=http%3a%2f%2fcache.hackedonlinegames.com%2fuploads%2fgames%2fpictures%2f660%2fpZLX8JMUY06JN.jpg&ehk=3Ng9M93Lq5BdfLQXzCFrLdWMGUdzMlJDOgvu8h68E5w%3d&risl=&pid=ImgRaw&r=0",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fdb"
+      }
+    },
+    {
+      "_idProduct": "65a58714995554b4e630c5ec",
+      "price": 8,
+      "amount": 1,
+      "nameProduct": "Metal Slug",
+      "imageProduct": "https://th.bing.com/th/id/R.0835886643c88996841a549f5122a058?rik=hx1hLWPxwmgBhQ&pid=ImgRaw&r=0",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fdc"
+      }
+    },
+    {
+      "_idProduct": "65a585fe995554b4e630c5e8",
+      "price": 7.8,
+      "amount": 1,
+      "nameProduct": "Mega Man Project X",
+      "imageProduct": "https://f4.bcbits.com/img/a3218524516_5.jpg",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fdd"
+      }
+    },
+    {
+      "_idProduct": "65a5880f995554b4e630c5f8",
+      "price": 4.1,
+      "amount": 1,
+      "nameProduct": "Pareja Player 1 Y 2 led",
+      "imageProduct": "https://www.arcadexpress.com/897-large_default/boton-player-1y-2-led-transparente.jpg",
+      "category_id": "656e28f671e0c3bcf66b75ca",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fde"
+      }
+    },
+    {
+      "_idProduct": "65a58c3a67f434341f935a54",
+      "price": 10.5,
+      "amount": 1,
+      "nameProduct": "Cajón recaudador de dinero",
+      "imageProduct": "https://www.arcadexpress.com/4793-large_default/caja-recaudacion-monedas-plastico-negra-modelo-c-maquina-recreativa.jpg",
+      "category_id": "656e28f671e0c3bcf66b75ca",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fdf"
+      }
+    },
+    {
+      "_idProduct": "65a58de267f434341f935a71",
+      "price": 10.5,
+      "amount": 1,
+      "nameProduct": "Pulsador Doble 2 en 1 PSL",
+      "imageProduct": "https://www.arcadexpress.com/6985-large_default/boton-pulsador-doble-2-en-1-psl-d-industrias-lorenzo.jpg",
+      "category_id": "656e28f671e0c3bcf66b75ca",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fe0"
+      }
+    },
+    {
+      "_idProduct": "65a58db167f434341f935a6b",
+      "price": 124.99,
+      "amount": 1,
+      "nameProduct": "Brook Fusion Universal Fighting",
+      "imageProduct": "https://www.arcadexpress.com/6730-large_default/brook-fusion-universal-fighting-board-ps5-ps4-ps3-xbox-one-xbox360-pc-nintendo-switch-neogeo-mini-ps-classic.jpg",
+      "category_id": "656e28f671e0c3bcf66b75ca",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fe1"
+      }
+    },
+    {
+      "_idProduct": "65a58cdf67f434341f935a5a",
+      "price": 14.5,
+      "amount": 1,
+      "nameProduct": "Amma 6 Botones 56 Pines",
+      "imageProduct": "https://www.arcadexpress.com/6002-large_default/cableado-arcade-jamma-6-botones-150cm-56-pines-28-pines-por-lado.jpg",
+      "category_id": "656e28f671e0c3bcf66b75ca",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fe2"
+      }
+    },
+    {
+      "_idProduct": "65a58f4967f434341f935a77",
+      "price": 660.27,
+      "amount": 1,
+      "nameProduct": "Arcade1Up PAC-MAN Deluxe",
+      "imageProduct": "https://img.pccomponentes.com/articles/1078/10789636/1142-arcade1up-maquina-arcade-pac-man-deluxe-foto.jpg",
+      "category_id": "655abbe0a628f0ea1f33cd8b",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fe3"
+      }
+    },
+    {
+      "_idProduct": "65a58fe467f434341f935a7d",
+      "price": 778.49,
+      "amount": 1,
+      "nameProduct": "Marvel vs Capcom",
+      "imageProduct": "https://ofertasdelasemana.com/225620-tm_large_default/maquina-recreativa-arcade-1-up-marvel-vs-capcom.jpg",
+      "category_id": "655abbe0a628f0ea1f33cd8b",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fe4"
+      }
+    },
+    {
+      "_idProduct": "65a5904a67f434341f935a87",
+      "price": 991.88,
+      "amount": 1,
+      "nameProduct": "Arcade Time Crisis Deluxe",
+      "imageProduct": "https://img.pccomponentes.com/articles/1078/10789639/1448-arcade1up-maquina-arcade-time-crisis-deluxe.jpg",
+      "category_id": "655abbe0a628f0ea1f33cd8b",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fe5"
+      }
+    },
+    {
+      "_idProduct": "65a5909467f434341f935a8d",
+      "price": 931.84,
+      "amount": 1,
+      "nameProduct": "Fast & the Furious Deluxe",
+      "imageProduct": "https://img.pccomponentes.com/articles/1072/10728682/1989-arcade1up-maquina-arcade-fast-the-furious-deluxe-racing-review.jpg",
+      "category_id": "655abbe0a628f0ea1f33cd8b",
+      "_id": {
+        "$oid": "65a81df2543606a9611e8fe6"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:35:30.272Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:35:30.272Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81df8543606a9611e9002"
+  },
+  "_idClient": "65a57a3fc121fbd062ef1425",
+  "products": [
+    {
+      "_idProduct": "65a5833b995554b4e630c5b6",
+      "price": 69.9,
+      "amount": 1,
+      "nameProduct": "Mad Catz – Street Fighter V",
+      "imageProduct": "https://www.mandosarcades.com/wp-content/uploads/2020/09/61Ngtkr44L._AC_SL1500_.jpg",
+      "category_id": "659ed25f52b57986c87ca39d",
+      "_id": {
+        "$oid": "65a81df8543606a9611e9003"
+      }
+    },
+    {
+      "_idProduct": "65a58532995554b4e630c5da",
+      "price": 2.3,
+      "amount": 1,
+      "nameProduct": "Pac-Man",
+      "imageProduct": "https://image.api.playstation.com/cdn/EP0700/CUSA03862_00/7YeqsfpCnlYOEWmOePFx8wv6bqiUdR92.png",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81df8543606a9611e9004"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:35:36.477Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:35:36.477Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81dfc543606a9611e900a"
+  },
+  "_idClient": "65a57a3fc121fbd062ef1425",
+  "products": [
+    {
+      "_idProduct": "65a58440995554b4e630c5ce",
+      "price": 165.69,
+      "amount": 1,
+      "nameProduct": "MAYFLASH Arcade Stick F101",
+      "imageProduct": "https://www.guiahardware.es/wp-content/webp-express/webp-images/uploads/2023/02/MAYFLASH-Arcade-Stick-F101.jpg.webp",
+      "category_id": "659ed25f52b57986c87ca39d",
+      "_id": {
+        "$oid": "65a81dfc543606a9611e900b"
+      }
+    },
+    {
+      "_idProduct": "65a58532995554b4e630c5da",
+      "price": 2.3,
+      "amount": 1,
+      "nameProduct": "Pac-Man",
+      "imageProduct": "https://image.api.playstation.com/cdn/EP0700/CUSA03862_00/7YeqsfpCnlYOEWmOePFx8wv6bqiUdR92.png",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81dfc543606a9611e900c"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:35:40.449Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:35:40.449Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81dfe543606a9611e9012"
+  },
+  "_idClient": "65a57a3fc121fbd062ef1425",
+  "products": [
+    {
+      "_idProduct": "65a58532995554b4e630c5da",
+      "price": 2.3,
+      "amount": 1,
+      "nameProduct": "Pac-Man",
+      "imageProduct": "https://image.api.playstation.com/cdn/EP0700/CUSA03862_00/7YeqsfpCnlYOEWmOePFx8wv6bqiUdR92.png",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81dfe543606a9611e9013"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:35:42.828Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:35:42.828Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a81e03543606a9611e9017"
+  },
+  "_idClient": "65a57a3fc121fbd062ef1425",
+  "products": [
+    {
+      "_idProduct": "65a585fe995554b4e630c5e8",
+      "price": 7.8,
+      "amount": 3,
+      "nameProduct": "Mega Man Project X",
+      "imageProduct": "https://f4.bcbits.com/img/a3218524516_5.jpg",
+      "category_id": "659ed26552b57986c87ca39f",
+      "_id": {
+        "$oid": "65a81e03543606a9611e9018"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:35:47.208Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:35:47.208Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a820ee543606a9611e901e"
+  },
+  "_idClient": "65a57a3fc121fbd062ef1425",
+  "products": [
+    {
+      "_idProduct": "65a5833b995554b4e630c5b6",
+      "price": 69.9,
+      "amount": 1,
+      "nameProduct": "Mad Catz – Street Fighter V",
+      "imageProduct": "https://www.mandosarcades.com/wp-content/uploads/2020/09/61Ngtkr44L._AC_SL1500_.jpg",
+      "category_id": "659ed25f52b57986c87ca39d",
+      "_id": {
+        "$oid": "65a820ee543606a9611e901f"
+      }
+    },
+    {
+      "_idProduct": "65a582c0995554b4e630c5a7",
+      "price": 100,
+      "amount": 1,
+      "nameProduct": "Real Arcade Pro 4 Kai",
+      "imageProduct": "https://www.guiahardware.es/wp-content/webp-express/webp-images/uploads/2020/06/A043719_4_1-1.jpg.webp",
+      "category_id": "659ed25f52b57986c87ca39d",
+      "_id": {
+        "$oid": "65a820ee543606a9611e9020"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-01-17T18:48:14.945Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-17T18:48:14.945Z"
+  },
+  "__v": 0
+}]
