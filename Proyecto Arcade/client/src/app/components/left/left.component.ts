@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoriesComponent } from '../categories/categories.component';
 
@@ -11,6 +11,16 @@ import { CategoriesComponent } from '../categories/categories.component';
 })
 
 export class LeftComponent {
+  @Output() categoriaEnviada = new EventEmitter<string>();
+  public idCate: String;
 
+  constructor(){
+    this.idCate = '';
+  }
+
+  RecibirCategoria(id: any){
+    //this.idCategory = id;
+    this.categoriaEnviada.emit(id);
+  }
   
 }
