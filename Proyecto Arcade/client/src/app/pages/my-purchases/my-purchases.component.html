@@ -31,7 +31,7 @@
                 <p class="text-sm">{{ product.nameProduct }} - {{ product.amount }} unidades - {{ product.price }}€ cada una</p>
               </div>
             </div>
-            <p class="mt-2">Total: {{ calculateTotal(purchase.products) }}€</p>
+            <p class="mt-2">Total: {{ calculateTotal(purchase.products) | currency: 'EUR' }}</p>
           </div>
         </div>
       </div>
