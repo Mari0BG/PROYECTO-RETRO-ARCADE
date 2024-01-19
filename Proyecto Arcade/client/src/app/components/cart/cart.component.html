@@ -2,7 +2,7 @@
     <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white hover:no-underline" (click)="MostrarOcultar('carromato')" style="user-select: none;"> MY CART    <i style="margin-left: 10px;" class="fa fa-cart-plus"></i></h5>
     <button (click)="ClearCart()" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"> Clear </button>
 </div>
-<div id="carromato" style="display: flex; display: none;">
+<div id="carromato" style="display: flex; display: none;" class="w-86">
     <div class="text-lg font-medium text-gray-900 truncate dark:text-white" style="text-align: center;" *ngIf="products.length==0">
         Your cart is empty
     </div>
