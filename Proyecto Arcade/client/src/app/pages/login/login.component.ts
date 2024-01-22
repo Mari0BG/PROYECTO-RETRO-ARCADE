@@ -33,7 +33,7 @@ export default class LoginComponent {
         localStorage.setItem("user_role", res.data.isAdmin)
         localStorage.setItem("user_img", res.data.profileImage)
         this.authService.isLoggedIn$.next(true)
-        this.authService.isAdmin$.next(true)
+        this.authService.setAdminStatus(res.data.isAdmin);
         this.router.navigate(['home'])
         this.loginForm.reset()
       },

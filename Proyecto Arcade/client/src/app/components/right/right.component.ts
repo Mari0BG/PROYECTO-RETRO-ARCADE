@@ -7,11 +7,12 @@ import { BuyService } from 'src/app/services/buy.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
 import CartComponent from '../cart/cart.component';
+import { ClientRankingComponent } from '../client-ranking/client-ranking.component';
 
 @Component({
   selector: 'app-right',
   standalone: true,
-  imports: [CommonModule, CartComponent],
+  imports: [CommonModule, CartComponent, ClientRankingComponent],
   templateUrl: './right.component.html',
   styleUrls: ['./right.component.css']
 })
