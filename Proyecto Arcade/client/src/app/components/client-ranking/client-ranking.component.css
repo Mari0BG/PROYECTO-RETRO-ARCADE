@@ -1,0 +1,15 @@
+.w-96::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores WebKit */
+}
+
+* {
+    scrollbar-width: none;
+}
+
+.grid::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores WebKit */
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Color del 'thumb' de la barra de desplazamiento */
+}

@@ -28,6 +28,7 @@ export default class MyPurchasesComponent {
         (userCarts) => {
           this.purchases = userCarts;
           this.calculateMoneySpent();
+          this.calculateTotalQuantity2()
           console.log(this.purchases);
         },
         (error) => {
@@ -65,11 +66,30 @@ export default class MyPurchasesComponent {
       return total + purchaseTotal;
     }, 0);
   }
-
+  totalQuantity: number = 0; 
   total: number = 0
 
   // Metodo para recoger el total gastado
   calculateMoneySpent() {
     this.total = this.calculateTotalSpend(this.purchases)
+  }
+
+  calculateTotalQuantity2() {
+    this.totalQuantity = this.calculateTotalQuantity(this.purchases);
+  }
+
+  calculateTotalQuantity(purchases: any[]): number {
+    return purchases.reduce((total, purchase) => {
+      const products: any[] = purchase.products;
+      const purchaseQuantity = products.reduce((purchaseQuantity, product) => {
+        if (product.amount !== undefined) {
+          return purchaseQuantity + product.amount;
+        } else {
+          console.warn('Advertencia: amount no está definido para un producto.');
+          return purchaseQuantity;
+        }
+      }, 0);
+      return total + purchaseQuantity;
+    }, 0);
   }
 }

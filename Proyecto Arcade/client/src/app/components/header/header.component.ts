@@ -14,18 +14,19 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private searchService: SearchService ) { }
 
   isLoggedIn: boolean = false
-  isAdmin: boolean = false
+  isAdmin?: boolean;
 
   logout() {
     localStorage.removeItem("user_id")
     localStorage.removeItem("user_role")
     localStorage.clear()  // BORRA TODO EL LOCAL STORAGE
     this.authService.isLoggedIn$.next(false)
-    this.authService.isAdmin$.next(false)
+    this.authService.setAdminStatus(false);  // Establecer el estado de administrador como falso
   }
 
   adminControl() {
@@ -44,10 +45,8 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = this.authService.isLoggedIn();
       
     });
-  
-    this.authService.isAdmin$.subscribe(res => {
-      this.isAdmin = this.authService.isAdmin();
-      console.log(this.isAdmin); // Agregar esta línea para depurar
+    this.authService.isAdmin$.subscribe(isAdmin => {
+      this.isAdmin = isAdmin;
     });
   }
   

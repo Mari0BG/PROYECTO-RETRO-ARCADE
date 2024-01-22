@@ -7,9 +7,18 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
   providedIn: 'root'
 })
 export class AuthService {
-
+  
+  private isAdminSubject = new BehaviorSubject<boolean>(false);
+  isAdmin$ = this.isAdminSubject.asObservable();
   // Inyectar HttpClient directamente en el constructor
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+        const storedUserRole = localStorage.getItem("user_role");
+    
+        if (storedUserRole) {
+          this.isAdminSubject.next(storedUserRole === 'true');
+        }
+      }
+  
 
   registerService(registerObj: any) {
     return this.http.post<any>(`${apiUrls.authServiceApi}register`, registerObj);
@@ -38,7 +47,10 @@ export class AuthService {
 
 
 
-  isAdmin$ = new BehaviorSubject<boolean>(false)
+  setAdminStatus(isAdmin: boolean): void {
+    this.isAdminSubject.next(isAdmin);
+  }
+
   isLoggedIn$ = new BehaviorSubject<boolean>(false)
 
   // Para poder coger el ID del usuario logeado
