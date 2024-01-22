@@ -7,7 +7,7 @@
         <span class="inline-block">Bienvenido</span>
         <img *ngIf="userImg" [src]="userImg" alt="User Image" class="w-10 h-10 rounded-full mx-2">
         <span class="inline-block border-r pr-2 mr-2">{{ username }}, estas son tus compras</span>
-        <span class="inline-block pl-2 pr-2 border-r">{{ total }}€ gastados</span>
+        <span class="inline-block pl-2 pr-2 border-r">{{ total | currency: 'EUR' }} gastados</span>
         <span class="inline-block pl-2">{{ totalQuantity }} productos comprados</span>
       </span>
     </h1>
