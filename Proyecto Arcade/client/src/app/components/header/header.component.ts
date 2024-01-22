@@ -36,9 +36,6 @@ export class HeaderComponent implements OnInit {
   miscompras(){
     this.router.navigate(['my-purchases'])
   }
-  analytics(){
-    this.router.navigate(['analytics'])
-  }
 
   ngOnInit(): void {
     this.authService.isLoggedIn$.subscribe(res => {
