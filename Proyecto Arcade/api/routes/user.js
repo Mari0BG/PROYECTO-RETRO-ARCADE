@@ -8,7 +8,7 @@ const router = express.Router()
 router.get('/', getAllUsers )   // se verifica el token y solo puede entrar usuario admin
 
 //get by id
-router.get('/:id',verifyUser, getById )  // se verifica que el usuario logado es el unico que puede acceder a su perfil
+router.get('/:id', getById )  // se verifica que el usuario logado es el unico que puede acceder a su perfil
 
 router.put('/:id', updateUserById)
 

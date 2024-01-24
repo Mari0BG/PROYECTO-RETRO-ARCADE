@@ -13,7 +13,7 @@ export class UserService {
 
   // Metodo para traer a usuario especifico
   getUserById(userId: string){
-    return this.http.get<User>(`${apiUrls.userServiceApi}getById/${userId}`);
+    return this.http.get<User>(`${apiUrls.userServiceApi}/${userId}`);
   }
 
   // Metodo para traer todos usuarios
