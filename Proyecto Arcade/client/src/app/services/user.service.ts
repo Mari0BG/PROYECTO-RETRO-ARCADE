@@ -11,22 +11,27 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  // Metodo para traer a usuario especifico
   getUserById(userId: string){
     return this.http.get<User>(`${apiUrls.userServiceApi}getById/${userId}`);
   }
 
+  // Metodo para traer todos usuarios
   getAllUsers(){
     return this.http.get<User[]>(`${apiUrls.userServiceApi}getAll`);
   }
 
+  // Metodo para crear usuario
   createUser(user: User) {
     return this.http.post(`${apiUrls.userServiceApi}create`, user);
   }
 
+  // Metodo para actualizar usuario
   updateUser(user: User){
     return this.http.put(`${apiUrls.userServiceApi}${user._id}`, user);
   }
 
+  // Metodo para eliminar usuario
   deleteUser(userId: string) {
     return this.http.delete(`${apiUrls.userServiceApi}${userId}`);
   }
