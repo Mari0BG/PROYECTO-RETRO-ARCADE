@@ -2,6 +2,7 @@ import Product from '../models/Product.js'
 import { CreateError } from "../utils/error.js"
 import { CreateSuccess } from "../utils/success.js"
 
+// Crear un producto
 export const createProduct = async (req, res, next) => {
     try {
         if (req.body.name && req.body.name != '') {
@@ -17,6 +18,7 @@ export const createProduct = async (req, res, next) => {
     }
 }
 
+// Actualizar un producto
 export const updateProduct = async (req, res, next) => {
     try {
         const product = await Product.findById({_id: req.params.id})
@@ -56,6 +58,7 @@ export const updateProductStock = async (req, res, next) => {
     }
 }
 
+// Obtener todos los productos
 export const getAllProducts = async (req, res, next) => {
     try {
         const products = await Product.find({})
@@ -65,6 +68,7 @@ export const getAllProducts = async (req, res, next) => {
     }
 }
 
+// Eliminar un producto
 export const deleteProduct = async (req, res, next) => {
     try {
         const productId = req.params.id

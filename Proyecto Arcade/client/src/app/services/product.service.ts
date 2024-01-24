@@ -16,22 +16,27 @@ export class ProductService {
     this.products = [];
   }
 
+  // Metodo para mostrar un producto
   showProduct(product: Product){
     return this.http.get(`${apiUrls.productServiceApi}get/${product._id}`);
   }
 
+  // Metodo para mostrar todos los productos
   showProducts(){
     return this.http.get(`${apiUrls.productServiceApi}getAll`);
   }
 
+  // Metodo para crear producto
   createProduct(product: Product){
     return this.http.post(`${apiUrls.productServiceApi}create`, product);
   }
 
+  // Metodo para actualizar producto
   updateProduct(product: Product){
     return this.http.put(`${apiUrls.productServiceApi}update/${product._id}`, product);
   }
 
+  // Metodo para borrar producto
   deleteProduct(_id: String){
     return this.http.delete(`${apiUrls.productServiceApi}delete/${_id}`);
   }
