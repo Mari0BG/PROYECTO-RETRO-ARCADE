@@ -27,6 +27,7 @@ export default class ForgetPasswordComponent implements OnInit{
       email: ['', Validators.compose([Validators.required, Validators.email])]
     })
   }
+  
   submit() {
     console.log(this.forgetForm.value);
   

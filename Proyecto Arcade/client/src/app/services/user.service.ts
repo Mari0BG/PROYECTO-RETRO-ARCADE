@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   // Metodo para traer a usuario especifico
-  getUserById(userId: string){
+  getUserById(userId: String){
     return this.http.get<User>(`${apiUrls.userServiceApi}/${userId}`);
   }
 
@@ -32,7 +32,7 @@ export class UserService {
   }
 
   // Metodo para eliminar usuario
-  deleteUser(userId: string) {
+  deleteUser(userId: String) {
     return this.http.delete(`${apiUrls.userServiceApi}${userId}`);
   }
 }
