@@ -46,7 +46,6 @@ export class ClientRankingComponent implements OnInit {
           const userName = user ? user.name : 'Usuario Desconocido';
           const userId = this.purchase[index]._idClient;
       
-          console.log('userName', userName);
       
           if (!userPurchaseCount[userId]) {
             userPurchaseCount[userId] = { name: userName as string, count: 1 };
@@ -55,7 +54,6 @@ export class ClientRankingComponent implements OnInit {
           }
         });
       
-        console.log('userPurchaseCount', userPurchaseCount);
       
         this.userRanking = Object.keys(userPurchaseCount).map(userId => ({
           userId,
