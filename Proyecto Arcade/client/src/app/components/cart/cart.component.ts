@@ -56,8 +56,6 @@ export default class CartComponent {
           console.log('Compra realizada con éxito:', response);
           this.updateStockAfterPurchase(transformedProducts);
           this.ClearCart();
-          // Recargar la pagina home
-          window.location.reload();
         },
         (error) => {
           console.error('Error al realizar la compra:', error);
@@ -137,5 +135,11 @@ export default class CartComponent {
     }
   }
 
+  // Cerrar popup y recargar
+  ClosePopUp(){
+    this.isPopupPurchase = false
+    // Recargar la pagina home
+    window.location.reload();
+  }
   
 }
