@@ -15,8 +15,8 @@ export class AdminControlService {
   constructor(private http: HttpClient) {}
 
   showUsers(){
-    return this.http.get<any>(`${apiUrls.userServiceApi}` );
+    return this.http.get<any>(`${apiUrls.userServiceApi}/getAll` );
   }
 
-  
+
 }
