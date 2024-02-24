@@ -15,8 +15,8 @@ export const createRating = async (req, res, next) => {
 export const updateRating = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { rating } = req.body;
-        await Rating.findByIdAndUpdate(id, { rating });
+        const { rating, coment } = req.body;
+        await Rating.findByIdAndUpdate(id, { rating,coment });
         res.status(200).json({ message: 'Rating updated successfully' });
     } catch (error) {
         next(error);

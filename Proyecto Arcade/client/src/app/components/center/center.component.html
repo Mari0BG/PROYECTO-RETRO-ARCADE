@@ -21,24 +21,32 @@
           <a >
             <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white pt-1.5">{{producto.name}}</h5>
           </a>
-                        <!--VALORACIONES-->
-             <div class="flex items-center space-x-1 rtl:space-x-reverse text-white font-mediumtext-sm ">
 
-                <i class='fa fa-star' style='font-size:16px'></i>
-                <i class='fa fa-star-o' style='font-size:16px'></i>
-                <i class='fa fa-star' style='font-size:16px'></i>
-                <i class='fa fa-star-o' style='font-size:16px'></i>
-                <i class='fa fa-star-o' style='font-size:16px'></i>
-                <i>(0)</i>
-                          
-              </div>
-                        <!--VALORACIONES-->
+                <!--VALORACIONES-->
+                <div class="flex items-center space-x-1 rtl:space-x-reverse text-white font-mediumtext-sm">
+                  <button (click)="openRatingModal(producto)">
+                    <ng-container *ngIf="totalAmount2(producto) > 0; else noRating">
+                      <ng-container *ngFor="let index of getRange(5)">
+                        <i class="fa" [ngClass]="getStarIcon(totalAmount2(producto), index)" style="font-size:16px"></i>
+                      </ng-container>
+                      <span> - {{ totalAmount(producto) }} </span>
+                    </ng-container>
+                  </button>
+
+                  <ng-template #noRating>
+                    <i class='fa fa-star-o' style='font-size:16px'></i>
+                    <i class='fa fa-star-o' style='font-size:16px'></i>
+                    <i class='fa fa-star-o' style='font-size:16px'></i>
+                    <i class='fa fa-star-o' style='font-size:16px'></i>
+                    <i class='fa fa-star-o' style='font-size:16px'></i>
+                    <span> - Sin valoraciones</span>
+                  </ng-template>
+                </div>
+
           <div class="flex items-center mt-2.5 mb-5">
-
             <div class="flex items-center space-x-1 rtl:space-x-reverse text-white font-mediumtext-sm ">
               Stock: {{ producto.stock}}
             </div>
-
           </div>
           <div class="flex items-center justify-between">
             <span class="text-3xl font-bold text-gray-900 dark:text-white">{{producto.price}}€</span>
@@ -46,5 +54,29 @@
           </div>
         </div>
       </div>
+  </div>
+</div>
+
+<!--RATING MODAL-->
+<div *ngIf="isRatingModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+  <div class="bg-white p-6 rounded-lg shadow-md w-96">
+
+    <label for="editedClientIsAdmin">Puntua el producto</label>
+    <select id="editedClientIsAdmin" [(ngModel)]="rating" class="w-full border rounded px-3 py-2 mb-3">
+      <option value="1">&#9733;</option>
+      <option value="2">&#9733;&#9733;</option>
+      <option value="3">&#9733;&#9733;&#9733;</option>
+      <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+      <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+    </select>
+
+    <!-- Caja de texto para el comentario -->
+    <textarea [(ngModel)]="comment" class="w-full border rounded px-3 py-2" placeholder="Escribe un comentario..."></textarea>
+
+    <div class="flex justify-end mt-3">
+      <!-- Botones de guardar y cancelar -->
+      <button (click)="saveRating()" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
+      <button (click)="closeRatingModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
+    </div>
   </div>
 </div>

@@ -6,6 +6,9 @@ import { ProductService } from'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { SearchService } from 'src/app/services/search.service';
 import { ElementSchemaRegistry } from '@angular/compiler';
+import { RatingService } from 'src/app/services/rating.service';
+import { Rating } from 'src/app/models/rating';
+import { of, switchMap } from 'rxjs';
 @Component({
   selector: 'app-center',
   standalone: true,
@@ -18,9 +21,15 @@ export default class CenterComponent {
 
   @Input() idCategory: String;
 
-  constructor(public productService: ProductService, private cartService: CartService, private searchService: SearchService) {
+  constructor(public ratingService: RatingService,public productService: ProductService, private cartService: CartService, private searchService: SearchService) {
     this.idCategory = "655abbdba628f0ea1f33cd89"; 
     
+  }
+  ratings: Rating[] = [];
+  loadRatings() {
+    this.ratingService.getAllRatings().subscribe((res) => {
+      this.ratings = res as Rating[];
+    });
   }
 
   ngOnInit(): void {
@@ -29,6 +38,7 @@ export default class CenterComponent {
     this.searchService.searchQuery$.subscribe(query => {
       this.searchQuery = query;
     });
+    this.loadRatings();
   }
 
   shouldDisplayProduct(producto: any): String{
@@ -93,4 +103,147 @@ export default class CenterComponent {
     this.cartService.addNewProduct(product);
   }
 
+  //MODAL RATING
+  isRatingModalOpen:boolean=false
+  rating="5"
+  comment=""
+  productForRating?: Product
+  ratingAmount=""
+
+  totalAmount(product: Product) {
+    let total = 0;
+
+    this.ratings.forEach((res2) => {
+      if (res2._idProduct === product._id) {
+        total++;
+      }
+    });
+
+    return "- "+total+" valoraciones";
+  }
+
+  totalAmount2(producto: any): number {
+    const productRatings = this.ratings.filter(rating => rating._idProduct === producto._id);
+    const totalRatings = productRatings.length;
+
+    if (totalRatings === 0) {
+      return 0;
+    }
+
+    const totalStars = productRatings.reduce((accumulator, currentRating) => accumulator + parseFloat(currentRating.rating.toString()), 0);
+    const average = totalStars / totalRatings;
+
+    return average;
+  }
+
+  getStarIcon(rating: number, index: number): string {
+    const fullStars = Math.floor(rating);
+    const halfStars = Math.ceil(rating - fullStars);
+
+    if (index < fullStars) {
+      return 'fa fa-star';
+    } else if (index === fullStars && halfStars === 1) {
+      return 'fa fa-star-half-o';
+    } else {
+      return 'fa fa-star-o';
+    }
+  }
+
+  // Método para crear un array de índices con la longitud deseada
+  getRange(length: number): any[] {
+    return Array.from({ length }, (_, index) => index);
+  }
+
+  openRatingModal(product: Product){
+    this.productForRating=product
+    console.log(this.productForRating)
+
+    const uid = localStorage.getItem("user_id");
+    if(uid){
+      this.ratingService.getAllRatingsByUserId(uid).subscribe(res=>{
+        const userRating = res as Rating[]
+        userRating.forEach(res2=>{
+          if(res2._idProduct==product._id){
+            this.rating=res2.rating.toString()
+            this.comment=res2.coment.toString()
+          }
+        })
+      })
+
+    }
+
+    this.isRatingModalOpen=true
+  }
+  closeRatingModal(){
+    this.rating="5"
+    this.comment=""
+    this.productForRating= new Product
+    this.isRatingModalOpen=false
+    window.location.reload();
+  }
+  saveRating() {
+    const pid = this.productForRating?._id; // Esto tiene el id del producto
+    const uid = localStorage.getItem("user_id"); // Esto tiene el id del usuario
+  
+    // Verificar que pid y uid no sean nulos o indefinidos
+    if (pid && uid) {
+      // Verificar si el usuario ya ha calificado el producto
+      this.ratingService.getAllRatingsByUserId(uid).subscribe(
+        (userRatings: Rating[]) => {
+          const existingRating = userRatings.find(rating => rating._idProduct === pid);
+  
+          if (existingRating) {
+            console.log(`El usuario ya ha calificado el producto con _idProduct: ${pid}`);
+            // Actualizar el rating existente en lugar de crear uno nuevo
+
+            const updatedRating: Rating = {
+              _id: existingRating._id, 
+              _idProduct: existingRating._idProduct,
+              _idUser: existingRating._idUser,
+              rating: this.rating.toString(),
+              coment: this.comment.toString()
+            };
+           
+            this.ratingService.updateRating(updatedRating).subscribe(
+              (updatedRating: Rating) => {
+                console.log("Rating actualizado:", updatedRating);
+              },
+              (error: any) => {
+                console.error("Error al actualizar el rating:", error);
+              }
+            );
+            this.closeRatingModal();
+          } else {
+            // Crear un nuevo rating
+            const newRating: Rating = {
+              _idProduct: pid,
+              _idUser: uid,
+              rating: this.rating.toString(),
+              coment: this.comment
+            };
+  
+            // Guardar el nuevo rating en la base de datos
+            this.ratingService.createRating(newRating).subscribe(
+              (createdRating: Rating) => {
+                console.log("Nuevo rating creado:", createdRating);
+              },
+              (error: any) => {
+                console.error("Error al crear el nuevo rating:", error);
+              }
+            );
+            this.closeRatingModal();
+          }
+        },
+        (error: any) => {
+          console.error("Error al obtener los ratings del usuario:", error);
+          this.closeRatingModal();
+        }
+      );
+    } else {
+      console.error("Error: pid o uid es nulo o indefinido.");
+    }
+  }
+  
+  
+  
 }
