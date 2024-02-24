@@ -21,11 +21,24 @@
           <a >
             <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white pt-1.5">{{producto.name}}</h5>
           </a>
+                        <!--VALORACIONES-->
+             <div class="flex items-center space-x-1 rtl:space-x-reverse text-white font-mediumtext-sm ">
+
+                <i class='fa fa-star' style='font-size:16px'></i>
+                <i class='fa fa-star-o' style='font-size:16px'></i>
+                <i class='fa fa-star' style='font-size:16px'></i>
+                <i class='fa fa-star-o' style='font-size:16px'></i>
+                <i class='fa fa-star-o' style='font-size:16px'></i>
+                <i>(0)</i>
+                          
+              </div>
+                        <!--VALORACIONES-->
           <div class="flex items-center mt-2.5 mb-5">
+
             <div class="flex items-center space-x-1 rtl:space-x-reverse text-white font-mediumtext-sm ">
-              <!-- Tus íconos de clasificación aquí -->
               Stock: {{ producto.stock}}
             </div>
+
           </div>
           <div class="flex items-center justify-between">
             <span class="text-3xl font-bold text-gray-900 dark:text-white">{{producto.price}}€</span>

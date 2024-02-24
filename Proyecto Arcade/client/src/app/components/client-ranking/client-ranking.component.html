@@ -1,11 +1,11 @@
-<!-- app-customer-info.component.html -->
 <div class="fixed bottom-10 right-0 mb-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-indigo-400 w-96">
     <h6 class="text-sm font-semibold text-gray-700 mb-1 dark:text-white">Ranking de clientes</h6>
-    <!-- Itera sobre el array userRanking -->
     <div *ngFor="let user of userRanking; let i = index" class="flex items-center mt-1">
-      <div [class]="getRankingClass(i + 1)">{{ i + 1 }}</div>
-      <div class="text-sm">{{ user.purchaseCount.name }} - Compras: {{ user.purchaseCount.count }}</div>
+      <ng-container *ngIf="i<=2">
+        <div [class]="getRankingClass(i + 1)">{{ i + 1 }}</div>
+        <div class="text-sm">{{ user.purchaseCount.name }} - Compras: {{ user.purchaseCount.count }}</div>
+      </ng-container>
     </div>
     <i *ngIf="userRanking.length == 0"> No hay compras realizadas por los usuarios.</i>
-  </div>
+</div>
 

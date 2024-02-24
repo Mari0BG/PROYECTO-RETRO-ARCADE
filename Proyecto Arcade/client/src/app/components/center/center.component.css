@@ -13,3 +13,8 @@
 div::-webkit-scrollbar-thumb {
     background-color: transparent; /* Color del 'thumb' de la barra de desplazamiento */
 }
+.separator {
+    width: 100%;
+    border-top: 1px solid black; /* Puedes ajustar el color y el grosor según tus preferencias */
+    margin: 10px 0; /* Puedes ajustar el margen superior e inferior según tus preferencias */
+}

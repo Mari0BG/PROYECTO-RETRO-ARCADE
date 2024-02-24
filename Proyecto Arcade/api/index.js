@@ -7,6 +7,7 @@ import categoryRoute from './routes/category.js'
 import authRoute from './routes/auth.js'
 import userRoute from './routes/user.js'
 import buyRoute from './routes/buy.js'
+import ratingRoute from "./routes/rating.js"
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 
@@ -25,6 +26,7 @@ app.use("/api/product", productRoute)
 app.use("/api/auth", authRoute)
 app.use("/api/user", userRoute)
 app.use("/api/buy", buyRoute)
+app.use("/api/rating", ratingRoute)
 
 // RESPONSE HANDLER MIDDLEWARE
 app.use((obj, req, res, next)=>{
