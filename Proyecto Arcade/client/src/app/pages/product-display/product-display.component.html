@@ -23,11 +23,14 @@
 <div class="mt-8 ml-3">
   <h2 class="text-xl font-bold mb-4">Valoraciones:</h2>
   <div class="flex overflow-x-auto">
-    <div class="flex-shrink-0 w-64 mr-6 mb-2 ml-3" *ngFor="let comentario of comentarios">
+    <div class="flex-shrink-0 w-96 mr-6 mb-2 ml-3" *ngFor="let comentario of ratingProd, let i = index">
       <div class="p-4 bg-white rounded shadow-md">
-        <h3 class="text-xl font-bold">{{ comentario.usuario }}</h3>
-        <p class="mt-2">{{ comentario.texto }}</p>
+       <!-- <h3 class="text-xl font-bold">{{ getUserName(comentario._idUser) }}</h3>-->
+        <h3 class="text-xl font-bold">{{ comentario._idUser }}</h3>
+        <i *ngFor="let starClass of getStarClasses(comentario.rating.toString())" class="fa" [ngClass]="starClass" style="font-size:16px"></i>
+        <p class="mt-2">{{ comentario.coment }}</p>
       </div>
     </div>
   </div>
 </div>
+

@@ -55,6 +55,17 @@ export const getAllRatingsByUserId = async (req, res, next) => {
     }
 };
 
+// Obtener todos los ratings de un usuario por su _idUser
+export const getAllRatingsByProductId = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const ratings = await Rating.find({ _idProduct: id });
+        res.status(200).json(ratings);
+    } catch (error) {
+        next(error);
+    }
+};
+
 // Borrar un rating por su ID
 export const deleteRating = async (req, res, next) => {
     try {
