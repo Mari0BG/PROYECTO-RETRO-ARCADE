@@ -9,6 +9,7 @@ import { ElementSchemaRegistry } from '@angular/compiler';
 import { RatingService } from 'src/app/services/rating.service';
 import { Rating } from 'src/app/models/rating';
 import { of, switchMap } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-center',
   standalone: true,
@@ -21,9 +22,9 @@ export default class CenterComponent {
 
   @Input() idCategory: String;
 
-  constructor(public ratingService: RatingService,public productService: ProductService, private cartService: CartService, private searchService: SearchService) {
-    this.idCategory = "655abbdba628f0ea1f33cd89"; 
-    
+  constructor(public router: Router,public ratingService: RatingService,public productService: ProductService, private cartService: CartService, private searchService: SearchService) {
+    this.idCategory = "655abbdba628f0ea1f33cd89";
+
   }
   ratings: Rating[] = [];
   loadRatings() {
@@ -53,7 +54,7 @@ export default class CenterComponent {
     })
   }
 
-  selectedSort: string = 'default'; 
+  selectedSort: string = 'default';
 
   // Metodo para cambiar por lo que voy a filtrar
   changeSort(sortOption: string): void {
@@ -68,23 +69,23 @@ export default class CenterComponent {
     let filteredProducts = this.activeProducts.filter(product => product.cancelproduct !== true
       && product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
-    
+
     // Aplico los filtros de ordenacion, filtrando dependiendo lo que le indique
     if (this.selectedSort === 'name') {
       return filteredProducts.sort((a, b) => a.name.toString().localeCompare(b.name.toString()));
-    } 
+    }
     else if (this.selectedSort === 'priceAlto') {
       return filteredProducts.sort((a, b) => b.price - a.price);
-    } 
+    }
     else if (this.selectedSort === 'priceBajo') {
       return filteredProducts.sort((a, b) => a.price - b.price);
-    } 
+    }
     else if (this.selectedSort === 'stockmayor') {
       return filteredProducts.sort((a, b) => b.stock - a.stock);
-    } 
+    }
     else if (this.selectedSort === 'stockmenos') {
       return filteredProducts.sort((a, b) => a.stock - b.stock);
-    } 
+    }
     else {
       // Aqui devuelvo el orden por defecto de los productos
       return filteredProducts;
@@ -96,11 +97,17 @@ export default class CenterComponent {
     return this.productService.products.filter(product => product.cancelproduct !== true);
   }
 
-  
+
 
   // Metodo para aniadir un producto al carrito a traves de añadirlo en el observable
   AddProductToCart(product: Product){
     this.cartService.addNewProduct(product);
+  }
+
+  displayProduct(product: Product){
+    let subirprod = JSON.stringify(product);
+    localStorage.setItem('productDisplay', subirprod)
+    this.router.navigate(['product-display'])
   }
 
   //MODAL RATING
@@ -184,26 +191,26 @@ export default class CenterComponent {
   saveRating() {
     const pid = this.productForRating?._id; // Esto tiene el id del producto
     const uid = localStorage.getItem("user_id"); // Esto tiene el id del usuario
-  
+
     // Verificar que pid y uid no sean nulos o indefinidos
     if (pid && uid) {
       // Verificar si el usuario ya ha calificado el producto
       this.ratingService.getAllRatingsByUserId(uid).subscribe(
         (userRatings: Rating[]) => {
           const existingRating = userRatings.find(rating => rating._idProduct === pid);
-  
+
           if (existingRating) {
             console.log(`El usuario ya ha calificado el producto con _idProduct: ${pid}`);
             // Actualizar el rating existente en lugar de crear uno nuevo
 
             const updatedRating: Rating = {
-              _id: existingRating._id, 
+              _id: existingRating._id,
               _idProduct: existingRating._idProduct,
               _idUser: existingRating._idUser,
               rating: this.rating.toString(),
               coment: this.comment.toString()
             };
-           
+
             this.ratingService.updateRating(updatedRating).subscribe(
               (updatedRating: Rating) => {
                 console.log("Rating actualizado:", updatedRating);
@@ -221,7 +228,7 @@ export default class CenterComponent {
               rating: this.rating.toString(),
               coment: this.comment
             };
-  
+
             // Guardar el nuevo rating en la base de datos
             this.ratingService.createRating(newRating).subscribe(
               (createdRating: Rating) => {
@@ -243,7 +250,7 @@ export default class CenterComponent {
       console.error("Error: pid o uid es nulo o indefinido.");
     }
   }
-  
-  
-  
+
+
+
 }
