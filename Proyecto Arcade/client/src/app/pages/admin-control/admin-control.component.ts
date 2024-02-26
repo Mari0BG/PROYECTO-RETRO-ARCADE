@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router,RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
@@ -34,7 +34,7 @@ export default class AdminControlComponent {
 
   categories: any[] = [];
 
-  constructor(public productService: ProductService, public adminControlService: AdminControlService, public categoryService: CategoryService, public userService: UserService) {
+  constructor(public productService: ProductService, private router: Router, public adminControlService: AdminControlService, public categoryService: CategoryService, public userService: UserService) {
     this.filteredProducts = [...this.productService.products];
    }
 
@@ -431,5 +431,11 @@ export default class AdminControlComponent {
       this.categoryService.categories = res as Category[];
       this.categories = [...this.categoryService.categories]; 
     });
+  }
+
+
+  // Ver proveedores
+  providerControl() {
+    this.router.navigate(['providers'])
   }
 }

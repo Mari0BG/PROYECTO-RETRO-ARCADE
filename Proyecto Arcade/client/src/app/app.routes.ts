@@ -9,5 +9,6 @@ export const routes: Routes = [
     {path: 'admin-control', loadComponent: () => import ('./pages/admin-control/admin-control.component')},
     {path: 'my-purchases', loadComponent: () => import ('./pages/my-purchases/my-purchases.component')},
     {path: 'reset/:token', loadComponent: () => import ('./pages/reset/reset.component')},
+    {path: 'providers', loadComponent: () => import ('./pages/provider/provider.component')},
     
 ];

@@ -1,24 +1,27 @@
-<!-- admin-control.component.html -->
-<div class="flex items-center justify-center space-x-4 mt-4 mb-2">
-  <button type="button" (click)="providerControl()" routerLink="/providers" class="text-white font-mediumtext-sm focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none dark:focus:ring-indigo-500">Ver Proveedores</button>
-</div>
+
 <div class="flex">
-    <!-- Clients Section -->
+    <!-- Providers Section -->
     <div class="w-1/2 p-4">
-      <h2 class="text-3xl font-semibold mb-6"><i class="fa fa-drivers-license" style="font-size: 30px;" aria-hidden="true"> Clientes</i></h2>
+      <h2 class="text-3xl font-semibold mb-6"><i class="fa fa-drivers-license" style="font-size: 30px;" aria-hidden="true"> Proveedores</i></h2>
       <div class="flex items-center mb-4">
-        <input type="text" [(ngModel)]="clientSearch" placeholder="Buscar Cliente" class="p-2 border rounded mr-2">
+        <input type="text" [(ngModel)]="providerSearch" placeholder="Buscar Proveedor" class="p-2 border rounded mr-2">
+        <button (click)="addProvider()" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Agregar Proveedor</button>
       </div>
       <div style="max-height: 73vh; overflow: auto; scrollbar-width: thin; overflow-x: hidden;">
         <ul class="space-y-4">
-          <li *ngFor="let client of filteredClients" class="flex items-center justify-between border-b pb-2">
-            <span class="text-lg">{{ client.name }}</span>
-            <div class="space-x-2">
-              <button (click)="openEditClientModal(client)" class="text-blue-500 hover:underline"><i class="fa fa-edit" style="font-size: 30px;" aria-hidden="true"></i></button>
-              <button (click)="deleteClient(client)" class="text-red-500 hover:underline"><i class="fa fa-close" style="font-size: 36px;" aria-hidden="true"></i></button>
-              <!-- Agregar más botones CRUD según tus necesidades -->
-            </div>
-          </li>
+            <ng-container *ngIf="filteredProviders.length > 0; else noProviders">
+                <li *ngFor="let provider of filteredProviders" class="flex items-center justify-between border-b pb-2">
+                    <span class="text-lg">{{ provider.name }}</span>
+                    <div class="space-x-2">
+                    <button (click)="openEditProviderModal(provider)" class="text-blue-500 hover:underline"><i class="fa fa-edit" style="font-size: 30px;" aria-hidden="true"></i></button>
+                    <button (click)="deleteProvider(provider)" class="text-red-500 hover:underline"><i class="fa fa-close" style="font-size: 36px;" aria-hidden="true"></i></button>
+                    <!-- Agregar más botones CRUD según tus necesidades -->
+                    </div>
+                </li>
+            </ng-container>
+            <ng-template #noProviders>
+              <li class="text-gray-500">No se encontraron proveedores.</li>
+            </ng-template>
         </ul>
       </div>
     </div>
@@ -45,36 +48,53 @@
     </div>
   </div>
 
-<!-- Edit Client Modal -->
-<!-- Your edit client form goes here -->
-<div *ngIf="isEditClientModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+<!-- EDIT PROVIDER MODAL -->
+<div *ngIf="isEditProviderModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
     <div class="bg-white p-6 rounded-lg shadow-md w-96">
-      <h2 class="text-2xl font-semibold mb-4">Editar Cliente</h2>
+      <h2 class="text-2xl font-semibold mb-4">Editar Proveedor</h2>
   
-      <label for="editedClientName">Nombre</label>
-      <input id="editedClientName" [(ngModel)]="editedClientName" class="w-full border rounded px-3 py-2 mb-3" />
+      <label for="editedProviderName">Nombre</label>
+      <input id="editedProviderName" [(ngModel)]="editedProviderName" class="w-full border rounded px-3 py-2 mb-3" />
   
-      <label for="editedClientEmail">Correo Electrónico</label>
-      <input id="editedClientEmail" [(ngModel)]="editedClientEmail" type="email" class="w-full border rounded px-3 py-2 mb-3" />
+      <label for="editedProviderEmpresa">Empresa</label>
+      <input id="editedProviderEmpresa" [(ngModel)]="editedProviderEmpresa" class="w-full border rounded px-3 py-2 mb-3" />
   
-      <label for="editedClientAddress">Dirección</label>
-      <input id="editedClientAddress" [(ngModel)]="editedClientAddress" class="w-full border rounded px-3 py-2 mb-3" />
+      <label for="editedProviderAddress">Dirección</label>
+      <input id="editedProviderAddress" [(ngModel)]="editedProviderAddress" class="w-full border rounded px-3 py-2 mb-3" />
   
-      <label for="editedClientProfileImage">Imagen de Perfil</label>
-      <input id="editedClientProfileImage" [(ngModel)]="editedClientProfileImage" class="w-full border rounded px-3 py-2 mb-3" />
-  
-      <label for="editedClientIsAdmin">¿Es Admin?</label>
-      <select id="editedClientIsAdmin" [(ngModel)]="editedClientisAdmin" class="w-full border rounded px-3 py-2 mb-3">
-        <option value="true">Sí</option>
-        <option value="false">No</option>
-      </select>
-      <!-- Add more form fields for other properties as needed -->
-  
-      <button (click)="saveEditedClient()" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar cambios</button>
-      <button (click)="closeEditClientModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
+      <label for="editedProviderProfileImage">Imagen de Perfil</label>
+      <input id="editedProviderProfileImage" [(ngModel)]="editedProviderProfileImage" class="w-full border rounded px-3 py-2 mb-3" />
+
+      <button (click)="saveEditedProvider()" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar cambios</button>
+      <button (click)="closeEditProviderModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
     </div>
   </div>
+ 
+  <!-- **************************** -->
+<!-- *** PROVIDER MODAL CREATE *** -->
+<!-- **************************** -->
+<div *ngIf="isProviderCreated" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-md w-96">
+      <h2 class="text-2xl font-semibold mb-4">Crear Proveedor</h2>
+      <label for="createProviderName">Name</label>
+      <input id="createProviderName" [(ngModel)]="createProviderName" class="w-full border rounded px-3 py-2 mb-3" />
+      
+      <label for="createProviderEmpresa">Empresa</label>
+      <input id="createProviderEmpresa" [(ngModel)]="createProviderEmpresa" class="w-full border rounded px-3 py-2 mb-3" />
   
+      <label for="createProviderDireccion">Direccion</label>
+      <input id="createProviderDireccion" [(ngModel)]="createProviderDireccion" class="w-full border rounded px-3 py-2 mb-3" />
+  
+      <label for="createProviderImageUrl">Image</label>
+      <input id="createProviderImageUrl" [(ngModel)]="createProviderImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
+      
+  
+      <!-- Add more form fields for other properties as needed -->
+  
+      <button (click)="saveProvider()" class="bg-blue-500 text-white px-4 py-2 rounded">Crear proveedor</button>
+      <button (click)="closeEditProviderModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
+    </div>
+  </div>
 
 <!-- ************************** -->
 <!-- *** PRODUCT MODAL EDIT *** -->
@@ -168,15 +188,15 @@
 <!-- *** POP-UP *** -->
 <!-- ************** -->
 <!-- Pop-up delete client confirmation -->
-<div *ngIf="isPopupDeleteClient" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+<div *ngIf="isPopupDeleteProvider" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
   <div class="bg-white p-6 rounded-lg shadow-md w-96">
     <div class="p-4 md:p-5 text-center">
       <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
       </svg>
-      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Estás seguro de que deseas eliminar este cliente?</h3>
-      <button data-modal-hide="popup-modal" (click)="confirmDeleteClient()" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"> Si </button>
-      <button data-modal-hide="popup-modal" (click)="isPopupDeleteClient = false" type="button" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
+      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Estás seguro de que deseas eliminar este proveedor?</h3>
+      <button data-modal-hide="popup-modal" (click)="confirmDeleteProvider()" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2"> Si </button>
+      <button data-modal-hide="popup-modal" (click)="isPopupDeleteProvider = false" type="button" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
     </div>
   </div>
 </div>  

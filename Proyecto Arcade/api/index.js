@@ -10,6 +10,7 @@ import buyRoute from './routes/buy.js'
 import ratingRoute from "./routes/rating.js"
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
+import providerRoute from './routes/provider.js'
 
 const app = express() 
 dotenv.config()  //config dotenv paral as variables de entorno
@@ -27,6 +28,7 @@ app.use("/api/auth", authRoute)
 app.use("/api/user", userRoute)
 app.use("/api/buy", buyRoute)
 app.use("/api/rating", ratingRoute)
+app.use("/api/provider", providerRoute)
 
 // RESPONSE HANDLER MIDDLEWARE
 app.use((obj, req, res, next)=>{
