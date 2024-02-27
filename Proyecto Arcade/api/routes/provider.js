@@ -1,5 +1,5 @@
 import express from'express'
-import { deleteProviderById, getAllProviders, getById, updateProviderById, createProvider } from '../controllers/provider.controller.js'
+import { deleteProviderById, getAllProviders, getById, updateProviderById, createProvider, getAllProviderProducts } from '../controllers/provider.controller.js'
 
 const router = express.Router()
 
@@ -17,5 +17,8 @@ router.put('/:id', updateProviderById)
 
 // Delete provider
 router.delete('/:id', deleteProviderById)
+
+// Obtener todas los productos del proveedor
+router.get("/getProviderProducts/:_idProvider", getAllProviderProducts);
 
 export default router 

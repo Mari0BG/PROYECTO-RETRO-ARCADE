@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "65dd22f15e4c8efe64f5f860"
+  },
+  "name": "PC com",
+  "empresa": "PC Componentes",
+  "address": "Alhama de Murcia (España)",
+  "profileImage": "https://www.evercom.es/wp-content/uploads/2019/04/Pccomponentes-848x381.jpg",
+  "createdAt": {
+    "$date": "2024-02-26T23:46:57.384Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-27T01:18:29.295Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dd385abe97712f12eac53a"
+  },
+  "name": "PC box",
+  "empresa": "PC Box Expert Center",
+  "address": "Paseo del Doctor Torres Villarroel, 17, 37006, Salamanca",
+  "profileImage": "https://www.thrustmaster.com/wp-content/uploads/2022/02/logo_pcbox-vertical-color.png",
+  "createdAt": {
+    "$date": "2024-02-27T01:18:18.419Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-27T01:18:26.548Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dd38bebe97712f12eac546"
+  },
+  "name": "Arcades",
+  "empresa": "Arcades Retroal",
+  "address": "Carrera Albacete, 12, 03005 Alacant, Alicante",
+  "profileImage": "https://arcades-retroal.com/wp-content/uploads/2023/10/Logos_Arcades_Retroal_21ENE_Variantes-01-150.png",
+  "createdAt": {
+    "$date": "2024-02-27T01:19:58.419Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-27T01:21:32.780Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dd390ebe97712f12eac549"
+  },
+  "name": "Arcade express",
+  "empresa": "Arcade Express",
+  "address": "C/ Arabial 64, bajos Edificio Atalaya, 18003, Granada",
+  "profileImage": "https://i.ebayimg.com/images/g/jwcAAOSwVJBikPjU/s-l300.jpg",
+  "createdAt": {
+    "$date": "2024-02-27T01:21:18.930Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-27T01:21:18.930Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dd3956be97712f12eac54e"
+  },
+  "name": "Skull",
+  "empresa": "Skull Arcade",
+  "address": "C/ Guadalupe de Salamanca",
+  "profileImage": "https://skullarcade.com/img/skullarcade-logo-1602085162.jpg",
+  "createdAt": {
+    "$date": "2024-02-27T01:22:30.943Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-27T01:22:30.943Z"
+  },
+  "__v": 0
+}]

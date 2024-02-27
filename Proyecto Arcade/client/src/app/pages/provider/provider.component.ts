@@ -39,11 +39,12 @@ export default class ProviderComponent {
   // PRODUCT
   productSearch: string = '';
   filteredProducts: any[] = [];
+  providersModal: any[] = [];
   
   categories: any[] = [];
   
   constructor(public productService: ProductService, public categoryService: CategoryService, public providerService: ProviderService) {
-    this.filteredProducts = [...this.productService.products];
+    
    }
   
   ngOnInit(): void {
@@ -249,13 +250,27 @@ export default class ProviderComponent {
 // ********   PRODUCT   ******** 
 // *****************************
 
+
+verProduct(provider: Provider){
+  if (provider._id) {
+    this.providerService.getProviderProducts(provider._id).subscribe((res) => {
+      this.productService.products = res as Product[];
+      this.filteredProducts = [...this.productService.products]; // Mover aquí
+      console.log(res);
+    });
+  }
+  else{
+    console.error('El ID del proveedor es undefined.');
+  }  
+}
+
 // Obtengo los productos
 obtainProducts() {
-  this.productService.showProducts().subscribe((res) => {
+  /*this.productService.showProducts().subscribe((res) => {
     this.productService.products = res as Product[];
     this.filteredProducts = [...this.productService.products]; // Mover aquí
     console.log(res);
-  });
+  });*/
 }
 
 // Para obtener los productos filtrados
@@ -276,6 +291,7 @@ addProduct() {
   // Lógica para agregar un nuevo producto
   this.isProductCreated = true;
   this.obtainCategories();
+  this.obtainProvidersModal();
 }
 
 editProduct(product: any) {
@@ -310,12 +326,14 @@ editedProductPrice: any;
 editedProductDescription: string = '';
 editedProductStock: any;
 editedProductCategory: any;
+editedProductProvider: any;
 editedProductImageUrl: any;
 editedProductcontpurchase: any;
 editedProductCancel: any;
 
 openEditProductModal(product: any) {
   this.obtainCategories();
+  this.obtainProvidersModal();
   // Establecer los valores iniciales del formulario modal según el producto seleccionado
   this.selectedProduct = product._id
   this.editedProductName = product.name;
@@ -323,7 +341,7 @@ openEditProductModal(product: any) {
   this.editedProductDescription = product.description;
   this.editedProductStock = product.stock;
   this.editedProductCategory = product.category_id;
-  console.log(product.category_id)
+  this.editedProductProvider = product.provider_id;
   this.editedProductImageUrl = product.image;
   this.editedProductCancel = product.cancelproduct;
   this.editedProductcontpurchase = product.contpurchase;
@@ -351,6 +369,7 @@ saveEditedProduct() {
     description: this.editedProductDescription,
     stock: this.editedProductStock,
     category_id: this.editedProductCategory,
+    provider_id: this.editedProductProvider,
     image: this.editedProductImageUrl,
     contpurchase: this.editedProductcontpurchase,
     cancelproduct: this.editedProductCancel === 'true' // Convertir el string a boolean
@@ -378,6 +397,7 @@ clearVariables(){
   this.editedProductDescription = "";
   this.editedProductStock = undefined;
   this.editedProductCategory = undefined;
+  this.editedProductProvider = undefined;
   this.editedProductImageUrl = undefined;
   this.editedProductcontpurchase = undefined;
   this.editedProductCancel = undefined;
@@ -401,6 +421,7 @@ createProductPrice: any;
 createProductDescription: string = '';
 createProductStock: any;
 createProductCategory: any;
+createProductProvider: any;
 createProductImageUrl: any;
 createProductcontpurchase: any;
 createProductCancel: any;
@@ -411,6 +432,7 @@ clearVariablesCreate(){
   this.createProductDescription = "";
   this.createProductStock = undefined;
   this.createProductCategory = undefined;
+  this.createProductProvider = undefined;
   this.createProductImageUrl = undefined;
   this.createProductcontpurchase = undefined;
   this.createProductCancel = undefined;
@@ -418,6 +440,7 @@ clearVariablesCreate(){
 
 openCreateProductModal(product: any) {
   this.obtainCategories();
+  this.obtainProvidersModal();
   // Abrir el modal
   this.isProductCreated = true;
 }
@@ -437,6 +460,7 @@ saveProduct(){
       description: this.createProductDescription,
       stock: parseInt(this.createProductStock),
       category_id: this.createProductCategory,
+      provider_id: this.createProductProvider,
       image: this.createProductImageUrl,
       contpurchase: 0,
       cancelproduct: this.createProductCancel === 'true' // Convertir el string a boolean
@@ -451,7 +475,8 @@ saveProduct(){
         (result:any) => {
           this.clearVariablesCreate(); // Vacio las variables
           console.log('Producto creado correctamente', result);
-          this.obtainProducts(); // Recargo la lista de productos
+          let text: Provider = new Provider()
+          this.verProduct(text); // Recargo la lista de productos
           this.closeEditProductModal(); // Cierro el modal de crear producto
         },
         (error: any) => {
@@ -485,7 +510,7 @@ ComprobarCampos(): boolean{
     this.createProductPrice === undefined || this.createProductPrice.trim() === '' ||
     this.createProductDescription === undefined || this.createProductDescription.trim() === '' ||
     this.createProductStock === undefined || this.createProductStock.trim() === '' ||
-    this.createProductCategory === undefined ||
+    this.createProductCategory === undefined || this.createProductProvider === undefined ||
     this.createProductImageUrl === undefined || this.createProductImageUrl.trim() === '' ||
     this.createProductCancel === undefined
   )
@@ -505,14 +530,25 @@ ComprobarCampos(): boolean{
 }
 
 
-// ******************************
-// ********   CATEGORY   ******** 
-// ******************************
-// Lo uso para el model de crear y editar un producto
-obtainCategories() {
-  this.categoryService.showCategories().subscribe((res) => {
-    this.categoryService.categories = res as Category[];
-    this.categories = [...this.categoryService.categories]; 
-  });
-}
+  // ******************************
+  // ********   CATEGORY   ******** 
+  // ******************************
+  // Lo uso para el model de crear y editar un producto
+  obtainCategories() {
+    this.categoryService.showCategories().subscribe((res) => {
+      this.categoryService.categories = res as Category[];
+      this.categories = [...this.categoryService.categories]; 
+    });
+  }
+  // ******************************
+  // ********   PROVIDERS   ******** 
+  // ******************************
+  // Lo uso para el model de crear y editar un producto
+  obtainProvidersModal() {
+    this.providerService.getAllProviders().subscribe((res: any) => {
+      this.providerService.providerstodos = res.data as Provider[];
+      console.log(res)
+      this.providersModal = [...this.providerService.providerstodos]; 
+    });
+  }
 }

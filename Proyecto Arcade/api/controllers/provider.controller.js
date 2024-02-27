@@ -1,6 +1,7 @@
 import Provider from "../models/Provider.js"
 import { CreateError } from "../utils/error.js"
 import { CreateSuccess } from "../utils/success.js"
+import Product from "../models/Product.js"
 
 // Crear un proveedor
 export const createProvider = async (req, res, next) => {
@@ -63,5 +64,19 @@ export const deleteProviderById = async (req, res, next) => {
     return next(CreateSuccess(200, "Provider deleted successfully", deletedProvider));
   } catch (error) {
     return next(CreateError(500, "Internal server error"));
+  }
+};
+
+
+// Sacar productos de un proveedor
+export const getAllProviderProducts = async (req, res) => {
+  try {
+    const { _idProvider } = req.params;
+    const products = await Product.find({ provider_id: _idProvider }).exec();
+    res.status(200).json(products);
+  } 
+  catch (error) {
+    console.error('Error al obtener los productos del proveedor:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 };

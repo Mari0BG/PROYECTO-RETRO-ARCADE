@@ -10,7 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
+import { ProviderService } from 'src/app/services/provider.service';
+import { Provider } from 'src/app/models/provider';
 @Component({
   selector: 'app-admin-control',
   standalone: true,
@@ -33,8 +34,9 @@ export default class AdminControlComponent {
   editedClientisAdmin: any;
 
   categories: any[] = [];
+  providers: any[] = [];
 
-  constructor(public productService: ProductService, private router: Router, public adminControlService: AdminControlService, public categoryService: CategoryService, public userService: UserService) {
+  constructor(public productService: ProductService, private router: Router, public adminControlService: AdminControlService, public categoryService: CategoryService, public userService: UserService, public providerService: ProviderService) {
     this.filteredProducts = [...this.productService.products];
    }
 
@@ -193,6 +195,7 @@ export default class AdminControlComponent {
     // Lógica para agregar un nuevo producto
     this.isProductCreated = true;
     this.obtainCategories();
+    this.obtainProviders();
   }
 
   editProduct(product: any) {
@@ -227,12 +230,14 @@ export default class AdminControlComponent {
   editedProductDescription: string = '';
   editedProductStock: any;
   editedProductCategory: any;
+  editedProductProvider: any;
   editedProductImageUrl: any;
   editedProductcontpurchase: any;
   editedProductCancel: any;
 
   openEditProductModal(product: any) {
     this.obtainCategories();
+    this.obtainProviders();
     // Establecer los valores iniciales del formulario modal según el producto seleccionado
     this.selectedProduct = product._id
     this.editedProductName = product.name;
@@ -240,6 +245,7 @@ export default class AdminControlComponent {
     this.editedProductDescription = product.description;
     this.editedProductStock = product.stock;
     this.editedProductCategory = product.category_id;
+    this.editedProductProvider = product.provider_id;
     console.log(product.category_id)
     this.editedProductImageUrl = product.image;
     this.editedProductCancel = product.cancelproduct;
@@ -268,6 +274,7 @@ export default class AdminControlComponent {
       description: this.editedProductDescription,
       stock: this.editedProductStock,
       category_id: this.editedProductCategory,
+      provider_id: this.editedProductProvider,
       image: this.editedProductImageUrl,
       contpurchase: this.editedProductcontpurchase,
       cancelproduct: this.editedProductCancel === 'true' // Convertir el string a boolean
@@ -295,6 +302,7 @@ export default class AdminControlComponent {
     this.editedProductDescription = "";
     this.editedProductStock = undefined;
     this.editedProductCategory = undefined;
+    this.editedProductProvider = undefined;
     this.editedProductImageUrl = undefined;
     this.editedProductcontpurchase = undefined;
     this.editedProductCancel = undefined;
@@ -318,6 +326,7 @@ export default class AdminControlComponent {
   createProductDescription: string = '';
   createProductStock: any;
   createProductCategory: any;
+  createProductProvider: any;
   createProductImageUrl: any;
   createProductcontpurchase: any;
   createProductCancel: any;
@@ -328,6 +337,7 @@ export default class AdminControlComponent {
     this.createProductDescription = "";
     this.createProductStock = undefined;
     this.createProductCategory = undefined;
+    this.createProductProvider = undefined;
     this.createProductImageUrl = undefined;
     this.createProductcontpurchase = undefined;
     this.createProductCancel = undefined;
@@ -335,6 +345,7 @@ export default class AdminControlComponent {
 
   openCreateProductModal(product: any) {
     this.obtainCategories();
+    this.obtainProviders();
     // Abrir el modal
     this.isProductCreated = true;
   }
@@ -354,6 +365,7 @@ export default class AdminControlComponent {
         description: this.createProductDescription,
         stock: parseInt(this.createProductStock),
         category_id: this.createProductCategory,
+        provider_id: this.createProductProvider,
         image: this.createProductImageUrl,
         contpurchase: 0,
         cancelproduct: this.createProductCancel === 'true' // Convertir el string a boolean
@@ -402,7 +414,7 @@ export default class AdminControlComponent {
       this.createProductPrice === undefined || this.createProductPrice.trim() === '' ||
       this.createProductDescription === undefined || this.createProductDescription.trim() === '' ||
       this.createProductStock === undefined || this.createProductStock.trim() === '' ||
-      this.createProductCategory === undefined ||
+      this.createProductCategory === undefined || this.createProductProvider === undefined ||
       this.createProductImageUrl === undefined || this.createProductImageUrl.trim() === '' ||
       this.createProductCancel === undefined
     )
@@ -433,6 +445,17 @@ export default class AdminControlComponent {
     });
   }
 
+  // ******************************
+  // ********   PROVIDERS   ******** 
+  // ******************************
+  // Lo uso para el model de crear y editar un producto
+  obtainProviders() {
+    this.providerService.getAllProviders().subscribe((res: any) => {
+      this.providerService.providerstodos = res.data as Provider[];
+      console.log(res)
+      this.providers = [...this.providerService.providerstodos]; 
+    });
+  }
 
   // Ver proveedores
   providerControl() {
