@@ -194,6 +194,7 @@
 
     <label for="createProductImageUrl">Image</label>
     <input id="createProductImageUrl" [(ngModel)]="createProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
+    <input (change)="cogerImagen($event)" type="file"/>
     
     <label for="createProductCancel">Cancel</label>
     <select id="category" [(ngModel)]="createProductCancel" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">

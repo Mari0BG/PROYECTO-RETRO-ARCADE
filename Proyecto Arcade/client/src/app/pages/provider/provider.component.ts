@@ -9,6 +9,8 @@ import { CategoryService } from 'src/app/services/category.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProviderService } from 'src/app/services/provider.service';
 import { Provider } from 'src/app/models/provider';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-provider',
@@ -43,7 +45,7 @@ export default class ProviderComponent {
   
   categories: any[] = [];
   
-  constructor(public productService: ProductService, public categoryService: CategoryService, public providerService: ProviderService) {
+  constructor(public productService: ProductService, public categoryService: CategoryService, public providerService: ProviderService, public sanitizer: DomSanitizer) {
     
    }
   
@@ -258,6 +260,7 @@ verProduct(provider: Provider){
       this.filteredProducts = [...this.productService.products]; // Mover aquí
       console.log(res);
     });
+    this.providerService.providersSelected = provider
   }
   else{
     console.error('El ID del proveedor es undefined.');
@@ -266,11 +269,13 @@ verProduct(provider: Provider){
 
 // Obtengo los productos
 obtainProducts() {
-  /*this.productService.showProducts().subscribe((res) => {
-    this.productService.products = res as Product[];
-    this.filteredProducts = [...this.productService.products]; // Mover aquí
-    console.log(res);
-  });*/
+  if(this.providerService.providersSelected && this.providerService.providersSelected._id){
+    this.providerService.getProviderProducts(this.providerService.providersSelected._id).subscribe((res) => {
+      this.productService.products = res as Product[];
+      this.filteredProducts = [...this.productService.products]; // Mover aquí
+      console.log("Respuesta: "+res);
+    });
+  }
 }
 
 // Para obtener los productos filtrados
@@ -476,7 +481,8 @@ saveProduct(){
           this.clearVariablesCreate(); // Vacio las variables
           console.log('Producto creado correctamente', result);
           let text: Provider = new Provider()
-          this.verProduct(text); // Recargo la lista de productos
+          this.obtainProducts(); // Recargo la lista de productos
+
           this.closeEditProductModal(); // Cierro el modal de crear producto
         },
         (error: any) => {
@@ -541,7 +547,7 @@ ComprobarCampos(): boolean{
     });
   }
   // ******************************
-  // ********   PROVIDERS   ******** 
+  // ********   PROVIDERS   ******* 
   // ******************************
   // Lo uso para el model de crear y editar un producto
   obtainProvidersModal() {
@@ -551,4 +557,80 @@ ComprobarCampos(): boolean{
       this.providersModal = [...this.providerService.providerstodos]; 
     });
   }
+
+  // ****************************
+  // ********   IMAGEN   ******** 
+  // ****************************
+
+  public archivos: any =[]
+
+  cogerImagen(event: any): any{
+    const archivo = event.target.files[0]
+    this.extraerBase64(archivo).then((imagen: any) => {
+      console.log(imagen)
+      console.log(imagen.base)
+    })
+    this.archivos.push(archivo)
+    console.log(archivo)
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const filePath = selectedFile.name; // Accede a la propiedad name para obtener la ruta del archivo
+      console.log('Ruta del archivo seleccionado:', filePath);
+    }
+  }
+
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event)
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg)
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          blob: $event,
+          image,
+          base: null
+        });
+      };
+    }
+    catch (e) {
+      console.log("Error: "+e)
+      //return null
+    }
+  })
+
+  /*guardarImagen(): any { 
+    try{ 
+      const formularioDeDatos = new FormData(); 
+      this.archivos.forEach((archivo: any) => { 
+        console.log(archivo); 
+        formularioDeDatos.append('files', archivo)
+      })  
+      this.rest.post(`http://localhost:3001/upload`, formularioDeDatos)
+      .subscribe(res => { 
+        console.log('Respuesta del servidor', res);
+      }) 
+    } 
+    catch (e) {
+      console.log("ERROR", e); 
+    }
+  }*/
+
+  /*async copyFile(sourcePath: string, destinationPath: string): Promise<string> {
+    try {
+      // Copiar el archivo directamente con fs
+      fs.copyFileSync(sourcePath, destinationPath);
+      return destinationPath;
+    } catch (error) {
+      console.error('Error copying file:', error);
+      return "";
+    }
+  }*/
+
 }

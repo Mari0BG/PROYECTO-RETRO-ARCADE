@@ -9,15 +9,20 @@
       </div>
       <div style="max-height: 73vh; overflow: auto; scrollbar-width: thin; overflow-x: hidden;">
         <ul class="space-y-4">
-          <li *ngFor="let client of filteredClients" class="flex items-center justify-between border-b pb-2">
-            <img class="w-8 h-8 rounded-full" src="{{client.profileImage}}" alt="Neil image">
-            <span class="text-lg">{{ client.name }}</span>
-            <div class="space-x-2">
-              <button (click)="openEditClientModal(client)" class="text-indigo-400 hover:underline"><i class="fa fa-edit" style="font-size: 30px;" aria-hidden="true"></i></button>
-              <button (click)="deleteClient(client)" class="text-red-500 hover:underline"><i class="fa fa-close" style="font-size: 36px;" aria-hidden="true"></i></button>
-              <!-- Agregar más botones CRUD según tus necesidades -->
-            </div>
-          </li>
+          <ng-container *ngIf="filteredClients.length > 0; else noClients">
+            <li *ngFor="let client of filteredClients" class="flex items-center justify-between border-b pb-2">
+              <img class="w-8 h-8 rounded-full" src="{{client.profileImage}}" alt="Neil image">
+              <span class="text-lg">{{ client.name }}</span>
+              <span class="text-lg">{{ client.email }}</span>
+              <div class="space-x-2">
+                <button (click)="openEditClientModal(client)" class="text-indigo-400 hover:underline"><i class="fa fa-edit" style="font-size: 30px;" aria-hidden="true"></i></button>
+                <button (click)="deleteClient(client)" class="text-red-500 hover:underline"><i class="fa fa-close" style="font-size: 36px;" aria-hidden="true"></i></button>
+              </div>
+            </li>
+          </ng-container>
+          <ng-template #noClients>
+            <li class="text-gray-500">No se encontraron clientes.</li>
+          </ng-template>
         </ul>
       </div>
     </div>
@@ -35,15 +40,20 @@
       </div>
       <div style="max-height: 73vh; overflow: auto; scrollbar-width: thin;">
         <ul class="space-y-4">
-          <li *ngFor="let producto of filteredProducts" class="flex items-center justify-between border-b pb-2">
-            <img class="w-8 h-8 rounded-full" src="{{producto.image}}" alt="Neil image">
-            <span class="text-lg">{{ producto.name }}</span>
-            <div class="space-x-2">
-              <button (click)="openEditProductModal(producto)" class="text-indigo-400 hover:underline"><i class="fa fa-edit" style="font-size: 30px;" aria-hidden="true"></i></button>
-              <button (click)="deleteProduct(producto)" class="text-red-500 hover:underline"><i class="fa fa-close" style="font-size: 36px;" aria-hidden="true"></i></button>
-              <!-- Agregar más botones CRUD según tus necesidades -->
-            </div>
-          </li>
+          <ng-container *ngIf="filteredProducts.length > 0; else noProducts">
+            <li *ngFor="let producto of filteredProducts" class="flex items-center justify-between border-b pb-2">
+              <img class="w-8 h-8 rounded-full" src="{{producto.image}}" alt="Neil image">
+              <span class="text-lg">{{ producto.name }}</span>
+              <div class="space-x-2">
+                <button (click)="openEditProductModal(producto)" class="text-indigo-400 hover:underline"><i class="fa fa-edit" style="font-size: 30px;" aria-hidden="true"></i></button>
+                <button (click)="deleteProduct(producto)" class="text-red-500 hover:underline"><i class="fa fa-close" style="font-size: 36px;" aria-hidden="true"></i></button>
+                <!-- Agregar más botones CRUD según tus necesidades -->
+              </div>
+            </li>
+          </ng-container>
+          <ng-template #noProducts>
+            <li class="text-gray-500">No se encontraron productos.</li>
+          </ng-template>
         </ul>
       </div>
     </div>
