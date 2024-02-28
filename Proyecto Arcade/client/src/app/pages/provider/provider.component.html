@@ -140,8 +140,13 @@
       </ng-container>
     </select >
 
-    <label for="editedProductImageUrl">Image</label>
+    <div class="button-container">
+      <label for="editedProductImageUrl" style="margin-top: 6px;">Imagen</label>
+      <label for="fileInput" class="text-white font-medium text-sm focus:ring-blue-300 font-semibold rounded-lg px-5 mb-1 py-2.5 bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-indigo-500" >Subir Imagen</label>
+    </div>
+    <input id="fileInput" (change)="cogerImagenEdit($event)" type="file" accept="image/*" style="display: none;">
     <input id="editedProductImageUrl" [(ngModel)]="editedProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
+
     
     <label for="editedProductCancel">Cancel</label>
     <select id="category" [(ngModel)]="editedProductCancel" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -149,8 +154,6 @@
       <option [selected]="true == editedProductCancel" value="true">Sí</option>
       <option [selected]="false == editedProductCancel" value="false">No</option>
     </select >
-
-    <!-- Add more form fields for other properties as needed -->
 
     <button (click)="saveEditedProduct()" class="text-white font-medium text-sm focus:ring-blue-300 font-semibold rounded-lg px-5 py-2.5 bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-indigo-500">Guardar cambios</button>
     <button (click)="closeEditProductModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>
@@ -192,18 +195,19 @@
       </ng-container>
     </select >
 
-    <label for="createProductImageUrl">Image</label>
+    <div class="button-container">
+      <label for="createProductImageUrl" style="margin-top: 6px;">Imagen</label>
+      <label for="fileInput" class="text-white font-medium text-sm focus:ring-blue-300 font-semibold rounded-lg px-5 mb-1 py-2.5 bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-indigo-500" >Subir Imagen</label>
+    </div>
+    <input id="fileInput" (change)="cogerImagen($event)" type="file" accept="image/*" style="display: none;">
     <input id="createProductImageUrl" [(ngModel)]="createProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
-    <input (change)="cogerImagen($event)" type="file"/>
-    
-    <label for="createProductCancel">Cancel</label>
+
+    <label for="createProductCancel">Cancelado</label>
     <select id="category" [(ngModel)]="createProductCancel" class="bg-gray-50 w-full border rounded px-3 py-2 mb-3 border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
       <option value="" selected disabled>Select cancel</option>
       <option value="true">Sí</option>
       <option value="false">No</option>
     </select >
-
-    <!-- Add more form fields for other properties as needed -->
 
     <button (click)="saveProduct()" class="text-white font-medium text-sm focus:ring-blue-300 font-semibold rounded-lg px-5 py-2.5 bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-indigo-500">Crear producto</button>
     <button (click)="closeEditProductModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Cancelar</button>

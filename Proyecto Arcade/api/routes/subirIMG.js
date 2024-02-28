@@ -1,9 +1,9 @@
-import express from 'express'
-import { uploadImage } from '../controllers/subirIMG.controller.js'
+import express from 'express';
+import { uploadImage } from '../controllers/subirIMG.controller.js';
 
-const router = express.Router() //con esto puedo usar operaciones CRUD
+const router = express.Router();
 
-// Para guardar la imagen
-router.post('/', uploadImage)
+// Ruta para guardar la imagen
+router.post('/create', uploadImage);
 
-export default router
+export default router;

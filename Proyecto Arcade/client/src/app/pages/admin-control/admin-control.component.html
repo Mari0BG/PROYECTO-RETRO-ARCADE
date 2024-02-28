@@ -125,7 +125,11 @@
         </ng-container>
       </select >
 
-      <label for="editedProductImageUrl">Image</label>
+      <div class="button-container">
+        <label for="editedProductImageUrl" style="margin-top: 6px;">Imagen</label>
+        <label for="fileInput" class="text-white font-medium text-sm focus:ring-blue-300 font-semibold rounded-lg px-5 mb-1 py-2.5 bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-indigo-500" >Subir Imagen</label>
+      </div>
+      <input id="fileInput" (change)="cogerImagenEdit($event)" type="file" accept="image/*" style="display: none;">
       <input id="editedProductImageUrl" [(ngModel)]="editedProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
       
       <label for="editedProductCancel">Cancel</label>
@@ -177,7 +181,11 @@
       </ng-container>
     </select >
 
-    <label for="createProductImageUrl">Image</label>
+    <div class="button-container">
+      <label for="createProductImageUrl" style="margin-top: 6px;">Imagen</label>
+      <label for="fileInput" class="text-white font-medium text-sm focus:ring-blue-300 font-semibold rounded-lg px-5 mb-1 py-2.5 bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-indigo-500" >Subir Imagen</label>
+    </div>
+    <input id="fileInput" (change)="cogerImagen($event)" type="file" accept="image/*" style="display: none;">
     <input id="createProductImageUrl" [(ngModel)]="createProductImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
     
     <label for="createProductCancel">Cancel</label>

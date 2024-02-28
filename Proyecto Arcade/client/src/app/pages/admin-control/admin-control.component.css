@@ -17,3 +17,13 @@ div::-webkit-scrollbar {
 div::-webkit-scrollbar-thumb {
     background-color: transparent; /* Color del 'thumb' de la barra de desplazamiento */
 }
+
+/* Ocultar el texto "Cancel" del input de tipo file */
+input[type="file"] {
+    display: none; /* Oculta el input de tipo file */
+}
+
+.button-container {
+    display: flex; /* Utilizamos flexbox para alinear elementos */
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+}

@@ -11,7 +11,12 @@ import ratingRoute from "./routes/rating.js"
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import providerRoute from './routes/provider.js'
-//import subirImg from './routes/subirIMG.js'
+import subirImg from './routes/subirIMG.js'
+// Esto lo necesito para poder acceder a la imagen a traves de la ruta
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename); 
 
 const app = express() 
 dotenv.config()  //config dotenv paral as variables de entorno
@@ -30,7 +35,8 @@ app.use("/api/user", userRoute)
 app.use("/api/buy", buyRoute)
 app.use("/api/rating", ratingRoute)
 app.use("/api/provider", providerRoute)
-//app.use("/api/uploadimg", subirImg)
+app.use("/api/uploadImage", subirImg)
+app.use('/imagenes', express.static(path.join(__dirname, 'imagenes'))); // Para cargar la imagen a traves de la ruta
 
 // RESPONSE HANDLER MIDDLEWARE
 app.use((obj, req, res, next)=>{

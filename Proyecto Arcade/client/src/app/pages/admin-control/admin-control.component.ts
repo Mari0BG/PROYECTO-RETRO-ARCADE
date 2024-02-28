@@ -12,6 +12,8 @@ import { CategoryService } from 'src/app/services/category.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProviderService } from 'src/app/services/provider.service';
 import { Provider } from 'src/app/models/provider';
+import { SubirIMGService } from 'src/app/services/subir-img.service';
+
 @Component({
   selector: 'app-admin-control',
   standalone: true,
@@ -36,7 +38,7 @@ export default class AdminControlComponent {
   categories: any[] = [];
   providers: any[] = [];
 
-  constructor(public productService: ProductService, private router: Router, public adminControlService: AdminControlService, public categoryService: CategoryService, public userService: UserService, public providerService: ProviderService) {
+  constructor(public productService: ProductService, private router: Router, public adminControlService: AdminControlService, public categoryService: CategoryService, public userService: UserService, public providerService: ProviderService, public uploadService: SubirIMGService) {
     this.filteredProducts = [...this.productService.products];
    }
 
@@ -108,7 +110,6 @@ export default class AdminControlComponent {
     this.editedClientisAdmin = client.isAdmin
     this.selectedPass = client.password
     this.selectedRol = client.roles
-    console.log(client)
 
     // Abrir el modal
     this.isEditClientModalOpen = true;
@@ -246,7 +247,6 @@ export default class AdminControlComponent {
     this.editedProductStock = product.stock;
     this.editedProductCategory = product.category_id;
     this.editedProductProvider = product.provider_id;
-    console.log(product.category_id)
     this.editedProductImageUrl = product.image;
     this.editedProductCancel = product.cancelproduct;
     this.editedProductcontpurchase = product.contpurchase;
@@ -266,33 +266,41 @@ export default class AdminControlComponent {
       return;
     }
 
-    // Creo un objeto con los detalles editados del producto
-    const editedProduct = {
-      _id: this.selectedProduct,
-      name: this.editedProductName,
-      price: this.editedProductPrice,
-      description: this.editedProductDescription,
-      stock: this.editedProductStock,
-      category_id: this.editedProductCategory,
-      provider_id: this.editedProductProvider,
-      image: this.editedProductImageUrl,
-      contpurchase: this.editedProductcontpurchase,
-      cancelproduct: this.editedProductCancel === 'true' // Convertir el string a boolean
+    if(!this.editedProductImageUrl.includes("http")){
+      this.uploadService.uploadImg(this.eventIMG)?.subscribe((res:any) => {
+        this.editedProductImageUrl = "http://localhost:8800/"+res.data
+      });
     }
-
-    this.clearVariables();
-    // Llamo al servicio para editar el producto
-    this.productService.updateProduct(editedProduct)
-    .subscribe(
-      (result:any) => {
-        console.log('Producto editado correctamente', result);
-        this.obtainProducts();
-        this.closeEditProductModal();
-      },
-      (error: any) => {
-        console.error('Error al editar el producto', error);
+  
+    setTimeout(() => {
+          // Creo un objeto con los detalles editados del producto
+      const editedProduct = {
+        _id: this.selectedProduct,
+        name: this.editedProductName,
+        price: this.editedProductPrice,
+        description: this.editedProductDescription,
+        stock: this.editedProductStock,
+        category_id: this.editedProductCategory,
+        provider_id: this.editedProductProvider,
+        image: this.editedProductImageUrl,
+        contpurchase: this.editedProductcontpurchase,
+        cancelproduct: this.editedProductCancel === 'true' // Convertir el string a boolean
       }
-    );
+  
+      this.clearVariables();
+      // Llamo al servicio para editar el producto
+      this.productService.updateProduct(editedProduct)
+      .subscribe(
+        (result:any) => {
+          console.log('Producto editado correctamente', result);
+          this.obtainProducts();
+          this.closeEditProductModal();
+        },
+        (error: any) => {
+          console.error('Error al editar el producto', error);
+        }
+      );
+    }, 200)
   }
 
   clearVariables(){
@@ -358,42 +366,50 @@ export default class AdminControlComponent {
     ok = this.ComprobarCampos(); 
 
     if ( !ok ) {
-      // Creo un objeto con los detalles del producto
-      const createProduct: Product = {
-        name: this.createProductName,
-        price: parseFloat(this.createProductPrice),
-        description: this.createProductDescription,
-        stock: parseInt(this.createProductStock),
-        category_id: this.createProductCategory,
-        provider_id: this.createProductProvider,
-        image: this.createProductImageUrl,
-        contpurchase: 0,
-        cancelproduct: this.createProductCancel === 'true' // Convertir el string a boolean
+      if(!this.createProductImageUrl.includes("http")){
+        this.uploadService.uploadImg(this.eventIMG)?.subscribe((res:any) => {
+          this.createProductImageUrl = "http://localhost:8800/"+res.data
+        });
       }
-      if (this.existeProductoConNombre(this.createProductName)) {
-        alert("El producto ya existe.")
-      }
-      else {
-        // Llamo al servicio para crear el producto
-        this.productService.createProduct(createProduct)
-        .subscribe(
-          (result:any) => {
-            this.clearVariablesCreate(); // Vacio las variables
-            console.log('Producto creado correctamente', result);
-            this.obtainProducts(); // Recargo la lista de productos
-            this.closeEditProductModal(); // Cierro el modal de crear producto
-          },
-          (error: any) => {
-            console.error('Error al crear el producto', error);
-        
-            // Imprimir detalles del error si están disponibles
-            if (error instanceof HttpErrorResponse) {
-              console.error('Detalles del error:', error);
+
+      setTimeout(() => {
+        // Creo un objeto con los detalles del producto
+        const createProduct: Product = {
+          name: this.createProductName,
+          price: parseFloat(this.createProductPrice),
+          description: this.createProductDescription,
+          stock: parseInt(this.createProductStock),
+          category_id: this.createProductCategory,
+          provider_id: this.createProductProvider,
+          image: this.createProductImageUrl,
+          contpurchase: 0,
+          cancelproduct: this.createProductCancel === 'true' // Convertir el string a boolean
+        }
+        if (this.existeProductoConNombre(this.createProductName)) {
+          alert("El producto ya existe.")
+        }
+        else {
+          // Llamo al servicio para crear el producto
+          this.productService.createProduct(createProduct)
+          .subscribe(
+            (result:any) => {
+              this.clearVariablesCreate(); // Vacio las variables
+              console.log('Producto creado correctamente', result);
+              this.obtainProducts(); // Recargo la lista de productos
+              this.closeEditProductModal(); // Cierro el modal de crear producto
+            },
+            (error: any) => {
+              console.error('Error al crear el producto', error);
+          
+              // Imprimir detalles del error si están disponibles
+              if (error instanceof HttpErrorResponse) {
+                console.error('Detalles del error:', error);
+              }
             }
-          }
-        );
-        this.isProductCreated = false;
-      }
+          );
+          this.isProductCreated = false;
+        }
+      }, 200)
     }
   }
 
@@ -452,7 +468,6 @@ export default class AdminControlComponent {
   obtainProviders() {
     this.providerService.getAllProviders().subscribe((res: any) => {
       this.providerService.providerstodos = res.data as Provider[];
-      console.log(res)
       this.providers = [...this.providerService.providerstodos]; 
     });
   }
@@ -460,5 +475,28 @@ export default class AdminControlComponent {
   // Ver proveedores
   providerControl() {
     this.router.navigate(['providers'])
+  }
+
+  // ****************************
+  // ********   IMAGEN   ******** 
+  // ****************************
+
+  public eventIMG: any
+  cogerImagen(event: any): any{
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const filePath = selectedFile.name; 
+      this.createProductImageUrl = filePath
+      this.eventIMG = event
+    }
+  }
+
+  cogerImagenEdit(event: any): any{
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const filePath = selectedFile.name;
+      this.editedProductImageUrl = filePath
+      this.eventIMG = event
+    }
   }
 }

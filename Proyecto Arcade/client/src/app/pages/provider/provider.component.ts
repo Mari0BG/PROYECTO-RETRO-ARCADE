@@ -9,8 +9,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProviderService } from 'src/app/services/provider.service';
 import { Provider } from 'src/app/models/provider';
-import { DomSanitizer } from '@angular/platform-browser';
-
+import { SubirIMGService } from 'src/app/services/subir-img.service';
 
 @Component({
   selector: 'app-provider',
@@ -20,9 +19,6 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./provider.component.css']
 })
 export default class ProviderComponent {
-  // Simulación de datos de clientes y productos (reemplazar con datos reales)
-  clientsData: any[] = [{ name: 'Cliente 1' }, { name: 'Cliente 2' }];
-  productsData: any[] = [{ name: 'Producto 1' }, { name: 'Producto 2' }];
   
   // PROVIDER
   providerSearch: string = '';
@@ -45,7 +41,7 @@ export default class ProviderComponent {
   
   categories: any[] = [];
   
-  constructor(public productService: ProductService, public categoryService: CategoryService, public providerService: ProviderService, public sanitizer: DomSanitizer) {
+  constructor(public productService: ProductService, public categoryService: CategoryService, public providerService: ProviderService, public uploadService: SubirIMGService) {
     
    }
   
@@ -59,7 +55,6 @@ export default class ProviderComponent {
     this.providerService.getAllProviders().subscribe((res: any) => {
       const providersData = res.data;
       this.providerService.providers = providersData as Provider[];
-      console.log(providersData);
     });
   }
 
@@ -94,23 +89,6 @@ export default class ProviderComponent {
     this.isPopupDeleteProvider = false;
   }
 
-  // Metodo para filtrar proveedor  
-  /*get filteredProviders() {
-    // Verificar si adminControlService.users es undefined o null antes de filtrar
-      
-      if (Array.isArray(this.providerService.providers)) {
-        console.log("entro 1")
-        // Ahora puedes usar el método filter
-        return this.providerService.providers
-      ? this.providerService.providers.filter(provider =>
-        provider.name.toLowerCase().includes(this.providerSearch.toLowerCase())
-        )
-      : [];
-    } else {
-        console.log("entro 2")
-        return [];
-    }
-  }*/
   get filteredProviders() {
     // Verificar si this.providerService.providers es un array antes de filtrar
     if (Array.isArray(this.providerService.providers)) {
@@ -130,7 +108,6 @@ export default class ProviderComponent {
     this.editedProviderEmpresa = provider.empresa;
     this.editedProviderAddress = provider.address;
     this.editedProviderProfileImage = provider.profileImage;
-    console.log(provider)
   
     // Abrir el modal
     this.isEditProviderModalOpen = true;
@@ -201,7 +178,6 @@ export default class ProviderComponent {
         alert("El producto ya existe.")
       }
       else {
-        console.log(createProvider)
         // Llamo al servicio para crear el producto
         this.providerService.createProvider(createProvider)
         .subscribe(
@@ -272,8 +248,7 @@ obtainProducts() {
   if(this.providerService.providersSelected && this.providerService.providersSelected._id){
     this.providerService.getProviderProducts(this.providerService.providersSelected._id).subscribe((res) => {
       this.productService.products = res as Product[];
-      this.filteredProducts = [...this.productService.products]; // Mover aquí
-      console.log("Respuesta: "+res);
+      this.filteredProducts = [...this.productService.products]; 
     });
   }
 }
@@ -350,7 +325,6 @@ openEditProductModal(product: any) {
   this.editedProductImageUrl = product.image;
   this.editedProductCancel = product.cancelproduct;
   this.editedProductcontpurchase = product.contpurchase;
-  console.log(product)
 
   // Abrir el modal
   this.isEditProductModalOpen = true;
@@ -365,34 +339,41 @@ saveEditedProduct() {
     console.error('El nombre del producto no puede estar vacio');
     return;
   }
-
-  // Creo un objeto con los detalles editados del producto
-  const editedProduct = {
-    _id: this.selectedProduct,
-    name: this.editedProductName,
-    price: this.editedProductPrice,
-    description: this.editedProductDescription,
-    stock: this.editedProductStock,
-    category_id: this.editedProductCategory,
-    provider_id: this.editedProductProvider,
-    image: this.editedProductImageUrl,
-    contpurchase: this.editedProductcontpurchase,
-    cancelproduct: this.editedProductCancel === 'true' // Convertir el string a boolean
+  if(!this.editedProductImageUrl.includes("http")){
+    this.uploadService.uploadImg(this.eventIMG)?.subscribe((res:any) => {
+      this.createProductImageUrl = "http://localhost:8800/"+res.data
+    });
   }
 
-  this.clearVariables();
-  // Llamo al servicio para editar el producto
-  this.productService.updateProduct(editedProduct)
-  .subscribe(
-    (result:any) => {
-      console.log('Producto editado correctamente', result);
-      this.obtainProducts();
-      this.closeEditProductModal();
-    },
-    (error: any) => {
-      console.error('Error al editar el producto', error);
+  setTimeout(() => {
+    // Creo un objeto con los detalles editados del producto
+    const editedProduct = {
+      _id: this.selectedProduct,
+      name: this.editedProductName,
+      price: this.editedProductPrice,
+      description: this.editedProductDescription,
+      stock: this.editedProductStock,
+      category_id: this.editedProductCategory,
+      provider_id: this.editedProductProvider,
+      image: this.editedProductImageUrl,
+      contpurchase: this.editedProductcontpurchase,
+      cancelproduct: this.editedProductCancel === 'true' // Convertir el string a boolean
     }
-  );
+  
+    this.clearVariables();
+    // Llamo al servicio para editar el producto
+    this.productService.updateProduct(editedProduct)
+    .subscribe(
+      (result:any) => {
+        console.log('Producto editado correctamente', result);
+        this.obtainProducts();
+        this.closeEditProductModal();
+      },
+      (error: any) => {
+        console.error('Error al editar el producto', error);
+      }
+    );
+  }, 200)
 }
 
 clearVariables(){
@@ -450,7 +431,7 @@ openCreateProductModal(product: any) {
   this.isProductCreated = true;
 }
 
-// Funcion para crear un producto
+// Funcion para crear un producto 
 saveProduct(){
 
   let ok = false
@@ -458,44 +439,52 @@ saveProduct(){
   ok = this.ComprobarCampos(); 
 
   if ( !ok ) {
-    // Creo un objeto con los detalles del producto
-    const createProduct: Product = {
-      name: this.createProductName,
-      price: parseFloat(this.createProductPrice),
-      description: this.createProductDescription,
-      stock: parseInt(this.createProductStock),
-      category_id: this.createProductCategory,
-      provider_id: this.createProductProvider,
-      image: this.createProductImageUrl,
-      contpurchase: 0,
-      cancelproduct: this.createProductCancel === 'true' // Convertir el string a boolean
+    if(!this.createProductImageUrl.includes("http")){
+      this.uploadService.uploadImg(this.eventIMG)?.subscribe((res:any) => {
+        this.createProductImageUrl = "http://localhost:8800/"+res.data
+      });
     }
-    if (this.existeProductoConNombre(this.createProductName)) {
-      alert("El producto ya existe.")
-    }
-    else {
-      // Llamo al servicio para crear el producto
-      this.productService.createProduct(createProduct)
-      .subscribe(
-        (result:any) => {
-          this.clearVariablesCreate(); // Vacio las variables
-          console.log('Producto creado correctamente', result);
-          let text: Provider = new Provider()
-          this.obtainProducts(); // Recargo la lista de productos
-
-          this.closeEditProductModal(); // Cierro el modal de crear producto
-        },
-        (error: any) => {
-          console.error('Error al crear el producto', error);
-      
-          // Imprimir detalles del error si están disponibles
-          if (error instanceof HttpErrorResponse) {
-            console.error('Detalles del error:', error);
+    setTimeout(() => {
+      // Creo un objeto con los detalles del producto
+      const createProduct: Product = {
+        name: this.createProductName,
+        price: parseFloat(this.createProductPrice),
+        description: this.createProductDescription,
+        stock: parseInt(this.createProductStock),
+        category_id: this.createProductCategory,
+        provider_id: this.createProductProvider,
+        image: this.createProductImageUrl,
+        contpurchase: 0,
+        cancelproduct: this.createProductCancel === 'true' // Convertir el string a boolean
+      }
+      if (this.existeProductoConNombre(this.createProductName)) {
+        alert("El producto ya existe.")
+      }
+      else {
+        // Llamo al servicio para crear el producto
+        this.productService.createProduct(createProduct)
+        .subscribe(
+          (result:any) => {
+            this.clearVariablesCreate(); // Vacio las variables
+            console.log('Producto creado correctamente', result);
+            let text: Provider = new Provider()
+            this.obtainProducts(); // Recargo la lista de productos
+  
+            this.closeEditProductModal(); // Cierro el modal de crear producto
+          },
+          (error: any) => {
+            console.error('Error al crear el producto', error);
+        
+            // Imprimir detalles del error si están disponibles
+            if (error instanceof HttpErrorResponse) {
+              console.error('Detalles del error:', error);
+            }
           }
-        }
-      );
-      this.isProductCreated = false;
-    }
+        );
+        this.isProductCreated = false;
+      }
+    }, 200)
+    
   }
 }
 
@@ -553,7 +542,6 @@ ComprobarCampos(): boolean{
   obtainProvidersModal() {
     this.providerService.getAllProviders().subscribe((res: any) => {
       this.providerService.providerstodos = res.data as Provider[];
-      console.log(res)
       this.providersModal = [...this.providerService.providerstodos]; 
     });
   }
@@ -562,75 +550,23 @@ ComprobarCampos(): boolean{
   // ********   IMAGEN   ******** 
   // ****************************
 
-  public archivos: any =[]
-
+  public eventIMG: any
   cogerImagen(event: any): any{
-    const archivo = event.target.files[0]
-    this.extraerBase64(archivo).then((imagen: any) => {
-      console.log(imagen)
-      console.log(imagen.base)
-    })
-    this.archivos.push(archivo)
-    console.log(archivo)
     const selectedFile = event.target.files[0];
     if (selectedFile) {
-      const filePath = selectedFile.name; // Accede a la propiedad name para obtener la ruta del archivo
-      console.log('Ruta del archivo seleccionado:', filePath);
+      const filePath = selectedFile.name; 
+      this.createProductImageUrl = filePath
+      this.eventIMG = event
     }
   }
 
-
-  extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
-    try {
-      const unsafeImg = window.URL.createObjectURL($event)
-      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg)
-      const reader = new FileReader();
-      reader.readAsDataURL($event);
-      reader.onload = () => {
-        resolve({
-          base: reader.result
-        });
-      };
-      reader.onerror = error => {
-        resolve({
-          blob: $event,
-          image,
-          base: null
-        });
-      };
+  cogerImagenEdit(event: any): any{
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const filePath = selectedFile.name;
+      this.editedProductImageUrl = filePath
+      this.eventIMG = event
     }
-    catch (e) {
-      console.log("Error: "+e)
-      //return null
-    }
-  })
-
-  /*guardarImagen(): any { 
-    try{ 
-      const formularioDeDatos = new FormData(); 
-      this.archivos.forEach((archivo: any) => { 
-        console.log(archivo); 
-        formularioDeDatos.append('files', archivo)
-      })  
-      this.rest.post(`http://localhost:3001/upload`, formularioDeDatos)
-      .subscribe(res => { 
-        console.log('Respuesta del servidor', res);
-      }) 
-    } 
-    catch (e) {
-      console.log("ERROR", e); 
-    }
-  }*/
-
-  /*async copyFile(sourcePath: string, destinationPath: string): Promise<string> {
-    try {
-      // Copiar el archivo directamente con fs
-      fs.copyFileSync(sourcePath, destinationPath);
-      return destinationPath;
-    } catch (error) {
-      console.error('Error copying file:', error);
-      return "";
-    }
-  }*/
+  }
 
 }
