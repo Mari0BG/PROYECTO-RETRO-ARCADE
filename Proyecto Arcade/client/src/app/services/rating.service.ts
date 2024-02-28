@@ -35,7 +35,12 @@ export class RatingService {
   getAllRatingsByUserId(id: string): Observable<Rating[]> {
     return this.http.get<Rating[]>(`${apiUrls.ratingServiceApi}getAll/userRating/${id}`);
   }
-  
+
+  // Método para obtener todos los ratings de un usuario por su _idUser
+  getAllRatingsByProductId(id: string): Observable<Rating[]> {
+    return this.http.get<Rating[]>(`${apiUrls.ratingServiceApi}getAll/productRating/${id}`);
+  }
+
 
   // Método para borrar un rating por su ID
   deleteRating(id: string): Observable<any> {

@@ -1,0 +1,36 @@
+<div class="flex justify-center mt-5">
+  <!-- Imagen del producto a la izquierda -->
+  <div class="w-1/4">
+    <img [src]="prod.image" alt="Imagen del producto" class="w-full h-auto shadow-md">
+  </div>
+
+  <!-- Datos del producto y botón a la derecha -->
+  <div class="w-1/2 ml-20 flex flex-col justify-between">
+    <div>
+      <h1 class="text-xl font-bold mb-4">{{ prod.name }}</h1>
+      <p class="mt-2 mb-8">{{ prod.description }}</p>
+      <p class="mt-2 font-bold">Precio: {{ prod.price }}€</p>
+      <!-- Botón para añadir al carrito -->
+      <button class="bg-blue-500 dark:bg-indigo-400 text-white font-bold py-2 px-4 rounded">
+        Añadir al carrito
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Slider de comentarios de usuarios -->
+<div class="mt-8 ml-3">
+  <h2 class="text-xl font-bold mb-4">Valoraciones:</h2>
+  <div class="flex overflow-x-auto">
+    <div class="flex-shrink-0 w-96 mr-6 mb-2 ml-3" *ngFor="let comentario of ratingProd, let i = index">
+      <div class="p-4 bg-white rounded shadow-md">
+       <!-- <h3 class="text-xl font-bold">{{ getUserName(comentario._idUser) }}</h3>-->
+        <h3 class="text-xl font-bold">{{ comentario._idUser }}</h3>
+        <i *ngFor="let starClass of getStarClasses(comentario.rating.toString())" class="fa" [ngClass]="starClass" style="font-size:16px"></i>
+        <p class="mt-2">{{ comentario.coment }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
