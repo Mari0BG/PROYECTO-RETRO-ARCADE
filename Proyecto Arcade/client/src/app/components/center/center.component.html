@@ -1,5 +1,5 @@
 <!-- FILTROS -->
-<div class="flex items-center justify-center space-x-4 mt-4 mb-2">
+<div class="flex items-center justify-center space-x-4 mt-4 mb-2 ml-0">
   
   <button type="button" (click)="changeSort('default')" class="text-white font-mediumtext-sm focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none dark:focus:ring-indigo-500">Por defecto</button>
   <button type="button" (click)="changeSort('name')" class="text-white font-mediumtext-sm focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none dark:focus:ring-indigo-500">Nombre</button>
@@ -9,7 +9,7 @@
   <button type="button" (click)="changeSort('stockmenor')" class="text-white focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none dark:focus:ring-indigo-500">Stock menor</button>
 </div>
 <!-- CENTRO -->
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-0" style="max-height: 82vh; overflow: auto; scrollbar-width: thin;">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-0 ml-0" style="max-height: 76vh; overflow: auto; scrollbar-width: thin;">
   <!-- Utiliza ngFor para iterar sobre la lista de productos -->
   <div *ngFor="let producto of sortedProducts"  class="p-4" [style.display]="shouldDisplayProduct(producto)">
     <!-- Estructura de tu tarjeta de producto con Tailwind CSS -->
@@ -49,8 +49,10 @@
             </div>
           </div>
           <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-gray-900 dark:text-white">{{producto.price}}€</span>
-            <a (click)="AddProductToCart(producto)" class="text-white dark:bg-indigo-300 dark:hover:bg-indigo-500 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center " style="user-select: none;">Añadir al carrito</a>
+            <span class="text-base font-bold text-gray-900 dark:text-white mr-1">{{producto.price}}€</span>
+            <div class="flex items-center">
+              <a (click)="AddProductToCart(producto)" class="text-white dark:bg-indigo-300 dark:hover:bg-indigo-500 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center" style="user-select: none;">Añadir</a>
+            </div>
           </div>
         </div>
       </div>
