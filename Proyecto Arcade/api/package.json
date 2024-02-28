@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "Retro Arcade",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "start": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Raul & Mario",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -19,7 +19,8 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.0",
-    "nodemon": "^3.0.1",
-    "nodemailer": "^6.9.7"
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.7",
+    "nodemon": "^3.0.1"
   }
 }

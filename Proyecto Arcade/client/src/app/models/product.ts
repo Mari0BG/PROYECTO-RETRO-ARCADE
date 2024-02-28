@@ -5,6 +5,7 @@ export class Product {
     description: String;
     stock: number;
     category_id: String;
+    provider_id: String;
     image: String;
     contpurchase: number;
     cancelproduct: boolean;
@@ -15,6 +16,7 @@ export class Product {
         this.description='';
         this.stock=0;
         this.category_id='';
+        this.provider_id='';
         this.image='';
         this.contpurchase=0;
         this.cancelproduct=false;

@@ -5,7 +5,7 @@
   "name": "Arcade Stick USB",
   "price": 39.99,
   "description": "El joystick de dirección de ocho direcciones y los 8 grandes botones de acción te brindan el placer de luchar.",
-  "stock": 1,
+  "stock": 0,
   "category_id": [
     {
       "$oid": "659ed25f52b57986c87ca39d"
@@ -18,9 +18,14 @@
     "$date": "2024-01-15T18:37:38.379Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T18:42:23.547Z"
+    "$date": "2024-02-27T00:53:20.544Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd22f15e4c8efe64f5f860"
+    }
+  ]
 },
 {
   "_id": {
@@ -29,7 +34,7 @@
   "name": "Real Arcade Pro 4 Kai",
   "price": 100,
   "description": "Distribuido con una licencia oficial de Sony, este joystick está constituido de pulsadores únicos de Hayabusa. Se trata de un modelo Pro que integra un panel táctil adicional y su centro de gravedad le permite evitar deslizamientos en mitad de una partida.",
-  "stock": 14,
+  "stock": 1,
   "category_id": [
     {
       "$oid": "659ed25f52b57986c87ca39d"
@@ -42,9 +47,14 @@
     "$date": "2024-01-15T19:08:48.375Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:14:05.947Z"
+    "$date": "2024-02-27T01:40:07.226Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd385abe97712f12eac53a"
+    }
+  ]
 },
 {
   "_id": {
@@ -53,7 +63,7 @@
   "name": "Mad Catz – Street Fighter V",
   "price": 69.9,
   "description": "Así que el Street Fighter V Arcade FightStick Alpha cuenta con las características esenciales de un stick tipo arcade de tamaño standard en un diseño compacto con controles tipo arcade convenientemente espaciados.",
-  "stock": 22,
+  "stock": 18,
   "category_id": [
     {
       "$oid": "659ed25f52b57986c87ca39d"
@@ -66,7 +76,7 @@
     "$date": "2024-01-15T19:10:51.704Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:10:51.704Z"
+    "$date": "2024-01-29T17:31:42.080Z"
   },
   "__v": 0
 },
@@ -77,7 +87,7 @@
   "name": "Mayflash Joystick F300",
   "price": 79.95,
   "description": "joystick principal con ocho botones de acción. En la parte superior se encuentran 6 botones multifunción.",
-  "stock": 8,
+  "stock": 1,
   "category_id": [
     {
       "$oid": "659ed25f52b57986c87ca39d"
@@ -90,9 +100,14 @@
     "$date": "2024-01-15T19:13:25.875Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:13:25.875Z"
+    "$date": "2024-02-27T01:26:52.992Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd385abe97712f12eac53a"
+    }
+  ]
 },
 {
   "_id": {
@@ -101,7 +116,7 @@
   "name": "MAYFLASH Arcade Stick F101",
   "price": 165.69,
   "description": "Palanca lateral de metal acompañada de 8 pulsadores (dos de estos especiales para turbo).",
-  "stock": 14,
+  "stock": 12,
   "category_id": [
     {
       "$oid": "659ed25f52b57986c87ca39d"
@@ -114,9 +129,14 @@
     "$date": "2024-01-15T19:15:12.018Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:15:53.796Z"
+    "$date": "2024-02-27T01:26:58.559Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd3956be97712f12eac54e"
+    }
+  ]
 },
 {
   "_id": {
@@ -125,7 +145,7 @@
   "name": "Pac-Man",
   "price": 2.3,
   "description": "First appearing in arcades in 1980, the masterpiece PAC-MAN finally comes to PS4™! Move PAC-MAN up, down, left, and right to eat all the Pac-Dots, while avoiding the ghosts, to advance to the next stage.",
-  "stock": 44,
+  "stock": 40,
   "category_id": [
     {
       "$oid": "659ed26552b57986c87ca39f"
@@ -138,9 +158,14 @@
     "$date": "2024-01-15T19:19:14.368Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:19:28.423Z"
+    "$date": "2024-02-27T01:27:02.770Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd38bebe97712f12eac546"
+    }
+  ]
 },
 {
   "_id": {
@@ -162,9 +187,14 @@
     "$date": "2024-01-15T19:21:34.195Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:21:34.195Z"
+    "$date": "2024-02-27T01:27:08.418Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd390ebe97712f12eac549"
+    }
+  ]
 },
 {
   "_id": {
@@ -186,9 +216,14 @@
     "$date": "2024-01-15T19:22:38.785Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:22:38.785Z"
+    "$date": "2024-02-27T01:27:11.933Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd385abe97712f12eac53a"
+    }
+  ]
 },
 {
   "_id": {
@@ -210,9 +245,14 @@
     "$date": "2024-01-15T19:27:16.859Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:27:16.859Z"
+    "$date": "2024-02-27T01:27:15.308Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd3956be97712f12eac54e"
+    }
+  ]
 },
 {
   "_id": {
@@ -234,9 +274,14 @@
     "$date": "2024-01-15T19:28:44.101Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:28:44.101Z"
+    "$date": "2024-02-27T01:27:20.545Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd3956be97712f12eac54e"
+    }
+  ]
 },
 {
   "_id": {
@@ -258,9 +303,14 @@
     "$date": "2024-01-15T19:31:27.702Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:31:47.940Z"
+    "$date": "2024-02-27T01:27:30.734Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd38bebe97712f12eac546"
+    }
+  ]
 },
 {
   "_id": {
@@ -282,9 +332,14 @@
     "$date": "2024-01-15T19:49:14.667Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:49:14.667Z"
+    "$date": "2024-02-27T01:38:27.761Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd22f15e4c8efe64f5f860"
+    }
+  ]
 },
 {
   "_id": {
@@ -306,9 +361,14 @@
     "$date": "2024-01-15T19:51:59.385Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:52:52.196Z"
+    "$date": "2024-02-27T01:27:43.991Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd385abe97712f12eac53a"
+    }
+  ]
 },
 {
   "_id": {
@@ -330,9 +390,14 @@
     "$date": "2024-01-15T19:55:29.963Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:55:29.963Z"
+    "$date": "2024-02-27T01:27:50.126Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd390ebe97712f12eac549"
+    }
+  ]
 },
 {
   "_id": {
@@ -354,9 +419,14 @@
     "$date": "2024-01-15T19:56:18.974Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T19:56:18.974Z"
+    "$date": "2024-02-27T01:27:54.199Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd22f15e4c8efe64f5f860"
+    }
+  ]
 },
 {
   "_id": {
@@ -378,9 +448,14 @@
     "$date": "2024-01-15T20:02:17.876Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T20:02:17.876Z"
+    "$date": "2024-02-27T01:28:01.657Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd38bebe97712f12eac546"
+    }
+  ]
 },
 {
   "_id": {
@@ -402,9 +477,14 @@
     "$date": "2024-01-15T20:04:52.036Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T20:04:52.036Z"
+    "$date": "2024-02-27T01:28:12.345Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd3956be97712f12eac54e"
+    }
+  ]
 },
 {
   "_id": {
@@ -426,9 +506,14 @@
     "$date": "2024-01-15T20:05:45.953Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T20:05:45.953Z"
+    "$date": "2024-02-27T01:28:17.057Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd390ebe97712f12eac549"
+    }
+  ]
 },
 {
   "_id": {
@@ -450,9 +535,14 @@
     "$date": "2024-01-15T20:06:34.129Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T20:06:34.129Z"
+    "$date": "2024-02-27T01:28:21.363Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd385abe97712f12eac53a"
+    }
+  ]
 },
 {
   "_id": {
@@ -474,9 +564,14 @@
     "$date": "2024-01-15T20:07:48.100Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T20:07:48.100Z"
+    "$date": "2024-02-27T01:28:24.326Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd3956be97712f12eac54e"
+    }
+  ]
 },
 {
   "_id": {
@@ -498,7 +593,12 @@
     "$date": "2024-01-15T20:08:29.942Z"
   },
   "updatedAt": {
-    "$date": "2024-01-15T20:08:29.942Z"
+    "$date": "2024-02-27T01:28:49.881Z"
   },
-  "__v": 0
+  "__v": 0,
+  "provider_id": [
+    {
+      "$oid": "65dd3956be97712f12eac54e"
+    }
+  ]
 }]

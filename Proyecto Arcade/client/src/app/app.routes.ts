@@ -10,5 +10,6 @@ export const routes: Routes = [
     {path: 'my-purchases', loadComponent: () => import ('./pages/my-purchases/my-purchases.component')},
     {path: 'product-display', loadComponent: () => import ('./pages/product-display/product-display.component')},
     {path: 'reset/:token', loadComponent: () => import ('./pages/reset/reset.component')},
+    {path: 'providers', loadComponent: () => import ('./pages/provider/provider.component')},
 
 ];
