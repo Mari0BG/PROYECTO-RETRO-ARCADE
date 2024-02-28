@@ -191,26 +191,30 @@ export default class CenterComponent {
   saveRating() {
     const pid = this.productForRating?._id; // Esto tiene el id del producto
     const uid = localStorage.getItem("user_id"); // Esto tiene el id del usuario
-
-    // Verificar que pid y uid no sean nulos o indefinidos
-    if (pid && uid) {
+    const username = localStorage.getItem("user_name"); // Nombre de usuario
+    const userimg = localStorage.getItem("user_img"); // URL de la imagen del usuario
+  
+    // Verificar que pid, uid, username y userimg no sean nulos o indefinidos
+    if (pid && uid && username && userimg) {
       // Verificar si el usuario ya ha calificado el producto
       this.ratingService.getAllRatingsByUserId(uid).subscribe(
         (userRatings: Rating[]) => {
           const existingRating = userRatings.find(rating => rating._idProduct === pid);
-
+  
           if (existingRating) {
             console.log(`El usuario ya ha calificado el producto con _idProduct: ${pid}`);
             // Actualizar el rating existente en lugar de crear uno nuevo
-
+  
             const updatedRating: Rating = {
               _id: existingRating._id,
               _idProduct: existingRating._idProduct,
               _idUser: existingRating._idUser,
               rating: this.rating.toString(),
-              coment: this.comment.toString()
+              coment: this.comment.toString(),
+              username: username, // Agregar username
+              userimg: userimg // Agregar userimg
             };
-
+  
             this.ratingService.updateRating(updatedRating).subscribe(
               (updatedRating: Rating) => {
                 console.log("Rating actualizado:", updatedRating);
@@ -226,9 +230,11 @@ export default class CenterComponent {
               _idProduct: pid,
               _idUser: uid,
               rating: this.rating.toString(),
-              coment: this.comment
+              coment: this.comment,
+              username: username, // Agregar username
+              userimg: userimg // Agregar userimg
             };
-
+  
             // Guardar el nuevo rating en la base de datos
             this.ratingService.createRating(newRating).subscribe(
               (createdRating: Rating) => {
@@ -247,9 +253,10 @@ export default class CenterComponent {
         }
       );
     } else {
-      console.error("Error: pid o uid es nulo o indefinido.");
+      console.error("Error: pid, uid, username o userimg es nulo o indefinido.");
     }
   }
+  
 
 
 

@@ -4,6 +4,8 @@ const RatingSchema = mongoose.Schema(
     {
         _idProduct:{type: String, required: true},
         _idUser:{type: String, required: true},
+        username:{type: String, required: true},
+        userimg:{type: String, required: true},
         rating:{type: String, required: true},
         coment:{type: String, required: false},
     },

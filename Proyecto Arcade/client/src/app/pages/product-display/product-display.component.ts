@@ -5,6 +5,8 @@ import { RatingService } from 'src/app/services/rating.service';
 import { Rating } from 'src/app/models/rating';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { CartService } from 'src/app/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-display',
@@ -20,7 +22,7 @@ export default class ProductDisplayComponent {
     { usuario: 'Usuario  2', texto: 'Muy buena calidad, lo recomiendo.' }
   ];
 
-  constructor(public ratingService: RatingService, public userService: UserService){
+  constructor(public ratingService: RatingService, public userService: UserService, public cartService: CartService, public router: Router){
 
   }
 
@@ -75,21 +77,9 @@ getStarClasses(rating: string): string[] {
   return starClasses;
 }
 
-
-getUserName(uid: String){
-
-  const username=""
-
-  this.userService.getUserById(uid).subscribe((res:any)=>{
-    const userData = res.data as User[]
-    userData.forEach(res2=>{
-      return res2.name
-    })
-  })
-
-  return username
+AddProductToCart(product: Product){
+  this.cartService.addNewProduct(product);
+  this.router.navigate(['home'])
 }
-
-
 
 }
