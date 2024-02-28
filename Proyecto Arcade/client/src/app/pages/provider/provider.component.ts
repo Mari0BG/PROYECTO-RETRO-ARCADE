@@ -121,18 +121,24 @@ export default class ProviderComponent {
       return;
     }
   
-    // Crear un objeto con los detalles editados del proveedor
-    const editedProvider = {
-      _id: this.selectedProvider, // Asegúrate de tener el ID del cliente seleccionado
-      name: this.editedProviderName,
-      empresa: this.editedProviderEmpresa,
-      address: this.editedProviderAddress,
-      profileImage: this.editedProviderProfileImage
-    };
+    if(!this.editedProviderProfileImage.includes("http")){
+      this.uploadService.uploadImg(this.eventIMG)?.subscribe((res:any) => {
+        this.editedProviderProfileImage = "http://localhost:8800/"+res.data
+      });
+    }
   
-    // Llamar al servicio para editar el proveedor
-    this.providerService.updateProvider(editedProvider)
-      .subscribe(
+    setTimeout(() => {
+      // Crear un objeto con los detalles editados del proveedor
+      const editedProvider = {
+        _id: this.selectedProvider, // Asegúrate de tener el ID del cliente seleccionado
+        name: this.editedProviderName,
+        empresa: this.editedProviderEmpresa,
+        address: this.editedProviderAddress,
+        profileImage: this.editedProviderProfileImage
+      };
+    
+      // Llamar al servicio para editar el proveedor
+      this.providerService.updateProvider(editedProvider).subscribe(
         (result: any) => {
           console.log('Proveedor editado correctamente', result);
           this.obtainProviders(); 
@@ -142,6 +148,7 @@ export default class ProviderComponent {
           console.error('Error al editar el proveedor', error);
         }
       );
+    }, 200);
   }
 
   // 
@@ -167,36 +174,45 @@ export default class ProviderComponent {
     ok = this.ComprobarCamposProveedor(); 
   
     if ( !ok ) {
-      // Creo un objeto con los detalles del producto
-      const createProvider: Provider = {
-        name: this.createProviderName,
-        empresa: this.createProviderEmpresa,
-        address: this.createProviderDireccion,
-        profileImage: this.createProviderImageUrl
+
+      if(!this.createProviderImageUrl.includes("http")){
+        this.uploadService.uploadImg(this.eventIMG)?.subscribe((res:any) => {
+          this.createProviderImageUrl = "http://localhost:8800/"+res.data
+        });
       }
-      if (this.existeProductoConNombre(this.createProductName)) {
-        alert("El producto ya existe.")
-      }
-      else {
-        // Llamo al servicio para crear el producto
-        this.providerService.createProvider(createProvider)
-        .subscribe(
-          (result:any) => {
-            this.clearVariablesProvider();
-            console.log('Proveedor creado correctamente', result);
-            this.obtainProviders(); // Recargo la lista de productos
-            this.closeEditProviderModal(); // Cierro el modal de crear producto
-          },
-          (error: any) => {
-            console.error('Error al crear el proveedor', error);
-        
-            if (error instanceof HttpErrorResponse) {
-              console.error('Detalles del error:', error);
-            }
+    
+      setTimeout(() => {
+          // Creo un objeto con los detalles del producto
+          const createProvider: Provider = {
+            name: this.createProviderName,
+            empresa: this.createProviderEmpresa,
+            address: this.createProviderDireccion,
+            profileImage: this.createProviderImageUrl
           }
-        );
-        this.isProviderCreated = false;
-      }
+          if (this.existeProductoConNombre(this.createProductName)) {
+            alert("El producto ya existe.")
+          }
+          else {
+            // Llamo al servicio para crear el producto
+            this.providerService.createProvider(createProvider)
+            .subscribe(
+              (result:any) => {
+                this.clearVariablesProvider();
+                console.log('Proveedor creado correctamente', result);
+                this.obtainProviders(); // Recargo la lista de productos
+                this.closeEditProviderModal(); // Cierro el modal de crear producto
+              },
+              (error: any) => {
+                console.error('Error al crear el proveedor', error);
+            
+                if (error instanceof HttpErrorResponse) {
+                  console.error('Detalles del error:', error);
+                }
+              }
+            );
+            this.isProviderCreated = false;
+          }
+        }, 200);
     }
   }
 
@@ -569,4 +585,21 @@ ComprobarCampos(): boolean{
     }
   }
 
+  cogerImagenCreate(event: any): any{
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const filePath = selectedFile.name;
+      this.createProviderImageUrl = filePath
+      this.eventIMG = event
+    }
+  }
+
+  cogerImagenEdited(event: any): any{
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const filePath = selectedFile.name;
+      this.editedProviderProfileImage = filePath
+      this.eventIMG = event
+    }
+  }
 }

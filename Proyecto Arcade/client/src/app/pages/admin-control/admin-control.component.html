@@ -1,8 +1,8 @@
 <!-- admin-control.component.html -->
 
-<div class="flex">
+<div class="flex mb-8">
     <!-- Clients Section -->
-    <div class="w-1/2 p-4">
+    <div class="w-1/2 p-4 ">
       <h2 class="text-3xl font-semibold mb-6"><i class="fa fa-drivers-license" style="font-size: 30px;" aria-hidden="true"> Clientes</i></h2>
       <div class="flex items-center mb-4">
         <input type="text" [(ngModel)]="clientSearch" placeholder="Buscar Cliente" class="p-2 border rounded mr-2">
@@ -74,9 +74,14 @@
       <label for="editedClientAddress">Dirección</label>
       <input id="editedClientAddress" [(ngModel)]="editedClientAddress" class="w-full border rounded px-3 py-2 mb-3" />
   
-      <label for="editedClientProfileImage">Imagen de Perfil</label>
+      <div class="button-container">
+        <label for="editedClientProfileImage" style="margin-top: 6px;">Imagen de Perfil</label>
+        <label for="fileInput" class="text-white font-medium text-sm focus:ring-blue-300 font-semibold rounded-lg px-5 mb-1 py-2.5 bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-indigo-500" >Subir Imagen</label>
+      </div>
+      <input id="fileInput" (change)="cogerImagenEditar($event)" type="file" accept="image/*" style="display: none;">
       <input id="editedClientProfileImage" [(ngModel)]="editedClientProfileImage" class="w-full border rounded px-3 py-2 mb-3" />
-  
+
+
       <label for="editedClientIsAdmin">¿Es Admin?</label>
       <select id="editedClientIsAdmin" [(ngModel)]="editedClientisAdmin" class="w-full border rounded px-3 py-2 mb-3">
         <option value="true">Sí</option>

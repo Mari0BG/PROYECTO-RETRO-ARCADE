@@ -57,8 +57,10 @@
     </div>
   </div>
 
-<!-- EDIT PROVIDER MODAL -->
-<div *ngIf="isEditProviderModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+  <!-- ***************************** -->
+  <!-- *** PROVIDER MODAL EDITED *** -->
+  <!-- ***************************** -->
+  <div *ngIf="isEditProviderModalOpen" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
     <div class="bg-white p-6 rounded-lg shadow-md w-96">
       <h2 class="text-2xl font-semibold mb-4">Editar Proveedor</h2>
   
@@ -71,7 +73,11 @@
       <label for="editedProviderAddress">Dirección</label>
       <input id="editedProviderAddress" [(ngModel)]="editedProviderAddress" class="w-full border rounded px-3 py-2 mb-3" />
   
-      <label for="editedProviderProfileImage">Imagen de Perfil</label>
+      <div class="button-container">
+        <label for="editedProviderProfileImage" style="margin-top: 6px;">Imagen de Perfil</label>
+        <label for="fileInput" class="text-white font-medium text-sm focus:ring-blue-300 font-semibold rounded-lg px-5 mb-1 py-2.5 bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-indigo-500" >Subir Imagen</label>
+      </div>
+      <input id="fileInput" (change)="cogerImagenEdited($event)" type="file" accept="image/*" style="display: none;">
       <input id="editedProviderProfileImage" [(ngModel)]="editedProviderProfileImage" class="w-full border rounded px-3 py-2 mb-3" />
 
       <button (click)="saveEditedProvider()" class="text-white font-medium text-sm focus:ring-blue-300 font-semibold rounded-lg px-5 py-2.5 bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-indigo-500">Guardar cambios</button>
@@ -79,10 +85,10 @@
     </div>
   </div>
  
-  <!-- **************************** -->
-<!-- *** PROVIDER MODAL CREATE *** -->
-<!-- **************************** -->
-<div *ngIf="isProviderCreated" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
+  <!-- ***************************** -->
+  <!-- *** PROVIDER MODAL CREATE *** -->
+  <!-- ***************************** -->
+  <div *ngIf="isProviderCreated" class="fixed inset-0 bg-gray-700 bg-opacity-75 flex items-center justify-center">
     <div class="bg-white p-6 rounded-lg shadow-md w-96">
       <h2 class="text-2xl font-semibold mb-4">Crear Proveedor</h2>
       <label for="createProviderName">Name</label>
@@ -94,9 +100,12 @@
       <label for="createProviderDireccion">Direccion</label>
       <input id="createProviderDireccion" [(ngModel)]="createProviderDireccion" class="w-full border rounded px-3 py-2 mb-3" />
   
-      <label for="createProviderImageUrl">Image</label>
+      <div class="button-container">
+        <label for="createProviderImageUrl" style="margin-top: 6px;">Imagen de Perfil</label>
+        <label for="fileInput" class="text-white font-medium text-sm focus:ring-blue-300 font-semibold rounded-lg px-5 mb-1 py-2.5 bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-indigo-500" >Subir Imagen</label>
+      </div>
+      <input id="fileInput" (change)="cogerImagenCreate($event)" type="file" accept="image/*" style="display: none;">
       <input id="createProviderImageUrl" [(ngModel)]="createProviderImageUrl" class="w-full border rounded px-3 py-2 mb-3" />
-      
   
       <!-- Add more form fields for other properties as needed -->
   

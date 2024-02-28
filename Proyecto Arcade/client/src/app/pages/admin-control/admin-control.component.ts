@@ -123,23 +123,30 @@ export default class AdminControlComponent {
       return;
     }
   
-    // Crear un objeto con los detalles editados del cliente
-    const editedClient = {
-      _id: this.selectedClient, // Asegúrate de tener el ID del cliente seleccionado
-      name: this.editedClientName,
-      email: this.editedClientEmail,
-      address: this.editedClientAddress,
-      profileImage: this.editedClientProfileImage,
-      isAdmin: this.editedClientisAdmin === 'true', // Convertir el string a boolean
-      password: this.selectedPass,
-      roles: this.selectedRol
-      // Agregar otros campos según sea necesario
-    };
-  
-    // Llamar al servicio para editar el cliente
+
+    if(!this.editedClientProfileImage.includes("http")){
+      this.uploadService.uploadImg(this.eventIMG)?.subscribe((res:any) => {
+        this.editedClientProfileImage = "http://localhost:8800/"+res.data
+      });
+    }
+
+    setTimeout(() => {
+      // Crear un objeto con los detalles editados del cliente
+      const editedClient = {
+        _id: this.selectedClient, // Asegúrate de tener el ID del cliente seleccionado
+        name: this.editedClientName,
+        email: this.editedClientEmail,
+        address: this.editedClientAddress,
+        profileImage: this.editedClientProfileImage,
+        isAdmin: this.editedClientisAdmin === 'true', // Convertir el string a boolean
+        password: this.selectedPass,
+        roles: this.selectedRol
+        // Agregar otros campos según sea necesario
+      };
     
-    this.userService.updateUser(editedClient)
-      .subscribe(
+      // Llamar al servicio para editar el cliente
+      
+      this.userService.updateUser(editedClient).subscribe(
         (result: any) => {
           console.log('Cliente editado correctamente', result);
           this.obtainUsers(); // Actualizar la lista de clientes después de la edición
@@ -150,6 +157,7 @@ export default class AdminControlComponent {
           // Puedes manejar el error según tus necesidades
         }
       );
+    },200)
   }
 
   closeEditClientModal() {
@@ -496,6 +504,16 @@ export default class AdminControlComponent {
     if (selectedFile) {
       const filePath = selectedFile.name;
       this.editedProductImageUrl = filePath
+      this.eventIMG = event
+    }
+  }
+
+
+  cogerImagenEditar(event: any): any{
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const filePath = selectedFile.name;
+      this.editedClientProfileImage = filePath
       this.eventIMG = event
     }
   }
