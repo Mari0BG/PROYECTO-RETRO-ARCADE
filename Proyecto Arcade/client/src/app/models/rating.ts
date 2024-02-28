@@ -7,6 +7,7 @@ export class Rating {
     userimg: String
     rating: String;
     coment: String;
+    createdAt?: any;
 
     constructor(){
 

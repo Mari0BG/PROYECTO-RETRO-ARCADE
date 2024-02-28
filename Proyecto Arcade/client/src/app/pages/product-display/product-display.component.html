@@ -31,8 +31,10 @@
     <ng-container *ngIf="ratingProd && ratingProd.length > 0; else noValoraciones">
       <div class="flex-shrink-0 w-96 mr-6 mb-2 ml-3" *ngFor="let comentario of ratingProd; let i = index">
         <div class="p-4 bg-white rounded shadow-md">
-          
-          <h3 class="text-xl font-bold">{{ comentario.username }}</h3>
+          <div class="flex justify-between">
+            <h3 class="text-xl font-bold">{{ comentario.username }}</h3>
+            <p>{{comentario.createdAt | date:'dd-MM-yyyy'}}</p>
+          </div>
           <i *ngFor="let starClass of getStarClasses(comentario.rating.toString())" class="fa" [ngClass]="starClass" style="font-size:16px"></i>
           <p class="mt-2">{{ comentario.coment }}</p>
         </div>

@@ -82,4 +82,13 @@ AddProductToCart(product: Product){
   this.router.navigate(['home'])
 }
 
+parsearFecha(fechaString: string): string {
+  const fecha = new Date(fechaString);
+  const dia = fecha.getDate();
+  const mes = fecha.toLocaleString('es-ES', { month: 'long' });
+  const anio = fecha.getFullYear();
+  return `${dia} ${mes} ${anio}`;
+}
+
+
 }
