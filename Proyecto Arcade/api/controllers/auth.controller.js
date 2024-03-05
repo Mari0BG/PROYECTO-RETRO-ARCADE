@@ -95,12 +95,12 @@ export const sendEmail = async (req,res, next)=>{
     const mailTransporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "retroarcade68@gmail.com",
-            pass: "timq boll wmkx bljs"
+            user: " x@gmail.com ",   // E-MAIL  APLICACION
+            pass: "vamf hppl emkr kpjs"   // CONTRASEÑA DE APLICACION
         }
     })
     let mailDetails = {
-        from: "retroarcade68@gmail.com",
+        from: "x@gmail.com",
         to: email,
         subject: "Reset password",
         html: `
