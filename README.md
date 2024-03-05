@@ -1,4 +1,4 @@
-# PROYECTO-RETRO-ARCADE 🇪🇸
+# RETRO-ARCADE 🇪🇸
 
 Este proyecto consiste en una página web de venta de máquinas arcade, complementos y juegos en línea. La plataforma cuenta con un sistema de administración de productos, proveedores y usuarios, ofreciendo una interfaz cómoda y minimalista para los usuarios durante el proceso de compra.
 
@@ -26,7 +26,7 @@ Sigue los siguientes pasos para ejecutar la aplicación:
 - Mario Barajas García
 - Raúl Alonso Calvarro
 
-# PROYECTO-RETRO-ARCADE 🇺🇸
+# RETRO-ARCADE 🇺🇸
 
 This project is a web page for selling arcade machines, accessories, and online games. It features a product, supplier, and user management system, offering a comfortable and minimalist interface for users during the purchasing process.
 
